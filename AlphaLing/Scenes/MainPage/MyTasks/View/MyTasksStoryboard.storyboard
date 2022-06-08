@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Tasks-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="MyTasksViewController" id="Y6W-OH-hqX" customClass="MyTasksViewController" customModule="AlphaLing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="z0A-I3-6qR">
+                                <rect key="frame" x="20" y="138" width="374" height="657"/>
+                                <color key="backgroundColor" name="commonColor"/>
+                                <color key="separatorColor" name="commonColor"/>
+                                <color key="sectionIndexBackgroundColor" name="commonColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="commonColor"/>
+                        <constraints>
+                            <constraint firstItem="z0A-I3-6qR" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-18" id="5m0-k9-c0x"/>
+                            <constraint firstItem="z0A-I3-6qR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="RdA-2b-uhh"/>
+                            <constraint firstItem="z0A-I3-6qR" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="-20" id="pZn-wM-8Gs"/>
+                            <constraint firstItem="z0A-I3-6qR" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="xLP-BC-SJy"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="gon-zu-MOP"/>
+                    <navigationItem key="navigationItem" title="My Tasks" id="hfF-BO-oIo"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="z0A-I3-6qR" id="oBD-pp-6hi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897.10144927536237" y="77.678571428571431"/>
+        </scene>
+        <!--My Tasks-->
+        <scene sceneID="AFb-aD-fIt">
+            <objects>
+                <navigationController storyboardIdentifier="MyTasksNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Jeg-jx-aJa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Tasks" image="newspaper.fill" catalog="system" id="SNS-oH-bVm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cN2-LD-SPF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="specialBlue"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="zAD-H2-k0V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SPS-If-AOP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-13.043478260869566" y="77.678571428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
+        <namedColor name="commonColor">
+            <color red="0.92100000381469727" green="0.93300002813339233" blue="0.94999998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="specialBlue">
+            <color red="0.026000000536441803" green="0.32499998807907104" blue="0.64899998903274536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

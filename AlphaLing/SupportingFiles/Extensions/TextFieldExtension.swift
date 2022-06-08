@@ -19,8 +19,19 @@ extension UITextField {
         self.rightView = paddingView
         self.rightViewMode = .always
     }
-    
-    
-
-   
 }
+
+extension UIViewController {
+//Show a basic alert
+    func showAlert(alertText : String, alertMessage : String, addActionTitle: String) {
+        
+    let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: addActionTitle, style: .cancel))
+//Add more actions as you see fit
+self.present(alert, animated: true, completion: nil)
+  }
+    
+}
+
+
+

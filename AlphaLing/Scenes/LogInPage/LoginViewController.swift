@@ -19,11 +19,24 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var buttonReference: UIButton!
     
-    @IBAction func logInButton(_ sender: UIButton) {
-    }
-    
+    let api = APIService()
     let viewModel = LoginViewViewModel()
     
+    
+    
+    @IBAction func logInButton(_ sender: UIButton) {
+        
+        api.apiCall(username: usernameTextField.text ?? "" , password: passwordTextField.text ?? "", completionHandler: { (result) in
+
+            self.viewModel.checkCompletion(result: result, viewController: self)
+
+            
+  
+        })
+   
+    }
+    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordTextField.delegate = self

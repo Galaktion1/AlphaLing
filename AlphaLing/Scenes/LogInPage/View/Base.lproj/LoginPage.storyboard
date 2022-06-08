@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="0pW-P3-Wn7">
             <objects>
-                <viewController id="Wzh-PZ-eae" customClass="LoginViewController" customModule="AlphaLing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="Wzh-PZ-eae" customClass="LoginViewController" customModule="AlphaLing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i9C-Q4-pi5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +63,9 @@
                                                             </attributedString>
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="logInButton:" destination="Wzh-PZ-eae" eventType="touchUpInside" id="Ga1-ox-pzj"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -122,10 +125,10 @@
     <resources>
         <image name="logoWithName" width="481" height="173"/>
         <namedColor name="commonColor">
-            <color red="0.92110246419999997" green="0.93314373490000002" blue="0.94967931510000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92100000381469727" green="0.93300002813339233" blue="0.94999998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="specialBlue">
-            <color red="0.026474030690000001" green="0.32471603160000001" blue="0.64879709480000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.026000000536441803" green="0.32499998807907104" blue="0.64899998903274536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A070948284697A00053A78D /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A070947284697A00053A78D /* MainTabBar.storyboard */; };
+		9A07094A284697DD0053A78D /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A070949284697DD0053A78D /* MainTabBarViewController.swift */; };
+		9A08E3422848AF1A00A93510 /* ViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08E3412848AF1900A93510 /* ViewPager.swift */; };
+		9A08E3452848BB1F00A93510 /* ViewPagerAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08E3442848BB1F00A93510 /* ViewPagerAppearance.swift */; };
+		9A08E3472848BCD900A93510 /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08E3462848BCD900A93510 /* PageCollectionViewCell.swift */; };
+		9A08E3492848BE7100A93510 /* TabbedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08E3482848BE7100A93510 /* TabbedCollectionViewCell.swift */; };
+		9A08E34B2848BE9C00A93510 /* TabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08E34A2848BE9C00A93510 /* TabbedView.swift */; };
+		9A08E34D2848BF4400A93510 /* ViewPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A08E34C2848BF4400A93510 /* ViewPagerViewController.swift */; };
+		9A15F73A2847F8E700C775B5 /* MyTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A15F7392847F8E700C775B5 /* MyTasksViewModel.swift */; };
+		9A2423432849EE6000E100E4 /* MainViewPagerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2423422849EE6000E100E4 /* MainViewPagerView.xib */; };
+		9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2468F828474851000AD93F /* MyTasksViewController.swift */; };
+		9A2468FB28474860000AD93F /* MyTasksStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2468FA28474860000AD93F /* MyTasksStoryboard.storyboard */; };
+		9A2468FE284748E9000AD93F /* NewTasksStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2468FD284748E9000AD93F /* NewTasksStoryboard.storyboard */; };
+		9A246900284748FB000AD93F /* NewTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2468FF284748FB000AD93F /* NewTasksViewController.swift */; };
+		9A2469082847499E000AD93F /* SettingsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2469072847499E000AD93F /* SettingsStoryboard.storyboard */; };
+		9A24690A284749AC000AD93F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A246909284749AC000AD93F /* SettingsViewController.swift */; };
+		9A24690D28475751000AD93F /* MyTasksAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24690C28475751000AD93F /* MyTasksAPIModel.swift */; };
+		9A24691128475EF5000AD93F /* MyTasksApiParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A24691028475EF5000AD93F /* MyTasksApiParser.swift */; };
+		9A2469152847A60E000AD93F /* MyTasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2469132847A60E000AD93F /* MyTasksTableViewCell.swift */; };
+		9A2469162847A60E000AD93F /* MyTasksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2469142847A60E000AD93F /* MyTasksTableViewCell.xib */; };
+		9A466D5C284DED3A006FDE81 /* NewTaskPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */; };
+		9A466D5E284E0586006FDE81 /* NewTasksPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */; };
 		9AA251BD284604F4002516D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251BC284604F4002516D3 /* AppDelegate.swift */; };
 		9AA251BF284604F4002516D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251BE284604F4002516D3 /* SceneDelegate.swift */; };
 		9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251C0284604F4002516D3 /* LoginViewController.swift */; };
@@ -15,9 +37,35 @@
 		9AA251C9284604F9002516D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AA251C7284604F9002516D3 /* LaunchScreen.storyboard */; };
 		9AA251D528460E67002516D3 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251D428460E67002516D3 /* TextFieldExtension.swift */; };
 		9AA251DC28463A28002516D3 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251DB28463A28002516D3 /* LoginViewViewModel.swift */; };
+		9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251E028464B26002516D3 /* UserAuthModel.swift */; };
+		9AA251E328464FC7002516D3 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251E228464FC7002516D3 /* API.swift */; };
+		9AEEC1F22848C0AE007BCB5C /* AppTabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEEC1F12848C0AD007BCB5C /* AppTabItemView.swift */; };
+		9AEEC1F52848D282007BCB5C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEEC1F42848D282007BCB5C /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A070947284697A00053A78D /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
+		9A070949284697DD0053A78D /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		9A08E3412848AF1900A93510 /* ViewPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPager.swift; sourceTree = "<group>"; };
+		9A08E3442848BB1F00A93510 /* ViewPagerAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPagerAppearance.swift; sourceTree = "<group>"; };
+		9A08E3462848BCD900A93510 /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
+		9A08E3482848BE7100A93510 /* TabbedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedCollectionViewCell.swift; sourceTree = "<group>"; };
+		9A08E34A2848BE9C00A93510 /* TabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedView.swift; sourceTree = "<group>"; };
+		9A08E34C2848BF4400A93510 /* ViewPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPagerViewController.swift; sourceTree = "<group>"; };
+		9A15F7392847F8E700C775B5 /* MyTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTasksViewModel.swift; sourceTree = "<group>"; };
+		9A2423422849EE6000E100E4 /* MainViewPagerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewPagerView.xib; sourceTree = "<group>"; };
+		9A2468F828474851000AD93F /* MyTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTasksViewController.swift; sourceTree = "<group>"; };
+		9A2468FA28474860000AD93F /* MyTasksStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTasksStoryboard.storyboard; sourceTree = "<group>"; };
+		9A2468FD284748E9000AD93F /* NewTasksStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTasksStoryboard.storyboard; sourceTree = "<group>"; };
+		9A2468FF284748FB000AD93F /* NewTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTasksViewController.swift; sourceTree = "<group>"; };
+		9A2469072847499E000AD93F /* SettingsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsStoryboard.storyboard; sourceTree = "<group>"; };
+		9A246909284749AC000AD93F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9A24690C28475751000AD93F /* MyTasksAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTasksAPIModel.swift; sourceTree = "<group>"; };
+		9A24691028475EF5000AD93F /* MyTasksApiParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTasksApiParser.swift; sourceTree = "<group>"; };
+		9A2469132847A60E000AD93F /* MyTasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTasksTableViewCell.swift; sourceTree = "<group>"; };
+		9A2469142847A60E000AD93F /* MyTasksTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTasksTableViewCell.xib; sourceTree = "<group>"; };
+		9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPageVC.swift; sourceTree = "<group>"; };
+		9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTasksPageStoryboard.storyboard; sourceTree = "<group>"; };
 		9AA251B9284604F4002516D3 /* AlphaLing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphaLing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA251BC284604F4002516D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AA251BE284604F4002516D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +76,10 @@
 		9AA251CA284604F9002516D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AA251D428460E67002516D3 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		9AA251DB28463A28002516D3 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
+		9AA251E028464B26002516D3 /* UserAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthModel.swift; sourceTree = "<group>"; };
+		9AA251E228464FC7002516D3 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		9AEEC1F12848C0AD007BCB5C /* AppTabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabItemView.swift; sourceTree = "<group>"; };
+		9AEEC1F42848D282007BCB5C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +93,107 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A070946284697810053A78D /* MainPage */ = {
+			isa = PBXGroup;
+			children = (
+				9A2468F5284747D1000AD93F /* MyTasks */,
+				9A2468FC284748CF000AD93F /* NewTasks */,
+				9A24690628474989000AD93F /* Settings */,
+				9A24690E28475EB5000AD93F /* MainTabBar */,
+			);
+			path = MainPage;
+			sourceTree = "<group>";
+		};
+		9A08E3432848BAFE00A93510 /* ViewPager */ = {
+			isa = PBXGroup;
+			children = (
+				9AEEC1F32848D260007BCB5C /* CustomViews */,
+			);
+			path = ViewPager;
+			sourceTree = "<group>";
+		};
+		9A24233F2849EDF400E100E4 /* ViewPagerView */ = {
+			isa = PBXGroup;
+			children = (
+				9A08E3412848AF1900A93510 /* ViewPager.swift */,
+				9A08E3442848BB1F00A93510 /* ViewPagerAppearance.swift */,
+				9A08E3462848BCD900A93510 /* PageCollectionViewCell.swift */,
+				9A08E3482848BE7100A93510 /* TabbedCollectionViewCell.swift */,
+				9A08E34A2848BE9C00A93510 /* TabbedView.swift */,
+				9A08E34C2848BF4400A93510 /* ViewPagerViewController.swift */,
+				9AEEC1F12848C0AD007BCB5C /* AppTabItemView.swift */,
+			);
+			path = ViewPagerView;
+			sourceTree = "<group>";
+		};
+		9A2468F5284747D1000AD93F /* MyTasks */ = {
+			isa = PBXGroup;
+			children = (
+				9A2469122847A5E4000AD93F /* View */,
+				9A24690F28475ED3000AD93F /* MyTasksViewModel */,
+				9A24690B28475726000AD93F /* MyTasksModel */,
+				9A2468F828474851000AD93F /* MyTasksViewController.swift */,
+			);
+			path = MyTasks;
+			sourceTree = "<group>";
+		};
+		9A2468FC284748CF000AD93F /* NewTasks */ = {
+			isa = PBXGroup;
+			children = (
+				9A2468FD284748E9000AD93F /* NewTasksStoryboard.storyboard */,
+				9A2468FF284748FB000AD93F /* NewTasksViewController.swift */,
+				9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */,
+				9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */,
+			);
+			path = NewTasks;
+			sourceTree = "<group>";
+		};
+		9A24690628474989000AD93F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9A2469072847499E000AD93F /* SettingsStoryboard.storyboard */,
+				9A246909284749AC000AD93F /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9A24690B28475726000AD93F /* MyTasksModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A24690C28475751000AD93F /* MyTasksAPIModel.swift */,
+			);
+			path = MyTasksModel;
+			sourceTree = "<group>";
+		};
+		9A24690E28475EB5000AD93F /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				9A070949284697DD0053A78D /* MainTabBarViewController.swift */,
+				9A070947284697A00053A78D /* MainTabBar.storyboard */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		9A24690F28475ED3000AD93F /* MyTasksViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A24691028475EF5000AD93F /* MyTasksApiParser.swift */,
+				9A15F7392847F8E700C775B5 /* MyTasksViewModel.swift */,
+			);
+			path = MyTasksViewModel;
+			sourceTree = "<group>";
+		};
+		9A2469122847A5E4000AD93F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A08E3432848BAFE00A93510 /* ViewPager */,
+				9A2468FA28474860000AD93F /* MyTasksStoryboard.storyboard */,
+				9A2469132847A60E000AD93F /* MyTasksTableViewCell.swift */,
+				9A2469142847A60E000AD93F /* MyTasksTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9AA251B0284604F4002516D3 = {
 			isa = PBXGroup;
 			children = (
@@ -60,10 +213,10 @@
 		9AA251BB284604F4002516D3 /* AlphaLing */ = {
 			isa = PBXGroup;
 			children = (
-				9AA251D22846059D002516D3 /* Scenes */,
+				9AA251CA284604F9002516D3 /* Info.plist */,
 				9AA251D128460556002516D3 /* Resources */,
 				9AA251D028460538002516D3 /* SupportingFiles */,
-				9AA251CA284604F9002516D3 /* Info.plist */,
+				9AA251D22846059D002516D3 /* Scenes */,
 			);
 			path = AlphaLing;
 			sourceTree = "<group>";
@@ -91,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				9AA251D62846185C002516D3 /* LogInPage */,
+				9A070946284697810053A78D /* MainPage */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -106,9 +260,10 @@
 		9AA251D62846185C002516D3 /* LogInPage */ = {
 			isa = PBXGroup;
 			children = (
+				9AA251DF28464B0C002516D3 /* Model */,
+				9AA251DE28464472002516D3 /* View */,
 				9AA251DA28463A0E002516D3 /* ViewModel */,
 				9AA251C0284604F4002516D3 /* LoginViewController.swift */,
-				9AA251C2284604F4002516D3 /* LoginPage.storyboard */,
 			);
 			path = LogInPage;
 			sourceTree = "<group>";
@@ -117,8 +272,35 @@
 			isa = PBXGroup;
 			children = (
 				9AA251DB28463A28002516D3 /* LoginViewViewModel.swift */,
+				9AA251E228464FC7002516D3 /* API.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9AA251DE28464472002516D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9AA251C2284604F4002516D3 /* LoginPage.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9AA251DF28464B0C002516D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9AA251E028464B26002516D3 /* UserAuthModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9AEEC1F32848D260007BCB5C /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				9A24233F2849EDF400E100E4 /* ViewPagerView */,
+				9AEEC1F42848D282007BCB5C /* MainView.swift */,
+				9A2423422849EE6000E100E4 /* MainViewPagerView.xib */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +361,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A2469162847A60E000AD93F /* MyTasksTableViewCell.xib in Resources */,
+				9A2423432849EE6000E100E4 /* MainViewPagerView.xib in Resources */,
+				9A2468FB28474860000AD93F /* MyTasksStoryboard.storyboard in Resources */,
+				9A2469082847499E000AD93F /* SettingsStoryboard.storyboard in Resources */,
+				9A2468FE284748E9000AD93F /* NewTasksStoryboard.storyboard in Resources */,
 				9AA251C9284604F9002516D3 /* LaunchScreen.storyboard in Resources */,
+				9A070948284697A00053A78D /* MainTabBar.storyboard in Resources */,
 				9AA251C6284604F9002516D3 /* Assets.xcassets in Resources */,
+				9A466D5E284E0586006FDE81 /* NewTasksPageStoryboard.storyboard in Resources */,
 				9AA251C4284604F4002516D3 /* LoginPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,11 +381,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A08E3492848BE7100A93510 /* TabbedCollectionViewCell.swift in Sources */,
 				9AA251DC28463A28002516D3 /* LoginViewViewModel.swift in Sources */,
+				9A07094A284697DD0053A78D /* MainTabBarViewController.swift in Sources */,
+				9A24690A284749AC000AD93F /* SettingsViewController.swift in Sources */,
+				9A24691128475EF5000AD93F /* MyTasksApiParser.swift in Sources */,
 				9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */,
+				9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */,
+				9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */,
 				9AA251D528460E67002516D3 /* TextFieldExtension.swift in Sources */,
+				9A466D5C284DED3A006FDE81 /* NewTaskPageVC.swift in Sources */,
+				9A246900284748FB000AD93F /* NewTasksViewController.swift in Sources */,
 				9AA251BD284604F4002516D3 /* AppDelegate.swift in Sources */,
+				9A08E3452848BB1F00A93510 /* ViewPagerAppearance.swift in Sources */,
+				9A08E3472848BCD900A93510 /* PageCollectionViewCell.swift in Sources */,
+				9A08E3422848AF1A00A93510 /* ViewPager.swift in Sources */,
 				9AA251BF284604F4002516D3 /* SceneDelegate.swift in Sources */,
+				9A08E34D2848BF4400A93510 /* ViewPagerViewController.swift in Sources */,
+				9AA251E328464FC7002516D3 /* API.swift in Sources */,
+				9A08E34B2848BE9C00A93510 /* TabbedView.swift in Sources */,
+				9A15F73A2847F8E700C775B5 /* MyTasksViewModel.swift in Sources */,
+				9AEEC1F52848D282007BCB5C /* MainView.swift in Sources */,
+				9AEEC1F22848C0AE007BCB5C /* AppTabItemView.swift in Sources */,
+				9A2469152847A60E000AD93F /* MyTasksTableViewCell.swift in Sources */,
+				9A24690D28475751000AD93F /* MyTasksAPIModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

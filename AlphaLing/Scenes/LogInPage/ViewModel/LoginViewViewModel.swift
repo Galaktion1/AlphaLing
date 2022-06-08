@@ -17,5 +17,39 @@ class LoginViewViewModel {
         textField.setLeftPaddingPoints(15)
     }
     
-    
+    func checkCompletion(result: Result<String, Error>, viewController: UIViewController) {
+        switch result {
+        case .success(let final):
+            UserDefaults .standard.set(final, forKey: "token")
+            print(UserDefaults.standard.string(forKey: "token") ?? "nothing here")
+
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
+
+                viewController.view.window?.rootViewController = vc
+                viewController.view.window?.makeKeyAndVisible()
+                
+            }
+            
+            UserDefaults.standard.set(true, forKey: "UserLoggedIn")
+            UserDefaults.standard.synchronize()
+            
+         
+            
+            
+            
+            
+        case .failure(let failure):
+            DispatchQueue.main.async {
+                viewController.showAlert(alertText: "Error", alertMessage: "Invalid username or password.", addActionTitle: "Ok")
+                print(failure)
+                }
+                
+            }
+        
+        }
 }
+    
+    
+
