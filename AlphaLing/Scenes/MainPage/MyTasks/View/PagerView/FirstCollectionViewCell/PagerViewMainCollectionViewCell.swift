@@ -1,13 +1,13 @@
 //
-//  NewTaskPageVC.swift
+//  PagerViewMainCollectionViewCell.swift
 //  AlphaLing
 //
-//  Created by Gaga Nizharadze on 06.06.22.
+//  Created by Gaga Nizharadze on 08.06.22.
 //
 
 import UIKit
 
-class NewTaskPageVC: UIViewController {
+class PagerViewMainCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameTitleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -17,15 +17,13 @@ class NewTaskPageVC: UIViewController {
     @IBOutlet weak var baseLabel: UILabel!
     @IBOutlet weak var fareLabel: UILabel!
     
-    var data: TaskData?
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        guard let data = data else { return }
-        updateMainUIView(data: data)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Initialization code
     }
+
     
     func updateMainUIView(data: TaskData) {
         
@@ -60,9 +58,6 @@ class NewTaskPageVC: UIViewController {
         fareLabel?.text = fareText
 
     }
-    
-    
-
-    
-
 }
+
+

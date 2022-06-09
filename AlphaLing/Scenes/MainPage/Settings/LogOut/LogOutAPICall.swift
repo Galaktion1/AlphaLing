@@ -1,31 +1,26 @@
 //
-//  MyTasksApiParser.swift
+//  SettingsAPICall.swift
 //  AlphaLing
 //
-//  Created by Gaga Nizharadze on 01.06.22.
+//  Created by Gaga Nizharadze on 09.06.22.
 //
 
 import Foundation
 
-
-class MyTaskApiService {
+class LogOutAPICall {
     
     private var dataTask: URLSessionDataTask?
-    
-    
-    func getMyTasksData(completion: @escaping (Result<MyTasksModel, Error>) -> Void) {
+   
+    func getResponse(completion: @escaping (Result<Bool, Error>) -> Void) {
         
-        guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/tasks/my") else { return }
+        guard let url = URL(string: "https://alphatest.webmitplan.de/api/auth/logout") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-//        print(["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"])
-        
         request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-     
         dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
@@ -45,23 +40,16 @@ class MyTaskApiService {
             
             do {
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(MyTasksModel.self, from: data)
-                
+                let boolData = try decoder.decode(Bool.self, from: data)
                 DispatchQueue.main.async {
-                    completion(.success(jsonData))
-                    print(jsonData)
+                    completion(.success(boolData))
                 }
             }
             catch let error {
                 completion(.failure(error))
             }
-
-            
         }
-        
         dataTask?.resume()
-                       
-        
-            
+         
     }
 }

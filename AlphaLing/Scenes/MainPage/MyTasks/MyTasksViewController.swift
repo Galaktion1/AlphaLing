@@ -12,7 +12,7 @@ class MyTasksViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var myTaskApiService = MyTaskApiService()
+    var myTaskApiService = TaskApiService(linkSnippet: "my")
     
     private var viewModel = MyTasksViewModel()
     
@@ -34,11 +34,6 @@ class MyTasksViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadMyTaskData()
-        
-    }
     
     
     
@@ -52,17 +47,15 @@ class MyTasksViewController: UIViewController {
 extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        100.0
     }
     
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfRowsInSection()
+        viewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        1
     }
     
     // There is just one row in every section
@@ -70,7 +63,7 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
     
     // Set the spacing between sections
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
+        cellSpacingHeight
     }
     
     // Make the background color show through
@@ -81,36 +74,14 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
     }
     
     
-    
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = ViewPagerViewController()
         
-//        let mainView = MainView()
+        let sb = UIStoryboard(name: "PagerViewStoryboard", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "PagerViewViewController") as! PagerViewViewController
+        
         let data = viewModel.cellForRowAt(indexPath: indexPath)
-        
         vc.data = data
-        
-//        let pagedView = PagedView()
-        
-        
-//        mainView.updateMainUIView(data: data)
-        
-//
-//
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            pagedView.collectionView.reloadData()
-//        }
-        
-//        mainView.nameTitleLabel?.text = data.title ?? "None"
-//        mainView.timeLabel?.text = data.taskTime ?? "None"
-//        mainView.baseLabel?.text = data.baseTaskKey ?? "None"
-//        mainView.dateLabel?.text = data.taskDate ?? "None"
-//        mainView.customerNameLabel.text = data.singleEditor
-        
-        
         
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
@@ -122,7 +93,7 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         
         let data = viewModel.cellForRowAt(indexPath: indexPath)
         cell.updateCells(userInfo: data)
-       
+        
         return cell
     }
     

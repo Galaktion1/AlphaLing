@@ -6,15 +6,15 @@
 import Foundation
 
 // MARK: - MyTasksModel
-struct MyTasksModel: Codable {
-    let data: [MyTasksData]?
+struct TaskModel: Codable {
+    let data: [TaskData]?
 //    let total: Int?
 //    let fromDate: String?
 //    let toDate: JSONNull?
 }
 
 // MARK: - MyTasksData
-struct MyTasksData: Codable {
+struct TaskData: Codable {
     let id: Int?
     let baseTaskKey, status: String?
     let statusHistory: [StatusHistory]?

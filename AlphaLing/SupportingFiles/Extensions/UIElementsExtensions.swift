@@ -31,7 +31,33 @@ extension UIViewController {
 self.present(alert, animated: true, completion: nil)
   }
     
+    func logOutActionSheet() {
+        let alert = UIAlertController(title: "Log Out", message: "Please Select an Option", preferredStyle: .actionSheet)
+        
+        
+        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+            
+            
+            let sb = UIStoryboard(name: "LoginPage", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            UserDefaults.standard.removeObject(forKey: "UserLoggedIn")
+            
+            self.view.window?.rootViewController = vc
+            self.view.window?.makeKeyAndVisible()
+            let viewModel = LogOutViewModel()
+            viewModel.fetchMyTasksData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
+
+
 
 
 

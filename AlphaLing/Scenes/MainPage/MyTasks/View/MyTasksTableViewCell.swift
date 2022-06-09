@@ -20,7 +20,6 @@ class MyTasksTableViewCell: UITableViewCell {
     static let identifier = "MyTasksTableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     static func nib() -> UINib {
@@ -38,14 +37,6 @@ class MyTasksTableViewCell: UITableViewCell {
         
     }
     
-   
-    
-//    func configureGreenCells() {
-//        senderLabel.text = "Dolmetschen vor Ort Litauisch"
-//        dateLabel.text = "2022-02-05"
-//        timeLabel.text = "13:00 - 23:45"
-//    }
-    
     func configureRedCells() {
         
         senderLabel.text = "Dolmetschen vor Ort Litauisch"
@@ -62,7 +53,7 @@ class MyTasksTableViewCell: UITableViewCell {
     }
     
     
-    func updateCells(userInfo: MyTasksData) {
+    func updateCells(userInfo: TaskData) {
         updateUI(title: userInfo.title ?? "no info", date: userInfo.taskDate ?? "no info", time: userInfo.taskTime ?? "no info")
     }
     
