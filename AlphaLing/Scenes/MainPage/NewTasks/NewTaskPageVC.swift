@@ -17,6 +17,10 @@ class NewTaskPageVC: UIViewController {
     @IBOutlet weak var baseLabel: UILabel!
     @IBOutlet weak var fareLabel: UILabel!
     
+    @IBOutlet weak var firstCommentAuthorLabel: UILabel!
+    @IBOutlet weak var fistCommentLabel: UILabel!
+    
+    
     var data: TaskData?
     
     
@@ -38,7 +42,18 @@ class NewTaskPageVC: UIViewController {
                             baseText: "\(data.taskUsers?[0].supplierPriceData?.basePrice ?? 0)",
                             fareText: "nil")
         
+//        let commentsWithoutHTMLTags = (data.taskUsers?[0].comments?.first?.text ?? "").replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         
+        configureCommentSection(firstCommentAuthor: data.taskUsers?[0].comments?.first?.userOutputName ?? "",
+                                firstComment: (data.taskUsers?[0].comments?.first?.text ?? "").removeHtmlTags())
+        
+        if UserDefaults.standard.value(forKey: "taskId") == nil {
+            
+            if let taskId = data.taskUsers?[0].taskID {
+                UserDefaults.standard.set(taskId, forKey: "taskId")
+                print(taskId)
+            }
+        }
         
     }
     
@@ -61,8 +76,9 @@ class NewTaskPageVC: UIViewController {
 
     }
     
-    
-
-    
+    private func configureCommentSection(firstCommentAuthor: String, firstComment: String) {
+        firstCommentAuthorLabel.text = firstCommentAuthor
+        fistCommentLabel.text = firstComment
+    } 
 
 }

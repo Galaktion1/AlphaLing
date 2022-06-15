@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PagerViewMainCollectionViewCellDelegate {
+    func mustPresent(comments: [Comment])
+}
+
 class PagerViewMainCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameTitleLabel: UILabel!
@@ -17,6 +21,17 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var baseLabel: UILabel!
     @IBOutlet weak var fareLabel: UILabel!
     
+    @IBOutlet weak var firstCommentAuthorLabel: UILabel!
+    @IBOutlet weak var fistCommentLabel: UILabel!
+    
+    
+    var delegate: PagerViewMainCollectionViewCellDelegate?
+    var taskData: TaskData?
+    
+    @IBAction func addCommentButton(_ sender: UIButton) {
+        delegate?.mustPresent(comments: (taskData?.taskUsers?[0].comments) ?? [Comment(id: "", text: "", userID: 0, modifiedAt: "", userOutputName: "")])
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +41,7 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
 
     
     func updateMainUIView(data: TaskData) {
-        
+        taskData = data
         configureUIElements(name: data.title ?? "nil",
                             date: data.taskDate  ?? "nil",
                             taskTime: data.taskTime ?? "nil",
@@ -36,6 +51,13 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
                             baseText: "\(data.taskUsers?[0].supplierPriceData?.basePrice ?? 0)",
                             fareText: "nil")
         
+//        let commentsWithoutHTMLTags = (data.taskUsers?[0].comments?.first?.text ?? "").replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+
+        
+        
+        configureCommentSection(firstCommentAuthor: data.taskUsers?[0].comments?.first?.userOutputName ?? "",
+                                firstComment: (data.taskUsers?[0].comments?.first?.text ?? "").removeHtmlTags())
+
         
         
     }
@@ -57,6 +79,11 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
         baseLabel?.text = baseText
         fareLabel?.text = fareText
 
+    }
+    
+    private func configureCommentSection(firstCommentAuthor: String, firstComment: String) {
+        firstCommentAuthorLabel.text = firstCommentAuthor
+        fistCommentLabel.text = firstComment
     }
 }
 

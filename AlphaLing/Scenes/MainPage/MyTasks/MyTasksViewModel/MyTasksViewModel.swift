@@ -96,7 +96,7 @@ class MyTasksViewModel {
     }
     
     func cellForRowAt (indexPath: IndexPath) -> TaskData {
-        userInfo[indexPath.row]
+        userInfo[indexPath.section]
     }
 }
 

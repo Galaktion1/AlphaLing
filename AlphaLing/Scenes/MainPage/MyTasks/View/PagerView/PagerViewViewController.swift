@@ -8,6 +8,7 @@
 import UIKit
 
 class PagerViewViewController: UIViewController {
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -27,9 +28,9 @@ class PagerViewViewController: UIViewController {
         
 //        var string = "<!DOCTYPE html> <html> <body> <h1>My First Heading</h1> <p>My first paragraph.</p> </body> </html>"
         
-        let str = description.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+//        let str = description.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         
-        return str
+        return description.removeHtmlTags()
     }
     
     
@@ -39,6 +40,9 @@ class PagerViewViewController: UIViewController {
         collectionView?.dataSource = self
         
         collectionView.register(UINib(nibName: "PagerViewMainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PagerViewMainCollectionViewCell")
+        
+    
+        
     }
     
 
@@ -58,6 +62,8 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PagerViewMainCollectionViewCell", for: indexPath) as! PagerViewMainCollectionViewCell
             cell.updateMainUIView(data: data!)
             
+            cell.delegate = self
+            
             return cell
             
         default:
@@ -66,4 +72,18 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
         }
     }
     
+}
+
+
+extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
+    func mustPresent(comments: [Comment]) {
+        let sb = UIStoryboard(name: "Comments", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
+        
+        vc.comments = comments
+        
+//        print(comments[0].userOutputName ?? "")
+        
+        self.present(vc, animated: true, completion: nil)
+    }
 }

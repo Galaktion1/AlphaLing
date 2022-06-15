@@ -326,6 +326,8 @@
                         <outlet property="dateLabel" destination="55m-6O-f5A" id="lap-0b-Ycb"/>
                         <outlet property="deliveryNameLabel" destination="sgb-cM-gTc" id="vXk-re-TiB"/>
                         <outlet property="fareLabel" destination="FYc-ji-WgZ" id="0Xm-z0-LYf"/>
+                        <outlet property="firstCommentAuthorLabel" destination="Dyh-Hb-zev" id="d5X-65-D2g"/>
+                        <outlet property="fistCommentLabel" destination="MVb-mD-VGQ" id="utO-Im-tMk"/>
                         <outlet property="nameTitleLabel" destination="wsV-GU-Q12" id="al8-9z-NxP"/>
                         <outlet property="timeLabel" destination="zoi-du-dOA" id="fqL-PA-pir"/>
                     </connections>

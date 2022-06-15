@@ -27,11 +27,8 @@ class LoginViewController: UIViewController {
     @IBAction func logInButton(_ sender: UIButton) {
         
         api.apiCall(username: usernameTextField.text ?? "" , password: passwordTextField.text ?? "", completionHandler: { (result) in
-
-            self.viewModel.checkCompletion(result: result, viewController: self)
-
             
-  
+            self.viewModel.checkCompletion(result: result, viewController: self)
         })
    
     }

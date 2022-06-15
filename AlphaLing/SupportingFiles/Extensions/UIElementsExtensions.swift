@@ -58,6 +58,13 @@ self.present(alert, animated: true, completion: nil)
 }
 
 
+extension String {
+    func removeHtmlTags() -> String{
+        self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
+}
+
+
 
 
 

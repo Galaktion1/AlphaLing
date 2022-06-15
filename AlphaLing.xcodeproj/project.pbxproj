@@ -37,6 +37,11 @@
 		9AA251D528460E67002516D3 /* UIElementsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251D428460E67002516D3 /* UIElementsExtensions.swift */; };
 		9AA251DC28463A28002516D3 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251DB28463A28002516D3 /* LoginViewViewModel.swift */; };
 		9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251E028464B26002516D3 /* UserAuthModel.swift */; };
+		9ADCC8E12858780C00827255 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8DF2858780C00827255 /* CommentsViewController.swift */; };
+		9ADCC8E42858782800827255 /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E32858782800827255 /* Comments.storyboard */; };
+		9ADCC8E92858863B00827255 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E72858863B00827255 /* CommentsTableViewCell.swift */; };
+		9ADCC8EA2858863B00827255 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E82858863B00827255 /* CommentsTableViewCell.xib */; };
+		9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8EB2858960400827255 /* CommentsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +77,11 @@
 		9AA251D428460E67002516D3 /* UIElementsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsExtensions.swift; sourceTree = "<group>"; };
 		9AA251DB28463A28002516D3 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		9AA251E028464B26002516D3 /* UserAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthModel.swift; sourceTree = "<group>"; };
+		9ADCC8DF2858780C00827255 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		9ADCC8E32858782800827255 /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
+		9ADCC8E72858863B00827255 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		9ADCC8E82858863B00827255 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		9ADCC8EB2858960400827255 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +203,7 @@
 		9A2543AF2850CBF50006B485 /* PagerView */ = {
 			isa = PBXGroup;
 			children = (
+				9ADCC8DE285877F700827255 /* Comments */,
 				9A2543B42850D7CD0006B485 /* FirstCollectionViewCell */,
 				9A2543B02850CC1B0006B485 /* PagerViewStoryboard.storyboard */,
 				9A2543B22850CC2D0006B485 /* PagerViewViewController.swift */,
@@ -307,6 +318,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9ADCC8DE285877F700827255 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				9ADCC8DF2858780C00827255 /* CommentsViewController.swift */,
+				9ADCC8E32858782800827255 /* Comments.storyboard */,
+				9ADCC8E72858863B00827255 /* CommentsTableViewCell.swift */,
+				9ADCC8E82858863B00827255 /* CommentsTableViewCell.xib */,
+				9ADCC8EB2858960400827255 /* CommentsViewModel.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,11 +388,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ADCC8E42858782800827255 /* Comments.storyboard in Resources */,
 				9A2469162847A60E000AD93F /* MyTasksTableViewCell.xib in Resources */,
 				9A2543B82850D8130006B485 /* PagerViewMainCollectionViewCell.xib in Resources */,
 				9A2468FB28474860000AD93F /* MyTasksStoryboard.storyboard in Resources */,
 				9A2543B12850CC1B0006B485 /* PagerViewStoryboard.storyboard in Resources */,
 				9A2469082847499E000AD93F /* SettingsStoryboard.storyboard in Resources */,
+				9ADCC8EA2858863B00827255 /* CommentsTableViewCell.xib in Resources */,
 				9A2468FE284748E9000AD93F /* NewTasksStoryboard.storyboard in Resources */,
 				9AA251C9284604F9002516D3 /* LaunchScreen.storyboard in Resources */,
 				9A070948284697A00053A78D /* MainTabBar.storyboard in Resources */,
@@ -390,10 +415,12 @@
 				9A07094A284697DD0053A78D /* MainTabBarViewController.swift in Sources */,
 				9A24690A284749AC000AD93F /* SettingsViewController.swift in Sources */,
 				9A03E3772851EE87004DB5FC /* NewTasksViewModel.swift in Sources */,
+				9ADCC8E92858863B00827255 /* CommentsTableViewCell.swift in Sources */,
 				9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */,
 				9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */,
 				9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */,
 				9AA251D528460E67002516D3 /* UIElementsExtensions.swift in Sources */,
+				9ADCC8E12858780C00827255 /* CommentsViewController.swift in Sources */,
 				9A466D5C284DED3A006FDE81 /* NewTaskPageVC.swift in Sources */,
 				9A246900284748FB000AD93F /* NewTasksViewController.swift in Sources */,
 				9AA251BD284604F4002516D3 /* AppDelegate.swift in Sources */,
@@ -402,6 +429,7 @@
 				9A2543B32850CC2D0006B485 /* PagerViewViewController.swift in Sources */,
 				9A15F73A2847F8E700C775B5 /* MyTasksViewModel.swift in Sources */,
 				9A03E37E2852045C004DB5FC /* LogOutViewModel.swift in Sources */,
+				9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */,
 				9A2543B72850D8130006B485 /* PagerViewMainCollectionViewCell.swift in Sources */,
 				9A2469152847A60E000AD93F /* MyTasksTableViewCell.swift in Sources */,
 				9A24690D28475751000AD93F /* MyTasksAPIModel.swift in Sources */,

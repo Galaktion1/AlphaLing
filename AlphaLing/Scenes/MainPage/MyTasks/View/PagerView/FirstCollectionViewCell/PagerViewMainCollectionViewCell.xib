@@ -35,6 +35,9 @@
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.8340767026" green="0.86987447740000001" blue="0.91978400950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="LtI-km-cLd"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
                                         </userDefinedRuntimeAttributes>
@@ -75,6 +78,9 @@
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.8340767026" green="0.86987447740000001" blue="0.91978400950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="rZf-r9-EDH"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
                                         </userDefinedRuntimeAttributes>
@@ -167,18 +173,24 @@
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4i-O2-HGd">
-                                                <rect key="frame" x="0.0" y="0.0" width="83" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="cOW-I0-RvS"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jH-4L-EXc">
-                                                <rect key="frame" x="78" y="0.0" width="92" height="31"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jH-4L-EXc">
+                                                <rect key="frame" x="85" y="0.0" width="85" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="">
                                                     <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
                                                     <color key="baseForegroundColor" name="AccentColor"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="addCommentButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="cNX-dn-mU1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -342,6 +354,8 @@
                 <outlet property="dateLabel" destination="tMU-rb-o2f" id="NZD-se-9EM"/>
                 <outlet property="deliveryNameLabel" destination="i44-nN-Etd" id="glF-h4-j6d"/>
                 <outlet property="fareLabel" destination="4d5-oU-7x5" id="70U-TQ-okA"/>
+                <outlet property="firstCommentAuthorLabel" destination="oae-op-JSf" id="JAq-EQ-rG6"/>
+                <outlet property="fistCommentLabel" destination="6d1-hp-GpL" id="TwM-Gv-SJZ"/>
                 <outlet property="nameTitleLabel" destination="VEc-d3-Mif" id="BfY-Yc-dFJ"/>
                 <outlet property="timeLabel" destination="1gH-pi-3un" id="e2C-nW-3vV"/>
             </connections>
