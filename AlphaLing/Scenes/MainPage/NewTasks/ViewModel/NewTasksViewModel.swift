@@ -18,7 +18,7 @@ class NewTasksViewModel {
         }
     }
     
-    func fetchMyTasksData() {
+    func fetchNewTasksData() {
         apiService.getMyTasksData { [weak self] (result) in
             switch result {
             case .success(let listOf):
@@ -31,7 +31,7 @@ class NewTasksViewModel {
     }
     
     func numberOfRowsInSection() -> Int {
-        userInfo.count != 0 ? userInfo.count :0
+        userInfo.count != 0 ? userInfo.count : 0
         
         
     }
@@ -40,3 +40,6 @@ class NewTasksViewModel {
     }
 
 }
+
+
+

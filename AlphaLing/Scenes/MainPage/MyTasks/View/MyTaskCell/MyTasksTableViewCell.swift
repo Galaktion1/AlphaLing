@@ -54,7 +54,7 @@ class MyTasksTableViewCell: UITableViewCell {
     
     
     func updateCells(userInfo: TaskData) {
-        updateUI(title: userInfo.title ?? "no info", date: userInfo.taskDate ?? "no info", time: userInfo.taskTime ?? "no info")
+        updateUI(title: userInfo.title?.de ?? "no info", date: "\(userInfo.taskDate ?? "")", time: "\(userInfo.taskTime ?? "")")
     }
     
     private func updateUI(title: String, date: String, time: String) {

@@ -34,7 +34,7 @@
                                                 <color key="tintColor" name="AccentColor"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.8340767026" green="0.86987447740000001" blue="0.91978400950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.83529411764705885" green="0.87058823529411766" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="LtI-km-cLd"/>
                                         </constraints>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qlP-Y8-bqR">
-                                <rect key="frame" x="237.5" y="51" width="152.5" height="50"/>
+                                <rect key="frame" x="235" y="51" width="155" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iaw-3c-wM5">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -77,7 +77,7 @@
                                                 <color key="tintColor" name="AccentColor"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.8340767026" green="0.86987447740000001" blue="0.91978400950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.83529411764705885" green="0.87058823529411766" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="rZf-r9-EDH"/>
                                         </constraints>
@@ -86,16 +86,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6Qy-TR-4hO">
-                                        <rect key="frame" x="55" y="0.0" width="97.5" height="50"/>
+                                        <rect key="frame" x="55" y="0.0" width="100" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcA-0F-NZz">
-                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="30.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:00 - 13:43" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-pi-3un">
-                                                <rect key="frame" x="0.0" y="30.5" width="97.5" height="19.5"/>
+                                                <rect key="frame" x="0.0" y="30.5" width="100" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -104,8 +104,8 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="D7h-yV-YxX"/>
                                     <constraint firstAttribute="height" constant="50" id="H2X-dQ-CKU"/>
-                                    <constraint firstAttribute="width" constant="152.5" id="REc-CZ-Psr"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dolmetschen vor Ort Litauisch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEc-d3-Mif">
@@ -323,11 +323,11 @@
                             <constraint firstItem="Y5M-Cq-VaC" firstAttribute="top" secondItem="bp0-Jh-4E8" secondAttribute="bottom" constant="55" id="6RD-2k-HZB"/>
                             <constraint firstAttribute="trailing" secondItem="bp0-Jh-4E8" secondAttribute="trailing" constant="24" id="7GM-mN-IjZ"/>
                             <constraint firstAttribute="height" constant="804" id="AwV-ZJ-Oqa"/>
+                            <constraint firstAttribute="trailing" secondItem="qlP-Y8-bqR" secondAttribute="trailing" constant="24" id="Ect-Xs-ucG"/>
                             <constraint firstItem="C57-K7-OGZ" firstAttribute="top" secondItem="Bn9-pD-ugd" secondAttribute="bottom" constant="35" id="IKp-fO-q4p"/>
                             <constraint firstItem="3Yx-AH-CJK" firstAttribute="leading" secondItem="cH3-Dc-KC3" secondAttribute="leading" constant="24" id="Kek-qP-DUu"/>
                             <constraint firstItem="qlP-Y8-bqR" firstAttribute="top" secondItem="VEc-d3-Mif" secondAttribute="bottom" constant="17" id="LZJ-G3-kaf"/>
                             <constraint firstItem="3Yx-AH-CJK" firstAttribute="top" secondItem="VEc-d3-Mif" secondAttribute="bottom" constant="17" id="Rje-Bl-9co"/>
-                            <constraint firstAttribute="trailing" secondItem="qlP-Y8-bqR" secondAttribute="trailing" constant="24" id="TXk-Vs-qs7"/>
                             <constraint firstItem="Bn9-pD-ugd" firstAttribute="leading" secondItem="cH3-Dc-KC3" secondAttribute="leading" constant="24" id="ew6-pQ-Cv2"/>
                             <constraint firstItem="Y5M-Cq-VaC" firstAttribute="leading" secondItem="cH3-Dc-KC3" secondAttribute="leading" constant="24" id="fHv-9b-vSN"/>
                             <constraint firstAttribute="trailing" secondItem="VEc-d3-Mif" secondAttribute="trailing" constant="24" id="h8l-AF-8SE"/>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DocumentsCollectionViewCell" customModule="AlphaLing" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fki-Wr-nNF">
+                        <rect key="frame" x="5" y="15" width="404" height="689"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnk-fC-4bP">
+                        <rect key="frame" x="30" y="734" width="354" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="3Yg-25-jbA"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Upload File">
+                            <backgroundConfiguration key="background">
+                                <color key="backgroundColor" red="0.70292133092880249" green="0.87023276090621948" blue="0.92503476142883301" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </backgroundConfiguration>
+                        </buttonConfiguration>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="20"/>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="greenDocColor"/>
+            <constraints>
+                <constraint firstItem="fki-Wr-nNF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="Etp-rj-oeX"/>
+                <constraint firstItem="fki-Wr-nNF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="OcM-1h-RMH"/>
+                <constraint firstItem="gnk-fC-4bP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="SHD-nP-44L"/>
+                <constraint firstAttribute="trailing" secondItem="gnk-fC-4bP" secondAttribute="trailing" constant="30" id="Sp2-Ys-cmL"/>
+                <constraint firstItem="fki-Wr-nNF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="TLt-0Q-Q7n"/>
+                <constraint firstAttribute="trailing" secondItem="fki-Wr-nNF" secondAttribute="trailing" constant="5" id="Tjd-ox-7Od"/>
+                <constraint firstItem="fki-Wr-nNF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="lNg-6f-oYA"/>
+                <constraint firstAttribute="bottom" secondItem="gnk-fC-4bP" secondAttribute="bottom" constant="20" id="r3N-ak-C8i"/>
+                <constraint firstAttribute="trailing" secondItem="fki-Wr-nNF" secondAttribute="trailing" constant="5" id="xYX-ek-TqC"/>
+                <constraint firstItem="gnk-fC-4bP" firstAttribute="top" secondItem="fki-Wr-nNF" secondAttribute="bottom" constant="30" id="yws-am-yNo"/>
+            </constraints>
+            <connections>
+                <outlet property="tableView" destination="fki-Wr-nNF" id="iiO-g8-Dza"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="92.410714285714278"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="greenDocColor">
+            <color red="0.075000002980232239" green="0.86100000143051147" blue="0.50099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

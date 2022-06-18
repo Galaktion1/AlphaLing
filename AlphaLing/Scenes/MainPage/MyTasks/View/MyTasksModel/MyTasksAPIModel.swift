@@ -5,28 +5,28 @@
 
 import Foundation
 
-// MARK: - MyTasksModel
+// MARK: - Welcome
 struct TaskModel: Codable {
     let data: [TaskData]?
-//    let total: Int?
-//    let fromDate: String?
-//    let toDate: JSONNull?
+    let total: Int?
+    let fromDate: String?
+    let toDate: JSONNull?
 }
 
-// MARK: - MyTasksData
+// MARK: - Datum
 struct TaskData: Codable {
     let id: Int?
     let baseTaskKey, status: String?
-    let statusHistory: [StatusHistory]?
+    let statusHistory: JSONNull?
     let statusNotes: [JSONAny]?
     let awardProcess, billingMethod: String?
     let singleEditor: Bool?
     let orderPositionID, unitID: Int?
-    let title: String?
+    let title: Title?
     let descriptions: Descriptions?
-    let taskDate, taskTime, taskEndTime, typeOfDate: String?
-    let supplierTag: JSONNull?
-    let geoLocation: GeoLocation?
+    let searchKeywords, taskDate, taskTime, taskEndTime: String?
+    let typeOfDate: String?
+    let supplierTag, geoLocation: JSONNull?
     let tags: [JSONAny]?
     let releasedAt, createdAt, modifiedAt: String?
     let taskUsers: [TaskUser]?
@@ -35,31 +35,24 @@ struct TaskData: Codable {
         case id, baseTaskKey, status, statusHistory, statusNotes, awardProcess, billingMethod, singleEditor
         case orderPositionID = "orderPositionId"
         case unitID = "unitId"
-        case title, descriptions, taskDate, taskTime, taskEndTime, typeOfDate, supplierTag, geoLocation, tags, releasedAt, createdAt, modifiedAt, taskUsers
+        case title, descriptions, searchKeywords, taskDate, taskTime, taskEndTime, typeOfDate, supplierTag, geoLocation, tags, releasedAt, createdAt, modifiedAt, taskUsers
     }
 }
 
 // MARK: - Descriptions
 struct Descriptions: Codable {
-    let autoDefault, autoPreview, admin, descriptionsDefault: String?
-    let preview, listAdmin, listDefault, listPreview: String?
-
-    enum CodingKeys: String, CodingKey {
-        case autoDefault, autoPreview, admin
-        case descriptionsDefault = "default"
-        case preview, listAdmin, listDefault, listPreview
-    }
+    let autoAdmin, autoDefault, autoPreview, autoListAdmin: Title?
+    let autoListDefault: Title?
+    let autoListPreview: AutoListPreview?
 }
 
-// MARK: - GeoLocation
-struct GeoLocation: Codable {
-    let type: String?
-    let coordinates: [Double]?
+// MARK: - Title
+struct Title: Codable {
+    let de: String?
 }
 
-// MARK: - StatusHistory
-struct StatusHistory: Codable {
-    let at, status: String?
+// MARK: - AutoListPreview
+struct AutoListPreview: Codable {
 }
 
 // MARK: - TaskUser
@@ -73,16 +66,13 @@ struct TaskUser: Codable {
     let externalEmail, externalAuthToken: JSONNull?
     let releaseDelay: Int?
     let releasedAt, acceptedAt: String?
-    let declinedAt: String?
-    let canceledAt: JSONNull?
-    let supplierPriceData: SupplierPriceDataClass?
+    let declinedAt, canceledAt: JSONNull?
+    let supplierPriceData: PriceData?
     let customSupplierPrice: Bool?
-    let customSupplierPriceData, supplierOfferPriceData: CustomSupplierPriceDataClass?
-    let travelDistanceData: TravelDistanceData?
-    let travelFlatRatePriceData, travelDistancePriceData: SupplierPriceDataClass?
+    let customSupplierPriceData, supplierOfferPriceData, travelDistanceData: JSONNull?
+    let travelFlatRatePriceData, travelDistancePriceData: PriceData?
     let customTravelPrice: Bool?
-    let customTravelPriceData, supplierOfferTravelPriceData: CustomSupplierPriceDataClass?
-    let billingDetailID, travelCostsConditions: JSONNull?
+    let customTravelPriceData, supplierOfferTravelPriceData, billingDetailID, travelCostsConditions: JSONNull?
     let comments: [Comment]?
     let tags: [JSONAny]?
     let pricePositions: PricePositions?
@@ -113,74 +103,22 @@ struct Comment: Codable {
     }
 }
 
-// MARK: - CustomSupplierPriceDataClass
-struct CustomSupplierPriceDataClass: Codable {
-    let basePrice: Double?
-}
-
 // MARK: - PricePositions
 struct PricePositions: Codable {
-    let supplierPrices: JSONNull?
-    let travelDistancePrices, travelTimePrices: [TravelEPrice]?
-    let travelFlatRatePrices: [TravelFlatRatePrice]?
+    let supplierPrices, travelDistancePrices, travelTimePrices, travelFlatRatePrices: JSONNull?
 }
 
-// MARK: - TravelEPrice
-struct TravelEPrice: Codable {
-    let pricePerUnit, total, quantity: Double?
-    let info: TravelDistancePriceInfo?
+// MARK: - StatusHistory
+struct StatusHistory: Codable {
+    let at, status: String?
 }
 
-// MARK: - TravelDistancePriceInfo
-struct TravelDistancePriceInfo: Codable {
-}
-
-// MARK: - TravelFlatRatePrice
-struct TravelFlatRatePrice: Codable {
-    let pricePerUnit, total, quantity: Int?
-    let info: TravelFlatRatePriceInfo?
-}
-
-// MARK: - TravelFlatRatePriceInfo
-struct TravelFlatRatePriceInfo: Codable {
-    let originalQuantity: Double?
-    let flatRate: Bool?
-}
-
-// MARK: - SupplierPriceDataClass
-struct SupplierPriceDataClass: Codable {
+// MARK: - PriceData
+struct PriceData: Codable {
     let periods: [JSONAny]?
-    let flatRate: Bool?
-    let basePrice: Double?
-    let usePeriods: UsePeriods?
-    let quantityPrices: [QuantityPrice]?
-}
-
-// MARK: - QuantityPrice
-struct QuantityPrice: Codable {
-    let id: String?
-    let value, quantity: Int?
-    let usePeriods, kindOfValue: String?
-}
-
-enum UsePeriods: String, Codable {
-    case no = "no"
-}
-
-// MARK: - TravelDistanceData
-struct TravelDistanceData: Codable {
-    let recommended, shortestDistance, shortestDuration: Recommended?
-}
-
-// MARK: - Recommended
-struct Recommended: Codable {
-    let distance, duration: Distance?
-}
-
-// MARK: - Distance
-struct Distance: Codable {
-    let text: String?
-    let value: Int?
+    let basePrice: Int?
+    let usePeriods: String?
+    let quantityPrices: [JSONAny]?
 }
 
 // MARK: - Encode/decode helpers
@@ -424,4 +362,3 @@ class JSONAny: Codable {
         }
     }
 }
-

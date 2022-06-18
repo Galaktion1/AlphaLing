@@ -10,7 +10,7 @@ import Foundation
 class CommentsViewModel {
     func apiCall(text: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
         
-        guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-users/\(UserDefaults.standard.string(forKey: "taskId")!)/comments") else { return }
+        guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-users/\(UserDefaults.standard.string(forKey: "ID")!)/comments") else { return }
         
         var request = URLRequest(url: url)
     
@@ -20,13 +20,22 @@ class CommentsViewModel {
         
         
         let body: [String: String] = [
-            "id" : UserDefaults.standard.string(forKey: "taskId")!,
-            "text" : text
+            "id" : UUID().uuidString,
+            "text" : "<p>\(text)</p>"
         ]
+        
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard let response = response else {
+                return
+            }
+            print(response)
+
             guard let data = data, error == nil else {
                 completionHandler(.failure(Error.self as! Error))
                 return }
@@ -37,6 +46,7 @@ class CommentsViewModel {
                 if let result = response.status {
 //                    print("...\n \(result) ...\n")
                     completionHandler(.success(result))
+                    
                 }
                
             }

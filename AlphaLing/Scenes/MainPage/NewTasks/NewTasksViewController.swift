@@ -19,7 +19,7 @@ class NewTasksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMyTaskData()
+        loadNewTaskData()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,8 +30,8 @@ class NewTasksViewController: UIViewController {
         }
     }
    
-    private func loadMyTaskData() {
-        viewModel.fetchMyTasksData()
+    private func loadNewTaskData() {
+        viewModel.fetchNewTasksData()
     }
 
 }

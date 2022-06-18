@@ -42,16 +42,15 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     
     func updateMainUIView(data: TaskData) {
         taskData = data
-        configureUIElements(name: data.title ?? "nil",
-                            date: data.taskDate  ?? "nil",
-                            taskTime: data.taskTime ?? "nil",
-                            taskEndTime: data.taskEndTime ?? "nil",
+        configureUIElements(name: data.title?.de ?? "",
+                            date: "\(data.taskDate ?? "nil")",
+                            taskTime: "\(data.taskTime ?? "nil")" ,
+                            taskEndTime: "\(data.taskEndTime ?? "nil")",
                             customer: "nil",
-                            deliveryName: data.taskEndTime ?? "nil",
+                            deliveryName: "nil",
                             baseText: "\(data.taskUsers?[0].supplierPriceData?.basePrice ?? 0)",
                             fareText: "nil")
-        
-//        let commentsWithoutHTMLTags = (data.taskUsers?[0].comments?.first?.text ?? "").replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+
 
         
         

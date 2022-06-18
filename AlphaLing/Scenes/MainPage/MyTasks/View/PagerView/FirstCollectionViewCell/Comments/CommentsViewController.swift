@@ -20,19 +20,19 @@ class CommentsViewController: UIViewController {
     @IBAction func commentButton(_ sender: UIButton) {
         
         if let comment = commentTextField.text{
+            commentTextField.text = nil
             if comment.count > 0 {
                 viewModel.apiCall(text: comment) { result in
                     print(result)
-                    
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.tableView.reloadData()
                     }
+                
                 }
             }
-            
         }
         
-        
+
         
     }
     
@@ -74,12 +74,11 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsTableViewCell", for: indexPath) as! CommentsTableViewCell
         
-//        let commentsWithoutHTMLTags = (comments?[indexPath.row].text ?? "").replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         
         
         cell.authorLabel.text = comments?[indexPath.row].userOutputName ?? ""
         cell.messageTextLabel.text = (comments?[indexPath.row].text ?? "").removeHtmlTags()
-        
+
         return cell
     }
     

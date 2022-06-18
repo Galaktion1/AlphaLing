@@ -41,6 +41,7 @@ self.present(alert, animated: true, completion: nil)
             let sb = UIStoryboard(name: "LoginPage", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             UserDefaults.standard.removeObject(forKey: "UserLoggedIn")
+            UserDefaults.standard.removeObject(forKey: "ID")
             
             self.view.window?.rootViewController = vc
             self.view.window?.makeKeyAndVisible()

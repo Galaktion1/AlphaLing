@@ -33,28 +33,19 @@ class NewTaskPageVC: UIViewController {
     
     func updateMainUIView(data: TaskData) {
         
-        configureUIElements(name: data.title ?? "nil",
-                            date: data.taskDate  ?? "nil",
-                            taskTime: data.taskTime ?? "nil",
-                            taskEndTime: data.taskEndTime ?? "nil",
+        configureUIElements(name: data.title?.de ?? "nil",
+                            date: "\(data.taskDate ?? "")",
+                            taskTime: "\(data.taskTime ?? "")",
+                            taskEndTime: "\(data.taskEndTime ?? "")",
                             customer: "nil",
-                            deliveryName: data.taskEndTime ?? "nil",
+                            deliveryName: "nil",
                             baseText: "\(data.taskUsers?[0].supplierPriceData?.basePrice ?? 0)",
                             fareText: "nil")
-        
-//        let commentsWithoutHTMLTags = (data.taskUsers?[0].comments?.first?.text ?? "").replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         
         configureCommentSection(firstCommentAuthor: data.taskUsers?[0].comments?.first?.userOutputName ?? "",
                                 firstComment: (data.taskUsers?[0].comments?.first?.text ?? "").removeHtmlTags())
         
-        if UserDefaults.standard.value(forKey: "taskId") == nil {
-            
-            if let taskId = data.taskUsers?[0].taskID {
-                UserDefaults.standard.set(taskId, forKey: "taskId")
-                print(taskId)
-            }
-        }
-        
+
     }
     
     private func configureUIElements(name: String,

@@ -41,6 +41,11 @@ class PagerViewViewController: UIViewController {
         
         collectionView.register(UINib(nibName: "PagerViewMainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PagerViewMainCollectionViewCell")
         
+        collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
+        
+        collectionView.register(UINib(nibName: "DocumentsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentsCollectionViewCell")
+        
+        
     
         
     }
@@ -62,7 +67,30 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PagerViewMainCollectionViewCell", for: indexPath) as! PagerViewMainCollectionViewCell
             cell.updateMainUIView(data: data!)
             
+            if UserDefaults.standard.value(forKey: "ID") == nil {
+                
+                if let id = data?.taskUsers?[0].id {
+                    UserDefaults.standard.set(id, forKey: "ID")
+                    print(id)
+                }
+                
+                if let taskID = data?.taskUsers?[0].taskID {
+                    UserDefaults.standard.set(taskID, forKey: "taskID")
+                    print(taskID)
+                }
+            }
+            
             cell.delegate = self
+            
+            return cell
+            
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCollectionViewCell", for: indexPath) as! ActivityCollectionViewCell
+            
+            return cell
+        
+        case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentsCollectionViewCell", for: indexPath) as! DocumentsCollectionViewCell
             
             return cell
             
@@ -79,11 +107,11 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
     func mustPresent(comments: [Comment]) {
         let sb = UIStoryboard(name: "Comments", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
-        
+
         vc.comments = comments
-        
+
 //        print(comments[0].userOutputName ?? "")
-        
+
         self.present(vc, animated: true, completion: nil)
     }
 }
