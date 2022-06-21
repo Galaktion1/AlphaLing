@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,8 +17,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="429" height="140"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="58h-Iw-miy">
+                        <rect key="frame" x="331" y="14" width="67" height="53"/>
+                        <color key="tintColor" red="0.30292434480000002" green="0.78039215689999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="54" id="ClC-kS-IOi"/>
+                            <constraint firstAttribute="width" constant="67" id="V5b-w8-ojh"/>
+                        </constraints>
+                    </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="yPq-qB-IN1">
-                        <rect key="frame" x="15" y="22" width="180" height="97"/>
+                        <rect key="frame" x="25" y="22" width="180" height="97"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start: 05/06/2022 12:18 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvu-Qg-khH">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="19.5"/>
@@ -53,18 +61,10 @@
                             <constraint firstAttribute="height" constant="97" id="JpM-K3-bjd"/>
                         </constraints>
                     </stackView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="58h-Iw-miy">
-                        <rect key="frame" x="331" y="14" width="67" height="53"/>
-                        <color key="tintColor" red="0.30292434480000002" green="0.78039215689999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="54" id="ClC-kS-IOi"/>
-                            <constraint firstAttribute="width" constant="67" id="V5b-w8-ojh"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                <color key="backgroundColor" name="commonColor"/>
                 <constraints>
-                    <constraint firstItem="yPq-qB-IN1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Cc8-fs-A6R"/>
+                    <constraint firstItem="yPq-qB-IN1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="Gvh-7M-IvI"/>
                     <constraint firstAttribute="bottom" secondItem="yPq-qB-IN1" secondAttribute="bottom" constant="21" id="UtP-UF-YaA"/>
                     <constraint firstAttribute="trailing" secondItem="58h-Iw-miy" secondAttribute="trailing" constant="31" id="Vmi-eG-cyM"/>
                     <constraint firstItem="58h-Iw-miy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13.5" id="jNT-7y-mVg"/>
@@ -72,13 +72,18 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="endLabel" destination="6qs-ST-9oY" id="l7M-NI-8Ds"/>
+                <outlet property="noteLabel" destination="98e-pc-Xtk" id="AuE-XK-cpZ"/>
+                <outlet property="startLabel" destination="hvu-Qg-khH" id="Nua-wu-zUL"/>
+            </connections>
             <point key="canvasLocation" x="-22.463768115942031" y="112.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="creditcard.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="commonColor">
+            <color red="0.92100000381469727" green="0.93300002813339233" blue="0.94999998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

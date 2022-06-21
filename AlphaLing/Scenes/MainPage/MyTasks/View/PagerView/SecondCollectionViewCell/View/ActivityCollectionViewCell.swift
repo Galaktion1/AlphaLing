@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol ActivityCollectionViewCellDelegate {
+    func mustPresentAlert(info: TimeTrackingModel)
+}
+
 class ActivityCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var delegate: ActivityCollectionViewCellDelegate?
     
     private let viewModel = TimeTrackingViewModel()
     
@@ -21,6 +27,10 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         
         tableView.register(ScheduleTableViewCell.nib(), forCellReuseIdentifier: ScheduleTableViewCell.identifier)
         // Initialization code
+        
+        viewModel.reloadTableView = {
+            self.tableView.reloadData()
+        }
     }
     
     private func loadNewTaskData() {
@@ -31,11 +41,11 @@ class ActivityCollectionViewCell: UICollectionViewCell {
 
 extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        115.0
+        110.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        viewModel.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,23 +68,22 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
     }
     
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        let sb = UIStoryboard(name: "PagerViewStoryboard", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "PagerViewViewController") as! PagerViewViewController
-//
-//        let data = viewModel.cellForRowAt(indexPath: indexPath)
-//        vc.data = data
-//
-//        vc.navigationItem.largeTitleDisplayMode = .never
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let info = viewModel.cellForRowAt(indexPath: indexPath)
+        
+        delegate?.mustPresentAlert(info: info)
+        
+        
+        
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
         
+        let data = viewModel.cellForRowAt(indexPath: indexPath)
+        cell.updateCells(scheduleInfo: data)
         return cell
     }
     

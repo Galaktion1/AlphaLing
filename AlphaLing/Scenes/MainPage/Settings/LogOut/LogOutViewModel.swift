@@ -12,7 +12,7 @@ class LogOutViewModel {
     
     private var apiService = LogOutAPICall()
     
-    func fetchMyTasksData() {
+    func logOutFunc() {
         apiService.getResponse { (result) in
             switch result {
             case .success(let response):

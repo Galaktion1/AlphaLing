@@ -38,10 +38,10 @@ class MyTasksTableViewCell: UITableViewCell {
     }
     
     func configureRedCells() {
-        
-        senderLabel.text = "Dolmetschen vor Ort Litauisch"
-        dateLabel.text = "2021-09-02"
-        timeLabel.text = "23:00 - 23:45"
+//        
+//        senderLabel.text = "Dolmetschen vor Ort Litauisch"
+//        dateLabel.text = "2021-09-02"
+//        timeLabel.text = "23:00 - 23:45"
         
         docIconImage.image = UIImage(systemName: "doc")?.withRenderingMode(.alwaysTemplate)
         

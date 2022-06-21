@@ -46,7 +46,7 @@ self.present(alert, animated: true, completion: nil)
             self.view.window?.rootViewController = vc
             self.view.window?.makeKeyAndVisible()
             let viewModel = LogOutViewModel()
-            viewModel.fetchMyTasksData()
+            viewModel.logOutFunc()
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in

@@ -9,6 +9,12 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var startLabel: UILabel!
+    
+    @IBOutlet weak var endLabel: UILabel!
+    
+    @IBOutlet weak var noteLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,4 +37,32 @@ class ScheduleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    func updateCells(scheduleInfo: TimeTrackingModel) {
+        
+        guard let startTime = scheduleInfo.startedAt else { return }
+        guard let endTime = scheduleInfo.endedAt else { return }
+        updateUI(start: "Start: \(startTime.prefix(10)) \(startTime[11 ... 15])", end: "End: \(endTime.prefix(10)) \(endTime[11 ... 15])", note: scheduleInfo.note ?? "")
+    }
+    
+    private func updateUI(start: String, end: String, note: String) {
+        self.startLabel.text = start
+        self.endLabel.text = end
+        self.noteLabel.text = note
+    }
+    
+}
+
+extension String {
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
+
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
 }

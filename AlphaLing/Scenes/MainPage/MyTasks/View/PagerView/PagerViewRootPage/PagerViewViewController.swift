@@ -15,7 +15,6 @@ class PagerViewViewController: UIViewController {
     let viewModel = MyTasksViewModel()
     var data: TaskData?
     
-    
     private func encodeDataToDescription() -> String?{
         let encoder = JSONEncoder()
         
@@ -26,10 +25,6 @@ class PagerViewViewController: UIViewController {
         let description = String(data: try! encoder.encode(data.descriptions), encoding: .utf8)!
 //        print(description)
         
-//        var string = "<!DOCTYPE html> <html> <body> <h1>My First Heading</h1> <p>My first paragraph.</p> </body> </html>"
-        
-//        let str = description.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        
         return description.removeHtmlTags()
     }
     
@@ -39,14 +34,134 @@ class PagerViewViewController: UIViewController {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
+        
         collectionView.register(UINib(nibName: "PagerViewMainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PagerViewMainCollectionViewCell")
         
         collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
         
         collectionView.register(UINib(nibName: "DocumentsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentsCollectionViewCell")
         
+        confHorizontalStackView()
+        confVerticalStackView()
         
+    }
     
+    
+    let EntireVerticalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 1
+        
+        return stackView
+    }()
+    
+    let startHorizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillProportionally
+        stackView.axis = .horizontal
+        stackView.spacing = 0
+        
+        return stackView
+    }()
+    
+    let endHorizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.distribution = .fillProportionally
+        stackView.axis = .horizontal
+        stackView.spacing = 0
+        
+        return stackView
+    }()
+    
+    
+    let startDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        
+        
+        return datePicker
+    }()
+    
+    let endDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.timeZone = NSTimeZone.local
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
+        
+        return datePicker
+    }()
+    
+    let textField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Leave Note Here"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.setLeftPaddingPoints(15)
+        
+        return textField
+    }()
+    
+    let startLabel: UILabel = {
+        let label = UILabel()
+        label.text = " Start At:"
+        label.font.withSize(11)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        label.textColor = UIColor(named: "specialBlue")
+        
+        return label
+    }()
+    
+    let endLabel: UILabel = {
+        let label = UILabel()
+        label.text = " End At:"
+        label.font.withSize(11)
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        label.textColor = UIColor(named: "specialBlue")
+        
+        return label
+    }()
+    
+    let whiteView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        return view
+    }()
+    
+    let topView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        return view
+    }()
+    
+    func confHorizontalStackView() {
+        startHorizontalStackView.frame = CGRect(x: 0, y: 0, width: 267, height: 50)
+        startHorizontalStackView.addArrangedSubview(startLabel)
+        startHorizontalStackView.addArrangedSubview(startDatePicker)
+        
+        endHorizontalStackView.frame = CGRect(x: 0, y: 0, width: 267, height: 50)
+        endHorizontalStackView.addArrangedSubview(endLabel)
+        endHorizontalStackView.addArrangedSubview(endDatePicker)
+    }
+    
+    func confVerticalStackView() {
+        EntireVerticalStackView.frame = CGRect(x: 0, y: 00, width: 267, height: 230)
+        EntireVerticalStackView.addArrangedSubview(topView)
+        EntireVerticalStackView.addArrangedSubview(startHorizontalStackView)
+        EntireVerticalStackView.addArrangedSubview(whiteView)
+        EntireVerticalStackView.addArrangedSubview(endHorizontalStackView)
+
+        EntireVerticalStackView.addArrangedSubview(textField)
         
     }
     
@@ -87,6 +202,8 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ActivityCollectionViewCell", for: indexPath) as! ActivityCollectionViewCell
             
+            cell.delegate = self
+            
             return cell
         
         case 2:
@@ -115,3 +232,69 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
         self.present(vc, animated: true, completion: nil)
     }
 }
+
+
+extension PagerViewViewController: ActivityCollectionViewCellDelegate {
+    
+    func mustPresentAlert(info: TimeTrackingModel) {
+        
+        
+        let startedAtTime: String = "\(info.startedAt?[0 ... 9] ?? "0000-00-00") \(info.startedAt?[11 ... 15] ?? "00:00")"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let startDate = dateFormatter.date(from: startedAtTime)
+        
+        let endedAtTime: String = "\(info.endedAt?[0 ... 9] ?? "0000-00-00") \(info.endedAt?[11 ... 15] ?? "00:00")"
+        let endDate = dateFormatter.date(from: endedAtTime)
+        
+        
+        if let startDate = startDate {
+            startDatePicker.setDate(startDate, animated: true)
+        }
+        
+        if let endDate = endDate {
+            endDatePicker.setDate(endDate, animated: true)
+        }
+        
+        
+        
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertController.Style.alert)
+        
+        alertController.view.addSubview(EntireVerticalStackView)
+
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
+        let somethingAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { [self] _ in
+            
+            
+            
+            
+            ScheduleUpdateAPICall.shared.patchApiCall(
+                id: info.id ?? 0,
+                taskId: info.taskID ?? 0,
+                taskUserId: info.taskUserID ?? 0,
+                note: textField.text ?? "",
+                billable: info.billable ?? false,
+                startedAt: "\(self.startDatePicker.date)",
+                endedAt: "\(self.endDatePicker.date)"
+            ) { result in
+                switch result {
+                    
+                case .success(let final):
+                    print(final)
+                    print("success while patch")
+                case .failure(_):
+                    print("errror while patch")
+                }
+                
+            }
+            
+        })
+        alertController.addAction(somethingAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+

@@ -50,6 +50,7 @@
 		9ADCC8E92858863B00827255 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E72858863B00827255 /* CommentsTableViewCell.swift */; };
 		9ADCC8EA2858863B00827255 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E82858863B00827255 /* CommentsTableViewCell.xib */; };
 		9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8EB2858960400827255 /* CommentsViewModel.swift */; };
+		9AE04B0E28606C4700DB95AA /* ScheduleUpdateAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE04B0D28606C4700DB95AA /* ScheduleUpdateAPICall.swift */; };
 		9AEBA965285C7B2700AA66FB /* TimeTrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBA964285C7B2700AA66FB /* TimeTrackingModel.swift */; };
 		9AEBA968285C7C0600AA66FB /* TimeTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		9ADCC8E72858863B00827255 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		9ADCC8E82858863B00827255 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		9ADCC8EB2858960400827255 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		9AE04B0D28606C4700DB95AA /* ScheduleUpdateAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUpdateAPICall.swift; sourceTree = "<group>"; };
 		9AEBA964285C7B2700AA66FB /* TimeTrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingModel.swift; sourceTree = "<group>"; };
 		9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 		9A2468F5284747D1000AD93F /* MyTasks */ = {
 			isa = PBXGroup;
 			children = (
+				9A24690B28475726000AD93F /* MyTasksModel */,
 				9A2469122847A5E4000AD93F /* View */,
 				9A24690F28475ED3000AD93F /* MyTasksViewModel */,
 				9A2468F828474851000AD93F /* MyTasksViewController.swift */,
@@ -232,7 +235,6 @@
 		9A2469122847A5E4000AD93F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A24690B28475726000AD93F /* MyTasksModel */,
 				9A2468FA28474860000AD93F /* MyTasksStoryboard.storyboard */,
 				9AEBA960285C7A2500AA66FB /* MyTaskCell */,
 				9A2543AF2850CBF50006B485 /* PagerView */,
@@ -412,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */,
+				9AE04B0D28606C4700DB95AA /* ScheduleUpdateAPICall.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				9A0DD82F285B13B8007B075A /* ScheduleTableViewCell.swift in Sources */,
 				9A2543B32850CC2D0006B485 /* PagerViewViewController.swift in Sources */,
 				9A15F73A2847F8E700C775B5 /* MyTasksViewModel.swift in Sources */,
+				9AE04B0E28606C4700DB95AA /* ScheduleUpdateAPICall.swift in Sources */,
 				9A0DD824285B1035007B075A /* ActivityCollectionViewCell.swift in Sources */,
 				9A03E37E2852045C004DB5FC /* LogOutViewModel.swift in Sources */,
 				9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */,

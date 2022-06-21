@@ -24,7 +24,7 @@ struct TimeTrackingModel: Codable {
     }
 }
 
-typealias timeTrackingModel = [TimeTrackingModel]
+typealias TimeTracking = [TimeTrackingModel?]
 
 // MARK: - Encode/decode helpers
 
