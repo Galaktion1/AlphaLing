@@ -9,21 +9,36 @@ import UIKit
 
 protocol ActivityCollectionViewCellDelegate {
     func mustPresentAlert(info: TimeTrackingModel)
+    
+    func mustPresentNewScheduleAlert()
 }
 
 class ActivityCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var plusButtonBackgroundView: UIView!
+    
+    
+    @IBAction func plusButton(_ sender: UIButton) {
+        delegate?.mustPresentNewScheduleAlert()
+    }
+    
+    
+    
     var delegate: ActivityCollectionViewCellDelegate?
     
     private let viewModel = TimeTrackingViewModel()
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.delegate = self
         tableView.dataSource = self
         loadNewTaskData()
+        plusButtonBackgroundView.layer.cornerRadius = plusButtonBackgroundView.frame.width / 2
+        
         
         tableView.register(ScheduleTableViewCell.nib(), forCellReuseIdentifier: ScheduleTableViewCell.identifier)
         // Initialization code

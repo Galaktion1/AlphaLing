@@ -1,37 +1,38 @@
 //
-//  ScheduleUpdateAPICall.swift
+//  NewShedule.swift
 //  AlphaLing
 //
-//  Created by Gaga Nizharadze on 20.06.22.
+//  Created by Gaga Nizharadze on 22.06.22.
 //
 
 import Foundation
 
-class ScheduleUpdateAPICall {
-    static let shared = ScheduleUpdateAPICall()
-
-    func patchApiCall(id: Int, taskId: Int, taskUserId: Int, note: String, billable: Bool, startedAt: String, endedAt: String,  completionHandler: @escaping (Result<TimeTrackingModel, Error>) -> Void) {
+class NewShedule {
+    static let shared = NewShedule()
+    func newScheduleCall(taskId: Int, taskUserId: Int, note: String, billable: Bool, startedAt: String, endedAt: String, completionHandler: @escaping (Result<TimeTrackingModel, Error>) -> Void) {
         
-        guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-time-tracking/\(id)") else { return }
+        guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-time-tracking") else { return }
         
         var request = URLRequest(url: url)
     
-        request.httpMethod = "PATCH"
+        request.httpMethod = "POST"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         
         let body: [String: String] = [
-               "taskId" : "\(taskId)",
-               "taskUserId" : "\(taskUserId)",
-               "note" : note,
-               "billable" : "\(billable)",
-               "startedAt" : startedAt,
-               "endedAt" : endedAt
-   
+            "taskId": "\(taskId)",
+            "taskUserId": "\(taskUserId)",
+            "note": note,
+            "startedAt": startedAt,
+            "endedAt": endedAt,
+            "billable": "\(billable)",
+            "invoicePositionId": "null",
+            "creditNotePositionId": "null"
            ]
         
         print(body)
+        
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
         request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]
@@ -46,7 +47,7 @@ class ScheduleUpdateAPICall {
                 let response = try JSONDecoder().decode(TimeTrackingModel?.self, from: data)
                 
                 if let statusCode = statusCode {
-                    print("patch status code:\(statusCode)")
+                    print("post status code:\(statusCode)")
                 }
                 
                 if let result = response {
@@ -64,9 +65,4 @@ class ScheduleUpdateAPICall {
         
         task.resume()
     }
-    
-    
-    
-    
-    
 }

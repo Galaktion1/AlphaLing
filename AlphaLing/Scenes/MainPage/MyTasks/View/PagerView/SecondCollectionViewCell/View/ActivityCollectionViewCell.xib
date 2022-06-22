@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,24 +23,55 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="sectionIndexBackgroundColor" name="commonColor"/>
                     </tableView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-B8-Luo">
+                        <rect key="frame" x="326" y="569" width="60" height="60"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7I5-Vn-V6T">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="plusButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="8TX-kA-oLF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="specialBlue"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7I5-Vn-V6T" secondAttribute="bottom" id="0XM-b4-ten"/>
+                            <constraint firstAttribute="width" constant="60" id="2DQ-Ll-hMH"/>
+                            <constraint firstAttribute="height" constant="60" id="DdC-dt-zPM"/>
+                            <constraint firstItem="7I5-Vn-V6T" firstAttribute="leading" secondItem="JNg-B8-Luo" secondAttribute="leading" id="LPf-B1-mau"/>
+                            <constraint firstItem="7I5-Vn-V6T" firstAttribute="top" secondItem="JNg-B8-Luo" secondAttribute="top" id="SmF-lT-e6P"/>
+                            <constraint firstAttribute="trailing" secondItem="7I5-Vn-V6T" secondAttribute="trailing" id="zWx-Lm-JGK"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="ibq-ka-3Ee" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="Ar1-gc-RYQ"/>
+                <constraint firstAttribute="trailing" secondItem="JNg-B8-Luo" secondAttribute="trailing" constant="28" id="nXJ-xD-jYe"/>
                 <constraint firstItem="ibq-ka-3Ee" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="p2Q-ey-EnV"/>
                 <constraint firstAttribute="bottom" secondItem="ibq-ka-3Ee" secondAttribute="bottom" constant="20" id="uNG-ID-X1k"/>
                 <constraint firstAttribute="trailing" secondItem="ibq-ka-3Ee" secondAttribute="trailing" constant="15" id="us6-3J-rME"/>
+                <constraint firstAttribute="bottom" secondItem="JNg-B8-Luo" secondAttribute="bottom" constant="175" id="xne-mo-P2i"/>
             </constraints>
             <connections>
+                <outlet property="plusButtonBackgroundView" destination="JNg-B8-Luo" id="Rhf-sg-CZq"/>
                 <outlet property="tableView" destination="ibq-ka-3Ee" id="2yj-D2-Fcy"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="92.410714285714278"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="commonColor">
             <color red="0.92100000381469727" green="0.93300002813339233" blue="0.94999998807907104" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="specialBlue">
+            <color red="0.026000000536441803" green="0.32499998807907104" blue="0.64899998903274536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

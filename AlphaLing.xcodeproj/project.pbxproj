@@ -45,6 +45,7 @@
 		9AA251D528460E67002516D3 /* UIElementsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251D428460E67002516D3 /* UIElementsExtensions.swift */; };
 		9AA251DC28463A28002516D3 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251DB28463A28002516D3 /* LoginViewViewModel.swift */; };
 		9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251E028464B26002516D3 /* UserAuthModel.swift */; };
+		9ACA666F2863354300A9B575 /* NewShedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACA666E2863354300A9B575 /* NewShedule.swift */; };
 		9ADCC8E12858780C00827255 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8DF2858780C00827255 /* CommentsViewController.swift */; };
 		9ADCC8E42858782800827255 /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E32858782800827255 /* Comments.storyboard */; };
 		9ADCC8E92858863B00827255 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E72858863B00827255 /* CommentsTableViewCell.swift */; };
@@ -96,6 +97,7 @@
 		9AA251D428460E67002516D3 /* UIElementsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsExtensions.swift; sourceTree = "<group>"; };
 		9AA251DB28463A28002516D3 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		9AA251E028464B26002516D3 /* UserAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthModel.swift; sourceTree = "<group>"; };
+		9ACA666E2863354300A9B575 /* NewShedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewShedule.swift; sourceTree = "<group>"; };
 		9ADCC8DF2858780C00827255 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		9ADCC8E32858782800827255 /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
 		9ADCC8E72858863B00827255 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 			children = (
 				9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */,
 				9AE04B0D28606C4700DB95AA /* ScheduleUpdateAPICall.swift */,
+				9ACA666E2863354300A9B575 /* NewShedule.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				9A03E3772851EE87004DB5FC /* NewTasksViewModel.swift in Sources */,
 				9ADCC8E92858863B00827255 /* CommentsTableViewCell.swift in Sources */,
 				9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */,
+				9ACA666F2863354300A9B575 /* NewShedule.swift in Sources */,
 				9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */,
 				9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */,
 				9AA251D528460E67002516D3 /* UIElementsExtensions.swift in Sources */,

@@ -193,6 +193,10 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
                     UserDefaults.standard.set(taskID, forKey: "taskID")
                     print(taskID)
                 }
+                
+                
+                
+
             }
             
             cell.delegate = self
@@ -235,9 +239,69 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
 
 
 extension PagerViewViewController: ActivityCollectionViewCellDelegate {
+    func mustPresentNewScheduleAlert() {
+        let startedAtTime: String = "\(startDatePicker.date)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let startDate = dateFormatter.date(from: startedAtTime)
+        
+        let endedAtTime: String = "\(endDatePicker.date)"
+        let endDate = dateFormatter.date(from: endedAtTime)
+        
+        
+        if let startDate = startDate {
+            startDatePicker.setDate(startDate, animated: true)
+        }
+        
+        if let endDate = endDate {
+            endDatePicker.setDate(endDate, animated: true)
+        }
+        
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertController.Style.alert)
+        
+        alertController.view.addSubview(EntireVerticalStackView)
+
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
+        let somethingAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: {  _ in
+           
+//            ScheduleUpdateAPICall.shared.patchApiCall(
+//                id: info.id ?? 0,
+//                taskId: info.taskID ?? 0,
+//                taskUserId: info.taskUserID ?? 0,
+//                note: textField.text ?? "",
+//                billable: info.billable ?? false,
+//                startedAt: "\(self.startDatePicker.date)",
+//                endedAt: "\(self.endDatePicker.date)"
+//            ) { result in
+//                switch result {
+//
+//                case .success(let final):
+//                    print(final)
+//                    print("success while patch")
+//                case .failure(_):
+//                    print("errror while patch")
+//                }
+//
+//            }
+            NewShedule.shared.newScheduleCall(taskId: (UserDefaults.standard.value(forKey: "taskID") ?? 0) as! Int,
+                                              taskUserId: (UserDefaults.standard.value(forKey: "ID") ?? 0) as! Int,
+                                              note: self.textField.text ?? "",
+                                              billable: true,
+                                              startedAt: "\(self.startDatePicker.date)",
+                                              endedAt: "\(self.endDatePicker.date)") { result in
+                print(result)
+            }
+            
+        })
+        alertController.addAction(somethingAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     
     func mustPresentAlert(info: TimeTrackingModel) {
-        
         
         let startedAtTime: String = "\(info.startedAt?[0 ... 9] ?? "0000-00-00") \(info.startedAt?[11 ... 15] ?? "00:00")"
         let dateFormatter = DateFormatter()
@@ -256,8 +320,6 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
             endDatePicker.setDate(endDate, animated: true)
         }
         
-        
-        
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertController.Style.alert)
         
         alertController.view.addSubview(EntireVerticalStackView)
@@ -265,10 +327,7 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
         let somethingAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { [self] _ in
-            
-            
-            
-            
+           
             ScheduleUpdateAPICall.shared.patchApiCall(
                 id: info.id ?? 0,
                 taskId: info.taskID ?? 0,
