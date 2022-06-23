@@ -1,38 +1,24 @@
 //
-//  ScheduleUpdateAPICall.swift
+//  ScheduleDelete.swift
 //  AlphaLing
 //
-//  Created by Gaga Nizharadze on 20.06.22.
+//  Created by Gaga Nizharadze on 23.06.22.
 //
 
 import Foundation
 
-class ScheduleUpdateAPICall {
-    static let shared = ScheduleUpdateAPICall()
-
-    func patchApiCall(id: Int, taskId: Int, taskUserId: Int, note: String, billable: Bool, startedAt: String, endedAt: String,  completionHandler: @escaping (Result<TimeTrackingModel, Error>) -> Void) {
+class ScheduleDelete {
+    static let shared = ScheduleDelete()
+    
+    func deleteApiCall(id: Int, completionHandler: @escaping (Result<Int, Error>) -> Void) {
         
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-time-tracking/\(id)") else { return }
         
         var request = URLRequest(url: url)
     
-        request.httpMethod = "PATCH"
+        request.httpMethod = "DELETE"
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        
-        let body: [String: String] = [
-               "taskId" : "\(taskId)",
-               "taskUserId" : "\(taskUserId)",
-               "note" : note,
-               "billable" : "\(billable)",
-               "startedAt" : startedAt,
-               "endedAt" : endedAt
-   
-           ]
-        
-        print(body)
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
         request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]
         
@@ -43,14 +29,14 @@ class ScheduleUpdateAPICall {
                 return }
             
             do{
-                let response = try JSONDecoder().decode(TimeTrackingModel?.self, from: data)
+                let response = try JSONDecoder().decode(Int?.self, from: data)
                 
                 if let statusCode = statusCode {
                     print("patch status code:\(statusCode)")
                 }
                 
                 if let result = response {
-//                    print("...\n \(result) ...\n")
+                    print("...\n \(result) ...\n")
                     completionHandler(.success(result))
                 }
                 else {
@@ -64,5 +50,4 @@ class ScheduleUpdateAPICall {
         
         task.resume()
     }
-    
 }

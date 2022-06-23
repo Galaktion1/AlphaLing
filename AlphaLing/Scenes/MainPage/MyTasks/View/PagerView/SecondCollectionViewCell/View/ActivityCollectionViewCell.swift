@@ -81,6 +81,34 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
         headerView.backgroundColor = UIColor.clear
         return headerView
     }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            
+            var info = viewModel.getActivityInfo()
+            
+            ScheduleDelete.shared.deleteApiCall(id: info[indexPath.section]?.id ?? 0) { result in
+                switch result {
+                    
+                case .success(let intNum):
+                    print(intNum)
+                    info.remove(at: indexPath.section)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                case .failure(_):
+                    print("error while deleting")
+                }
+            }
+            
+            tableView.reloadData()
+
+            tableView.endUpdates()
+        }
+    }
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,8 +116,6 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
         let info = viewModel.cellForRowAt(indexPath: indexPath)
         
         delegate?.mustPresentAlert(info: info)
-        
-        
         
     }
     
@@ -104,3 +130,4 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
     
     
 }
+

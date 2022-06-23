@@ -52,6 +52,7 @@
 		9ADCC8EA2858863B00827255 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ADCC8E82858863B00827255 /* CommentsTableViewCell.xib */; };
 		9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADCC8EB2858960400827255 /* CommentsViewModel.swift */; };
 		9AE04B0E28606C4700DB95AA /* ScheduleUpdateAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE04B0D28606C4700DB95AA /* ScheduleUpdateAPICall.swift */; };
+		9AEA8B942864665A00C2C023 /* ScheduleDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA8B932864665A00C2C023 /* ScheduleDelete.swift */; };
 		9AEBA965285C7B2700AA66FB /* TimeTrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBA964285C7B2700AA66FB /* TimeTrackingModel.swift */; };
 		9AEBA968285C7C0600AA66FB /* TimeTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,7 @@
 		9ADCC8E82858863B00827255 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		9ADCC8EB2858960400827255 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		9AE04B0D28606C4700DB95AA /* ScheduleUpdateAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUpdateAPICall.swift; sourceTree = "<group>"; };
+		9AEA8B932864665A00C2C023 /* ScheduleDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDelete.swift; sourceTree = "<group>"; };
 		9AEBA964285C7B2700AA66FB /* TimeTrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingModel.swift; sourceTree = "<group>"; };
 		9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -418,6 +420,7 @@
 				9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */,
 				9AE04B0D28606C4700DB95AA /* ScheduleUpdateAPICall.swift */,
 				9ACA666E2863354300A9B575 /* NewShedule.swift */,
+				9AEA8B932864665A00C2C023 /* ScheduleDelete.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */,
 				9ACA666F2863354300A9B575 /* NewShedule.swift in Sources */,
 				9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */,
+				9AEA8B942864665A00C2C023 /* ScheduleDelete.swift in Sources */,
 				9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */,
 				9AA251D528460E67002516D3 /* UIElementsExtensions.swift in Sources */,
 				9ADCC8E12858780C00827255 /* CommentsViewController.swift in Sources */,

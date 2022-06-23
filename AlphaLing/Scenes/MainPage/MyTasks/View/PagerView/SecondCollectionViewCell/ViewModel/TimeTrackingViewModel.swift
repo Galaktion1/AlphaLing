@@ -106,9 +106,9 @@ class TimeTrackingViewModel {
         activityInfo[indexPath.section]!
     }
     
-//    func withoutSectionCells(indexPath: IndexPath) -> TimeTrackingModel {
-//        
-//    }
+    func getActivityInfo() -> [TimeTrackingModel?] {
+        activityInfo
+    }
     
 }
 

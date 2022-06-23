@@ -20,18 +20,16 @@ class NewShedule {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         
-        let body: [String: String] = [
-            "taskId": "\(taskId)",
-            "taskUserId": "\(taskUserId)",
+        let body: [String: Any] = [
+            "taskId": taskId,
+            "taskUserId": taskUserId,
             "note": note,
             "startedAt": startedAt,
             "endedAt": endedAt,
-            "billable": "\(billable)",
-            "invoicePositionId": "null",
-            "creditNotePositionId": "null"
+            "billable": billable
            ]
         
-        print(body)
+        print(" body looks like this \(body)")
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
