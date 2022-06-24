@@ -26,7 +26,8 @@ struct TaskData: Codable {
     let descriptions: Descriptions?
     let searchKeywords, taskDate, taskTime, taskEndTime: String?
     let typeOfDate: String?
-    let supplierTag, geoLocation: JSONNull?
+    let supplierTag: JSONNull?
+    let geoLocation: GeoLocation?
     let tags: [JSONAny]?
     let releasedAt, createdAt, modifiedAt: String?
     let taskUsers: [TaskUser]?
@@ -69,7 +70,8 @@ struct TaskUser: Codable {
     let declinedAt, canceledAt: JSONNull?
     let supplierPriceData: PriceData?
     let customSupplierPrice: Bool?
-    let customSupplierPriceData, supplierOfferPriceData, travelDistanceData: JSONNull?
+    let customSupplierPriceData, supplierOfferPriceData: JSONNull?
+    let travelDistanceData: TravelDistanceData?
     let travelFlatRatePriceData, travelDistancePriceData: PriceData?
     let customTravelPrice: Bool?
     let customTravelPriceData, supplierOfferTravelPriceData, billingDetailID, travelCostsConditions: JSONNull?
@@ -105,7 +107,14 @@ struct Comment: Codable {
 
 // MARK: - PricePositions
 struct PricePositions: Codable {
-    let supplierPrices, travelDistancePrices, travelTimePrices, travelFlatRatePrices: JSONNull?
+    let supplierPrices: JSONNull?
+    let travelDistancePrices, travelTimePrices, travelFlatRatePrices: [TravelEPrice]?
+}
+
+struct TravelEPrice: Codable {
+    let pricePerUnit: Int?
+    let total, quantity: Double?
+    let info: AutoListPreview?
 }
 
 // MARK: - StatusHistory
@@ -146,6 +155,26 @@ class JSONNull: Codable, Hashable {
         var container = encoder.singleValueContainer()
         try container.encodeNil()
     }
+}
+
+struct GeoLocation: Codable {
+    let type: String?
+    let coordinates: [Double]?
+}
+
+struct TravelDistanceData: Codable {
+    let recommended, shortestDistance, shortestDuration: Recommended?
+}
+
+// MARK: - Recommended
+struct Recommended: Codable {
+    let distance, duration: Distance?
+}
+
+// MARK: - Distance
+struct Distance: Codable {
+    let text: String?
+    let value: Int?
 }
 
 class JSONCodingKey: CodingKey {
