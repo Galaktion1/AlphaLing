@@ -96,7 +96,14 @@ class MyTasksViewModel {
     }
     
     func cellForRowAt (indexPath: IndexPath) -> TaskData {
-        userInfo[indexPath.section]
+        let taskData = userInfo[indexPath.section]
+        UserDefaults.standard.set(taskData.taskUsers?[0].id, forKey: "ID")
+        
+        UserDefaults.standard.set(taskData.taskUsers?[0].taskID, forKey: "taskID")
+        
+        UserDefaults.standard.set(taskData.id, forKey: "taskDataID")
+        
+        return taskData
     }
 }
 

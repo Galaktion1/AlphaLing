@@ -70,11 +70,13 @@ struct TaskUser: Codable {
     let declinedAt, canceledAt: JSONNull?
     let supplierPriceData: PriceData?
     let customSupplierPrice: Bool?
-    let customSupplierPriceData, supplierOfferPriceData: JSONNull?
+    let customSupplierPriceData: JSONNull?
+    let supplierOfferPriceData: SupplierOfferPriceData?
     let travelDistanceData: TravelDistanceData?
     let travelFlatRatePriceData, travelDistancePriceData: PriceData?
     let customTravelPrice: Bool?
-    let customTravelPriceData, supplierOfferTravelPriceData, billingDetailID, travelCostsConditions: JSONNull?
+    let customTravelPriceData, billingDetailID, travelCostsConditions: JSONNull?
+    let supplierOfferTravelPriceData: SupplierOfferPriceData?
     let comments: [Comment]?
     let tags: [JSONAny]?
     let pricePositions: PricePositions?
@@ -130,6 +132,9 @@ struct PriceData: Codable {
     let quantityPrices: [JSONAny]?
 }
 
+struct SupplierOfferPriceData: Codable {
+    let basePrice: Int?
+}
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {

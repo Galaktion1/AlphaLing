@@ -12,8 +12,35 @@ class PagerViewViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    func moveToNextCollectionViewCell(item: Int) {
+        collectionView.isPagingEnabled = false
+        
+        collectionView.scrollToItem(
+            at: IndexPath(item: item, section: 0),
+            at: .centeredHorizontally,
+            animated: true
+        )
+        collectionView.isPagingEnabled = true
+    }
+    
+    @IBAction func mainButton(_ sender: UIButton) {
+        moveToNextCollectionViewCell(item: 0)
+    }
+    
+    
+    @IBAction func activityButton(_ sender: UIButton) {
+        moveToNextCollectionViewCell(item: 1)
+    }
+    
+    
+    @IBAction func documentsButton(_ sender: UIButton) {
+        moveToNextCollectionViewCell(item: 2)
+    }
+    
+    
     let viewModel = MyTasksViewModel()
     var data: TaskData?
+    
     
     private func encodeDataToDescription() -> String?{
         let encoder = JSONEncoder()
@@ -171,7 +198,7 @@ class PagerViewViewController: UIViewController {
 extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
         
     
@@ -181,23 +208,6 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PagerViewMainCollectionViewCell", for: indexPath) as! PagerViewMainCollectionViewCell
             cell.updateMainUIView(data: data!)
-            
-            if UserDefaults.standard.value(forKey: "ID") == nil {
-                
-                if let id = data?.taskUsers?[0].id {
-                    UserDefaults.standard.set(id, forKey: "ID")
-                    print(id)
-                }
-                
-                if let taskID = data?.taskUsers?[0].taskID {
-                    UserDefaults.standard.set(taskID, forKey: "taskID")
-                    print(taskID)
-                }
-                
-                
-                
-
-            }
             
             cell.delegate = self
             
@@ -210,13 +220,20 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
             
             return cell
         
-        case 2:
+        case 3:
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentsCollectionViewCell", for: indexPath) as! DocumentsCollectionViewCell
             
+            cell.delegate = self
+            
             return cell
+
             
         default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PagerViewMainCollectionViewCell", for: indexPath) as! PagerViewMainCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentsCollectionViewCell", for: indexPath) as! DocumentsCollectionViewCell
+            
+            cell.delegate = self
+            
             return cell
         }
     }
@@ -355,5 +372,8 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
     }
     
 }
+
+
+
 
 

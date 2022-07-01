@@ -25,11 +25,11 @@ extension UIViewController {
 //Show a basic alert
     func showAlert(alertText : String, alertMessage : String, addActionTitle: String) {
         
-    let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: addActionTitle, style: .cancel))
-//Add more actions as you see fit
-self.present(alert, animated: true, completion: nil)
-  }
+        //Add more actions as you see fit
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func logOutActionSheet() {
         let alert = UIAlertController(title: "Log Out", message: "Please Select an Option", preferredStyle: .actionSheet)
@@ -56,6 +56,9 @@ self.present(alert, animated: true, completion: nil)
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+    
+    
 }
 
 
@@ -63,6 +66,20 @@ extension String {
     func removeHtmlTags() -> String{
         self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
+    
+    
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
+    
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
+    
 }
 
 

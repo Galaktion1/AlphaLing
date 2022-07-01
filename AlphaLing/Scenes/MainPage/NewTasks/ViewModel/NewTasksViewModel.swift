@@ -30,6 +30,8 @@ class NewTasksViewModel {
         }
     }
     
+    
+    
     func numberOfRowsInSection() -> Int {
         userInfo.count != 0 ? userInfo.count : 0
         
@@ -40,6 +42,61 @@ class NewTasksViewModel {
     }
 
 }
+
+
+class NewTaskAcceptAPICall {
+    
+    private var dataTask: URLSessionDataTask?
+    
+    
+    func getMyTasksData(acceptedID: Int, linkSnippet: String, completion: @escaping (Result<TaskModel, Error>) -> Void) {
+        
+        guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-users/\(acceptedID)/\(linkSnippet)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        
+        dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                print("error -> \(error)")
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                print("Empty Response")
+                return
+            }
+            print("Response status code: \(response.statusCode)")
+            
+            guard let data = data else {
+                print("Empty data")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(TaskModel.self, from: data)
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            }
+            catch let error {
+                completion(.failure(error))
+            }
+            
+            
+        }
+        dataTask?.resume()
+    }
+}
+
+
+
+
 
 
 

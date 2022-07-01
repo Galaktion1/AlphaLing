@@ -12,6 +12,7 @@
 		9A03E37E2852045C004DB5FC /* LogOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A03E37D2852045C004DB5FC /* LogOutViewModel.swift */; };
 		9A070948284697A00053A78D /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A070947284697A00053A78D /* MainTabBar.storyboard */; };
 		9A07094A284697DD0053A78D /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A070949284697DD0053A78D /* MainTabBarViewController.swift */; };
+		9A09F9882865BDDC00373390 /* TaskCountOfferAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09F9872865BDDC00373390 /* TaskCountOfferAPICall.swift */; };
 		9A0DD824285B1035007B075A /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0DD822285B1035007B075A /* ActivityCollectionViewCell.swift */; };
 		9A0DD825285B1035007B075A /* ActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0DD823285B1035007B075A /* ActivityCollectionViewCell.xib */; };
 		9A0DD82B285B1102007B075A /* DocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */; };
@@ -21,6 +22,8 @@
 		9A0DD833285B2839007B075A /* UploadedFilesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0DD831285B2839007B075A /* UploadedFilesTableViewCell.swift */; };
 		9A0DD834285B2839007B075A /* UploadedFilesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0DD832285B2839007B075A /* UploadedFilesTableViewCell.xib */; };
 		9A15F73A2847F8E700C775B5 /* MyTasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A15F7392847F8E700C775B5 /* MyTasksViewModel.swift */; };
+		9A1A3952286AECEF00B89A76 /* FetchDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A3951286AECEF00B89A76 /* FetchDocuments.swift */; };
+		9A1A3955286AEDE400B89A76 /* DocumentFetchingResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1A3954286AEDE400B89A76 /* DocumentFetchingResponseModel.swift */; };
 		9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2468F828474851000AD93F /* MyTasksViewController.swift */; };
 		9A2468FB28474860000AD93F /* MyTasksStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2468FA28474860000AD93F /* MyTasksStoryboard.storyboard */; };
 		9A2468FE284748E9000AD93F /* NewTasksStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2468FD284748E9000AD93F /* NewTasksStoryboard.storyboard */; };
@@ -55,6 +58,7 @@
 		9AEA8B942864665A00C2C023 /* ScheduleDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA8B932864665A00C2C023 /* ScheduleDelete.swift */; };
 		9AEBA965285C7B2700AA66FB /* TimeTrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBA964285C7B2700AA66FB /* TimeTrackingModel.swift */; };
 		9AEBA968285C7C0600AA66FB /* TimeTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */; };
+		9AFC0318286C59E300C0F062 /* FileUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFC0317286C59E300C0F062 /* FileUploadResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +67,7 @@
 		9A03E37D2852045C004DB5FC /* LogOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutViewModel.swift; sourceTree = "<group>"; };
 		9A070947284697A00053A78D /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		9A070949284697DD0053A78D /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		9A09F9872865BDDC00373390 /* TaskCountOfferAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountOfferAPICall.swift; sourceTree = "<group>"; };
 		9A0DD822285B1035007B075A /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A0DD823285B1035007B075A /* ActivityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCollectionViewCell.xib; sourceTree = "<group>"; };
 		9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -72,6 +77,8 @@
 		9A0DD831285B2839007B075A /* UploadedFilesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFilesTableViewCell.swift; sourceTree = "<group>"; };
 		9A0DD832285B2839007B075A /* UploadedFilesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadedFilesTableViewCell.xib; sourceTree = "<group>"; };
 		9A15F7392847F8E700C775B5 /* MyTasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTasksViewModel.swift; sourceTree = "<group>"; };
+		9A1A3951286AECEF00B89A76 /* FetchDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDocuments.swift; sourceTree = "<group>"; };
+		9A1A3954286AEDE400B89A76 /* DocumentFetchingResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFetchingResponseModel.swift; sourceTree = "<group>"; };
 		9A2468F828474851000AD93F /* MyTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTasksViewController.swift; sourceTree = "<group>"; };
 		9A2468FA28474860000AD93F /* MyTasksStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTasksStoryboard.storyboard; sourceTree = "<group>"; };
 		9A2468FD284748E9000AD93F /* NewTasksStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTasksStoryboard.storyboard; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 		9AEA8B932864665A00C2C023 /* ScheduleDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDelete.swift; sourceTree = "<group>"; };
 		9AEBA964285C7B2700AA66FB /* TimeTrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingModel.swift; sourceTree = "<group>"; };
 		9AEBA967285C7C0600AA66FB /* TimeTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTrackingViewModel.swift; sourceTree = "<group>"; };
+		9AFC0317286C59E300C0F062 /* FileUploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploadResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				9A03E3762851EE87004DB5FC /* NewTasksViewModel.swift */,
+				9A09F9872865BDDC00373390 /* TaskCountOfferAPICall.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -171,12 +180,39 @@
 		9A0DD826285B10C9007B075A /* ThirdCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */,
-				9A0DD82A285B1102007B075A /* DocumentsCollectionViewCell.xib */,
-				9A0DD831285B2839007B075A /* UploadedFilesTableViewCell.swift */,
-				9A0DD832285B2839007B075A /* UploadedFilesTableViewCell.xib */,
+				9A1A3953286AEDD400B89A76 /* Model */,
+				9A1A3950286AECB900B89A76 /* View */,
+				9A1A394F286AECB200B89A76 /* ViewModel */,
 			);
 			path = ThirdCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		9A1A394F286AECB200B89A76 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9A1A3951286AECEF00B89A76 /* FetchDocuments.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9A1A3950286AECB900B89A76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A0DD832285B2839007B075A /* UploadedFilesTableViewCell.xib */,
+				9A0DD831285B2839007B075A /* UploadedFilesTableViewCell.swift */,
+				9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */,
+				9A0DD82A285B1102007B075A /* DocumentsCollectionViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9A1A3953286AEDD400B89A76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A1A3954286AEDE400B89A76 /* DocumentFetchingResponseModel.swift */,
+				9AFC0317286C59E300C0F062 /* FileUploadResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9A2468F5284747D1000AD93F /* MyTasks */ = {
@@ -518,6 +554,7 @@
 				9ADCC8E92858863B00827255 /* CommentsTableViewCell.swift in Sources */,
 				9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */,
 				9ACA666F2863354300A9B575 /* NewShedule.swift in Sources */,
+				9AFC0318286C59E300C0F062 /* FileUploadResponse.swift in Sources */,
 				9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */,
 				9AEA8B942864665A00C2C023 /* ScheduleDelete.swift in Sources */,
 				9AA251E128464B26002516D3 /* UserAuthModel.swift in Sources */,
@@ -532,11 +569,14 @@
 				9AA251BF284604F4002516D3 /* SceneDelegate.swift in Sources */,
 				9A0DD82B285B1102007B075A /* DocumentsCollectionViewCell.swift in Sources */,
 				9A0DD82F285B13B8007B075A /* ScheduleTableViewCell.swift in Sources */,
+				9A1A3952286AECEF00B89A76 /* FetchDocuments.swift in Sources */,
 				9A2543B32850CC2D0006B485 /* PagerViewViewController.swift in Sources */,
 				9A15F73A2847F8E700C775B5 /* MyTasksViewModel.swift in Sources */,
 				9AE04B0E28606C4700DB95AA /* ScheduleUpdateAPICall.swift in Sources */,
 				9A0DD824285B1035007B075A /* ActivityCollectionViewCell.swift in Sources */,
+				9A09F9882865BDDC00373390 /* TaskCountOfferAPICall.swift in Sources */,
 				9A03E37E2852045C004DB5FC /* LogOutViewModel.swift in Sources */,
+				9A1A3955286AEDE400B89A76 /* DocumentFetchingResponseModel.swift in Sources */,
 				9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */,
 				9A2543B72850D8130006B485 /* PagerViewMainCollectionViewCell.swift in Sources */,
 				9A2469152847A60E000AD93F /* MyTasksTableViewCell.swift in Sources */,
