@@ -9,14 +9,21 @@ import UIKit
 
 class PagerViewViewController: UIViewController {
     
-    let viewModel = MyTasksViewModel()
+    @IBOutlet weak var mainButtonOutlet: UIButton!
+    @IBOutlet weak var activityButtonOutlet: UIButton!
+    @IBOutlet weak var documentButtonOutlet: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var activeIndicatorView: UIView!
+    
+    private let viewModel = MyTasksViewModel()
     var data: TaskData?
+    private let screenWidt = UIScreen.main.bounds.width
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.delegate = self
         collectionView?.dataSource = self
-        
         
         collectionView.register(UINib(nibName: "PagerViewMainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PagerViewMainCollectionViewCell")
         
@@ -26,9 +33,8 @@ class PagerViewViewController: UIViewController {
         
         confHorizontalStackView()
         confVerticalStackView()
+        activeIndicatorView.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    @IBOutlet weak var collectionView: UICollectionView!
     
     private func moveToNextCollectionViewCell(item: Int) {
         collectionView.isPagingEnabled = false
@@ -41,18 +47,29 @@ class PagerViewViewController: UIViewController {
         collectionView.isPagingEnabled = true
     }
     
+   
+    
     @IBAction func mainButton(_ sender: UIButton) {
+        viewModel.activeButton(button: mainButtonOutlet)
+        viewModel.deactiveButtons(button1: documentButtonOutlet, button2: activityButtonOutlet)
         moveToNextCollectionViewCell(item: 0)
+        viewModel.moveActiviveIndicatorView(point: 0, indicatorView: self.activeIndicatorView)
     }
     
     
     @IBAction func activityButton(_ sender: UIButton) {
+        viewModel.activeButton(button: activityButtonOutlet)
+        viewModel.deactiveButtons(button1: mainButtonOutlet, button2: documentButtonOutlet)
         moveToNextCollectionViewCell(item: 1)
+        viewModel.moveActiviveIndicatorView(point: screenWidt / 3, indicatorView: self.activeIndicatorView)
     }
     
     
     @IBAction func documentsButton(_ sender: UIButton) {
+        viewModel.activeButton(button: documentButtonOutlet)
+        viewModel.deactiveButtons(button1: mainButtonOutlet, button2: activityButtonOutlet)
         moveToNextCollectionViewCell(item: 2)
+        viewModel.moveActiviveIndicatorView(point: screenWidt * 2 / 3, indicatorView: self.activeIndicatorView)
     }
     
     

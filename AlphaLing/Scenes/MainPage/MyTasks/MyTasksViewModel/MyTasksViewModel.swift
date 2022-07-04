@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TaskApiService {
     
@@ -95,6 +96,25 @@ class MyTasksViewModel {
         (userInfo.count != 0 ) ? userInfo.count : 0
     }
     
+    func activeButton(button: UIButton) {
+        button.tintColor = UIColor(named: "specialBlue")
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
+    }
+    
+    func deactiveButtons(button1: UIButton, button2: UIButton) {
+        button1.tintColor = .gray
+        button1.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        
+        button2.tintColor = .gray
+        button2.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+    }
+    
+    func moveActiviveIndicatorView(point: CGFloat, indicatorView: UIView) {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
+            indicatorView.transform = CGAffineTransform(translationX: point, y: 0)
+            }, completion: nil)
+    }
+    
     func cellForRowAt (indexPath: IndexPath) -> TaskData {
         let taskData = userInfo[indexPath.section]
         UserDefaults.standard.set(taskData.taskUsers?[0].id, forKey: "ID")
@@ -105,5 +125,7 @@ class MyTasksViewModel {
         
         return taskData
     }
+    
+    
 }
 
