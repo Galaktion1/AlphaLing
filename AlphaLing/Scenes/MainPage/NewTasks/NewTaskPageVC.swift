@@ -16,11 +16,19 @@ class NewTaskPageVC: UIViewController {
     @IBOutlet weak var deliveryNameLabel: UILabel!
     @IBOutlet weak var baseLabel: UILabel!
     @IBOutlet weak var fareLabel: UILabel!
-    
     @IBOutlet weak var firstCommentAuthorLabel: UILabel!
     @IBOutlet weak var fistCommentLabel: UILabel!
-    
     @IBOutlet weak var bottomButtonsStackView: UIStackView!
+    
+    var data: TaskData?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        guard let data = data else { return }
+        updateMainUIView(data: data)
+    }
+    
     
     @IBAction func newTaskAcceptButton(_ sender: UIButton) {
         let apiCall = NewTaskAcceptAPICall()
@@ -37,17 +45,22 @@ class NewTaskPageVC: UIViewController {
         }
     }
     
+    private func modifyTextField(textField: UITextField, placeHolder: String) {
+        textField.placeholder = placeHolder
+        textField.keyboardType = .decimalPad
+    }
+    
     @IBAction func newTaskCountOfferButton(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Login",
+        let alertController = UIAlertController(title: "Count Offer",
                                                 message: nil,
                                                 preferredStyle: .alert)
         
         alertController.addTextField { (textField) in
-            textField.placeholder = "supplierOfferPrice"
+            self.modifyTextField(textField: textField, placeHolder: "supplierOfferPrice")
         }
         
         alertController.addTextField { (textField) in
-            textField.placeholder = "SupplierOfferTravelPrice"
+            self.modifyTextField(textField: textField, placeHolder: "SupplierOfferTravelPrice")
         }
         
         let continueAction = UIAlertAction(title: "Continue",
@@ -85,18 +98,9 @@ class NewTaskPageVC: UIViewController {
     
     
     @IBAction func newTaskRejectButton(_ sender: UIButton) {
+        
     }
     
-    
-    
-    var data: TaskData?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        guard let data = data else { return }
-        updateMainUIView(data: data)
-    }
     
     func updateMainUIView(data: TaskData) {
         

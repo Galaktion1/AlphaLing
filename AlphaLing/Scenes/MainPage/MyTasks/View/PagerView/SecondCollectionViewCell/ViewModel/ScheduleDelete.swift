@@ -32,7 +32,7 @@ class ScheduleDelete {
                 let response = try JSONDecoder().decode(Int?.self, from: data)
                 
                 if let statusCode = statusCode {
-                    print("patch status code:\(statusCode)")
+                    print("delete status code:\(statusCode)")
                 }
                 
                 if let result = response {

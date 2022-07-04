@@ -31,7 +31,6 @@ class ScheduleUpdateAPICall {
    
            ]
         
-        print(body)
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
         request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]

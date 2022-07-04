@@ -37,6 +37,7 @@
 		9A2543B32850CC2D0006B485 /* PagerViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2543B22850CC2D0006B485 /* PagerViewViewController.swift */; };
 		9A2543B72850D8130006B485 /* PagerViewMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2543B52850D8130006B485 /* PagerViewMainCollectionViewCell.swift */; };
 		9A2543B82850D8130006B485 /* PagerViewMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2543B62850D8130006B485 /* PagerViewMainCollectionViewCell.xib */; };
+		9A45BB7F286EE89E00BF47FD /* FileUploadAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */; };
 		9A466D5C284DED3A006FDE81 /* NewTaskPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */; };
 		9A466D5E284E0586006FDE81 /* NewTasksPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */; };
 		9AA251BD284604F4002516D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251BC284604F4002516D3 /* AppDelegate.swift */; };
@@ -92,6 +93,7 @@
 		9A2543B22850CC2D0006B485 /* PagerViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerViewViewController.swift; sourceTree = "<group>"; };
 		9A2543B52850D8130006B485 /* PagerViewMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerViewMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A2543B62850D8130006B485 /* PagerViewMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagerViewMainCollectionViewCell.xib; sourceTree = "<group>"; };
+		9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploadAPICall.swift; sourceTree = "<group>"; };
 		9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPageVC.swift; sourceTree = "<group>"; };
 		9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTasksPageStoryboard.storyboard; sourceTree = "<group>"; };
 		9AA251B9284604F4002516D3 /* AlphaLing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphaLing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				9A1A3951286AECEF00B89A76 /* FetchDocuments.swift */,
+				9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				9A1A3955286AEDE400B89A76 /* DocumentFetchingResponseModel.swift in Sources */,
 				9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */,
 				9A2543B72850D8130006B485 /* PagerViewMainCollectionViewCell.swift in Sources */,
+				9A45BB7F286EE89E00BF47FD /* FileUploadAPICall.swift in Sources */,
 				9A2469152847A60E000AD93F /* MyTasksTableViewCell.swift in Sources */,
 				9A24690D28475751000AD93F /* MyTasksAPIModel.swift in Sources */,
 			);

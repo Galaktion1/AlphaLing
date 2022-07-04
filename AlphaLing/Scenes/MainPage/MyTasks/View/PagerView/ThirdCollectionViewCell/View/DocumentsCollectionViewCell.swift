@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MobileCoreServices
+import UniformTypeIdentifiers
 
 protocol DocumentsCollectionViewCellDelegate {
     func downloadFile(with url: URL)
@@ -100,7 +102,7 @@ extension DocumentsCollectionViewCell: UITableViewDelegate, UITableViewDataSourc
     }
 }
 
-extension PagerViewViewController: DocumentsCollectionViewCellDelegate {
+extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocumentPickerDelegate {
     
     func downloadFile(with url: URL) {
         
@@ -137,7 +139,16 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate {
         
         alert.addAction(UIAlertAction(title: "File upload", style: .default, handler: { (_) in
             
-            
+            //Create a picker specifying file type and mode
+            let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF),
+                                                                                String(kUTTypePNG),
+                                                                                String(kUTTypeJPEG),
+                                                                                String(kUTTypePlainText),
+                                                                                String(kUTTypePlainText)], in: .import)
+            documentPicker.delegate = self
+            documentPicker.allowsMultipleSelection = false
+            documentPicker.modalPresentationStyle = .formSheet
+            self.present(documentPicker, animated: true, completion: nil)
             
         }))
         
@@ -148,6 +159,12 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate {
         }))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let documentURL = urls.first else { return }
+        
+        FileUploadAPICall.shared.uploadDocumentRequest(url: documentURL)
     }
 }
 

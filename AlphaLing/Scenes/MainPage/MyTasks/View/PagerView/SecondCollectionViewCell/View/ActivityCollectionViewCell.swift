@@ -87,25 +87,20 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.beginUpdates()
-            
-            var info = viewModel.getActivityInfo()
-            
-            ScheduleDelete.shared.deleteApiCall(id: info[indexPath.section]?.id ?? 0) { result in
+
+            ScheduleDelete.shared.deleteApiCall(id: viewModel.activityInfo[indexPath.section]?.id ?? 0) { result in
                 switch result {
                     
                 case .success(let intNum):
                     print(intNum)
-                    info.remove(at: indexPath.section)
+                    tableView.beginUpdates()
+                    self.viewModel.activityInfo.remove(at: indexPath.section)
                     tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.endUpdates()
                 case .failure(_):
                     print("error while deleting")
                 }
             }
-            
-            tableView.reloadData()
-
-            tableView.endUpdates()
         }
     }
     

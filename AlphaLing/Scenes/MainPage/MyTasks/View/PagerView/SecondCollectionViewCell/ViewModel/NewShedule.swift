@@ -29,7 +29,6 @@ class NewShedule {
             "billable": billable
            ]
         
-        print(" body looks like this \(body)")
         
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         

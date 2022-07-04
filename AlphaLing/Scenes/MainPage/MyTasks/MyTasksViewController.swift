@@ -59,10 +59,6 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         1
     }
     
-    // There is just one row in every section
-    
-    
-    // Set the spacing between sections
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         cellSpacingHeight
     }
@@ -73,7 +69,6 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         headerView.backgroundColor = UIColor.clear
         return headerView
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -95,14 +90,7 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         let data = viewModel.cellForRowAt(indexPath: indexPath)
         cell.updateCells(userInfo: data)
         
-        
-        
         return cell
     }
-    
-//    func storeParametersInUserDefaults() {
-//        UserDefaults.standard.set(, forKey: "UserName")
-//    }
-    
 }
 

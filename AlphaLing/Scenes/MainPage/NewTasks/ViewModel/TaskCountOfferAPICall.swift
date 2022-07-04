@@ -8,6 +8,7 @@
 import Foundation
 
 class TaskCountOfferAPICall {
+    
     static let shared = TaskCountOfferAPICall()
 
     func countOfferApiCall(id: Int, supplierOfferPriceData: Double, supplierOfferTravelPriceData: Double,
@@ -21,13 +22,11 @@ class TaskCountOfferAPICall {
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        
         let body: [String : [String : Double]] = [
             "supplierOfferPriceData": [ "basePrice": supplierOfferPriceData ],
             "supplierOfferTravelPriceData" : [ "basePrice" : supplierOfferTravelPriceData ]
         ]
         
-        print(body)
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
         request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]

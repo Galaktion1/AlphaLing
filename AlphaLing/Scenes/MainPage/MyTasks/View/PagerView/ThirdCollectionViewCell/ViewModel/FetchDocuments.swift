@@ -91,7 +91,7 @@ class FetchDocumentsViewModel {
             case .success(let listOf):
                 print("succesful retrived data")
                 
-                print(listOf)
+//                print(listOf)
                 self?.documents = listOf
             case .failure(let error):
                 print("error processing json data \(error)")
@@ -113,13 +113,12 @@ class FetchDocumentsViewModel {
     
     
     
+    
     func requestNativeImageUpload(image: UIImage) {
 
-        let url = URL(string: "https://alphatest.webmitplan.de/api/assets/document-files/upload/task/\(UserDefaults.standard.value(forKey: "taskDataID") ?? "nil")")
+        guard let url = URL(string: "https://alphatest.webmitplan.de/api/assets/document-files/upload/task/\(UserDefaults.standard.value(forKey: "taskDataID") ?? "nil")") else { return }
         let boundary = "Boundary-\(NSUUID().uuidString)"
-        var request = URLRequest(url: url!)
-
-        let parameters = ["key" : "YOUR API KEY"]
+        var request = URLRequest(url: url)
 
         guard let mediaImage = Media(withImage: image, forKey: "file") else { return }
 
@@ -131,7 +130,7 @@ class FetchDocumentsViewModel {
                     "Authorization": "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"
                 ]
 
-        let dataBody = createDataBody(withParameters: parameters, media: [mediaImage], boundary: boundary)
+        let dataBody = createDataBody(media: [mediaImage], boundary: boundary)
         request.httpBody = dataBody
 
         let session = URLSession.shared
@@ -139,7 +138,7 @@ class FetchDocumentsViewModel {
             if let response = response {
                 print(response)
             }
-
+            
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
@@ -148,21 +147,15 @@ class FetchDocumentsViewModel {
                     print(error)
                 }
             }
-            }.resume()
+        }.resume()
     }
 
-    func createDataBody(withParameters params: [String: String]?, media: [Media]?, boundary: String) -> Data {
+    func createDataBody(media: [Media]?, boundary: String) -> Data {
 
         let lineBreak = "\r\n"
         var body = Data()
 
-        if let parameters = params {
-            for (key, value) in parameters {
-                body.append("--\(boundary + lineBreak)")
-                body.append("Content-Disposition: form-data; name=\"\(key)\"\(lineBreak + lineBreak)")
-                body.append("\(value + lineBreak)")
-            }
-        }
+        
 
         if let media = media {
             for photo in media {
@@ -194,13 +187,9 @@ class FetchDocumentsViewModel {
             self.data = data
         }
     }
-    
-    
-    
 }
     
    
-
 
 class FileDownloader {
 

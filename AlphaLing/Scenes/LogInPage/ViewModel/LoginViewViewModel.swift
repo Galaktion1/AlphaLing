@@ -82,7 +82,6 @@ class APIService {
                 let response = try JSONDecoder().decode(SuccessfullyResponse.self, from: data)
                 
                 if let result = response.accessToken {
-//                    print("...\n \(result) ...\n")
                     completionHandler(.success(result))
                 }
                 

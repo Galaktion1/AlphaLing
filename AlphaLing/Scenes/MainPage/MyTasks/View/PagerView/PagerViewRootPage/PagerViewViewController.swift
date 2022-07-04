@@ -9,10 +9,28 @@ import UIKit
 
 class PagerViewViewController: UIViewController {
     
-
+    let viewModel = MyTasksViewModel()
+    var data: TaskData?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        
+        collectionView.register(UINib(nibName: "PagerViewMainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PagerViewMainCollectionViewCell")
+        
+        collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
+        
+        collectionView.register(UINib(nibName: "DocumentsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentsCollectionViewCell")
+        
+        confHorizontalStackView()
+        confVerticalStackView()
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
-    func moveToNextCollectionViewCell(item: Int) {
+    private func moveToNextCollectionViewCell(item: Int) {
         collectionView.isPagingEnabled = false
         
         collectionView.scrollToItem(
@@ -38,9 +56,6 @@ class PagerViewViewController: UIViewController {
     }
     
     
-    let viewModel = MyTasksViewModel()
-    var data: TaskData?
-    
     
     private func encodeDataToDescription() -> String?{
         let encoder = JSONEncoder()
@@ -53,24 +68,6 @@ class PagerViewViewController: UIViewController {
 //        print(description)
         
         return description.removeHtmlTags()
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        
-        
-        collectionView.register(UINib(nibName: "PagerViewMainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PagerViewMainCollectionViewCell")
-        
-        collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
-        
-        collectionView.register(UINib(nibName: "DocumentsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentsCollectionViewCell")
-        
-        confHorizontalStackView()
-        confVerticalStackView()
-        
     }
     
     
@@ -282,32 +279,14 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
         let somethingAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: {  _ in
            
-//            ScheduleUpdateAPICall.shared.patchApiCall(
-//                id: info.id ?? 0,
-//                taskId: info.taskID ?? 0,
-//                taskUserId: info.taskUserID ?? 0,
-//                note: textField.text ?? "",
-//                billable: info.billable ?? false,
-//                startedAt: "\(self.startDatePicker.date)",
-//                endedAt: "\(self.endDatePicker.date)"
-//            ) { result in
-//                switch result {
-//
-//                case .success(let final):
-//                    print(final)
-//                    print("success while patch")
-//                case .failure(_):
-//                    print("errror while patch")
-//                }
-//
-//            }
+
             NewShedule.shared.newScheduleCall(taskId: (UserDefaults.standard.value(forKey: "taskID") ?? 0) as! Int,
                                               taskUserId: (UserDefaults.standard.value(forKey: "ID") ?? 0) as! Int,
                                               note: self.textField.text ?? "",
                                               billable: true,
                                               startedAt: "\(self.startDatePicker.date)",
                                               endedAt: "\(self.endDatePicker.date)") { result in
-                print(result)
+//                print(result)
             }
             
         })
@@ -356,8 +335,8 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
             ) { result in
                 switch result {
                     
-                case .success(let final):
-                    print(final)
+                case .success(_):
+//                    print(final)
                     print("success while patch")
                 case .failure(_):
                     print("errror while patch")

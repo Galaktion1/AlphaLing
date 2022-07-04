@@ -74,10 +74,12 @@ class TimeTrackingApiService {
 
 class TimeTrackingViewModel {
     
+    static let shared = TimeTrackingViewModel()
+    
         
     private var apiService = TimeTrackingApiService()
     var reloadTableView: (()->Void)?
-    private var activityInfo = [TimeTrackingModel?] () {
+    var activityInfo = [TimeTrackingModel?] () {
         didSet {
             self.reloadTableView?()
         }
@@ -90,7 +92,7 @@ class TimeTrackingViewModel {
             case .success(let listOf):
                 print("succesful retrived data")
                 
-                print(listOf)
+//                print(listOf)
                 self?.activityInfo = listOf
             case .failure(let error):
                 print("error processing json data \(error)")

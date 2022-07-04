@@ -32,7 +32,7 @@ class CommentsViewController: UIViewController {
             commentTextField.text = nil
             if comment.count > 0 {
                 viewModel.apiCall(text: comment) { [self] result in
-                    print(result)
+//                    print(result)
                     
                     newComment = Comment(id: (UserDefaults.standard.value(forKey: "ID") as? String) , text: commentTextField.text ?? "", userID: UserDefaults.standard.value(forKey: "taskID") as? Int , modifiedAt: "", userOutputName: "Me")
                   
