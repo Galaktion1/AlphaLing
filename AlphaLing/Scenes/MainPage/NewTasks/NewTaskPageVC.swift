@@ -13,7 +13,7 @@ class NewTaskPageVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var customerNameLabel: UILabel!
-    @IBOutlet weak var deliveryNameLabel: UILabel!
+
     @IBOutlet weak var baseLabel: UILabel!
     @IBOutlet weak var fareLabel: UILabel!
     @IBOutlet weak var firstCommentAuthorLabel: UILabel!
@@ -108,8 +108,7 @@ class NewTaskPageVC: UIViewController {
                             date: "\(data.taskDate ?? "")",
                             taskTime: "\(data.taskTime ?? "")",
                             taskEndTime: "\(data.taskEndTime ?? "")",
-                            customer: "nil",
-                            deliveryName: "nil",
+                            customer: "\(data.descriptions?.autoDefault?.de?.removeHtmlTags() ?? "")",
                             baseText: "\(data.taskUsers?[0].supplierPriceData?.basePrice ?? 0)",
                             fareText: "nil")
         
@@ -124,7 +123,6 @@ class NewTaskPageVC: UIViewController {
                              taskTime: String,
                              taskEndTime: String,
                              customer: String,
-                             deliveryName: String,
                              baseText: String,
                              fareText: String) {
         
@@ -132,7 +130,7 @@ class NewTaskPageVC: UIViewController {
         dateLabel?.text = date
         timeLabel?.text = "\(taskTime.prefix(5)) - \(taskEndTime.prefix(5))"
         customerNameLabel?.text = customer
-        deliveryNameLabel?.text = deliveryName
+        
         baseLabel?.text = baseText
         fareLabel?.text = fareText
 

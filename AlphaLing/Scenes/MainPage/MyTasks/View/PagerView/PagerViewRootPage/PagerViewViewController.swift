@@ -90,9 +90,9 @@ class PagerViewViewController: UIViewController {
     
     let EntireVerticalStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.axis = .vertical
-        stackView.spacing = 1
+        stackView.spacing = 0
         
         return stackView
     }()
@@ -122,7 +122,6 @@ class PagerViewViewController: UIViewController {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.heightAnchor.constraint(equalToConstant: 40).isActive = true
         datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
-        
         
         return datePicker
     }()
@@ -170,20 +169,53 @@ class PagerViewViewController: UIViewController {
         return label
     }()
     
+    let verticalStackViewForCheckBoxAndTexxtField: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.spacing = 5
+        stackView.distribution = .fill
+        
+        return stackView
+    }()
+    
+    let billableLeabel: UILabel = {
+        let label = UILabel()
+        label.text = "Billable"
+        label.font = .systemFont(ofSize: 15)
+        
+        return label
+    }()
+    
+    private lazy var checkBoxButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        button.setBackgroundImage(UIImage(named: "UnCheckbox")!, for: .normal)
+        button.addTarget(self, action: #selector(checkBoxAction), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    let horizontalStackViewForCheckBoxButton: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.spacing = 7
+        
+        return stackView
+    }()
+    
     let whiteView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 5).isActive = true
         
         return view
     }()
     
-    let topView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        return view
-    }()
     
     func confHorizontalStackView() {
         startHorizontalStackView.frame = CGRect(x: 0, y: 0, width: 267, height: 50)
@@ -193,17 +225,42 @@ class PagerViewViewController: UIViewController {
         endHorizontalStackView.frame = CGRect(x: 0, y: 0, width: 267, height: 50)
         endHorizontalStackView.addArrangedSubview(endLabel)
         endHorizontalStackView.addArrangedSubview(endDatePicker)
+        
+        verticalStackViewForCheckBoxAndTexxtField.frame = CGRect(x: 0, y: 0, width: 267, height: 50)
+        
+        horizontalStackViewForCheckBoxButton.addArrangedSubview(whiteView)
+        horizontalStackViewForCheckBoxButton.addArrangedSubview(checkBoxButton)
+        horizontalStackViewForCheckBoxButton.addArrangedSubview(billableLeabel)
+        verticalStackViewForCheckBoxAndTexxtField.addArrangedSubview(horizontalStackViewForCheckBoxButton)
+        verticalStackViewForCheckBoxAndTexxtField.addArrangedSubview(textField)
     }
     
     func confVerticalStackView() {
-        EntireVerticalStackView.frame = CGRect(x: 0, y: 00, width: 267, height: 230)
-        EntireVerticalStackView.addArrangedSubview(topView)
+        EntireVerticalStackView.frame = CGRect(x: 0, y: 00, width: 267, height: 220)
         EntireVerticalStackView.addArrangedSubview(startHorizontalStackView)
-        EntireVerticalStackView.addArrangedSubview(whiteView)
         EntireVerticalStackView.addArrangedSubview(endHorizontalStackView)
-
-        EntireVerticalStackView.addArrangedSubview(textField)
+        EntireVerticalStackView.addArrangedSubview(verticalStackViewForCheckBoxAndTexxtField)
         
+    }
+    
+    
+    @objc func checkBoxAction() {
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+            self.checkBoxButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        }) { (success) in
+            if self.checkBoxButton.isSelected {
+                self.checkBoxButton.setImage(UIImage(named: "UnCheckbox")!, for: .selected)
+                self.checkBoxButton.isSelected.toggle()
+            }
+            else {
+                self.checkBoxButton.setImage(UIImage(named: "Checkbox")!, for: .selected)
+                self.checkBoxButton.isSelected.toggle()
+            }
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+                self.checkBoxButton.transform = .identity
+            }, completion: nil)
+        }
+
     }
     
 
@@ -288,9 +345,12 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
             endDatePicker.setDate(endDate, animated: true)
         }
         
+        
+        
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertController.Style.alert)
         
         alertController.view.addSubview(EntireVerticalStackView)
+        
 
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
@@ -320,6 +380,7 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         let startDate = dateFormatter.date(from: startedAtTime)
+        textField.text = info.note
         
         let endedAtTime: String = "\(info.endedAt?[0 ... 9] ?? "0000-00-00") \(info.endedAt?[11 ... 15] ?? "00:00")"
         let endDate = dateFormatter.date(from: endedAtTime)
@@ -331,6 +392,11 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         
         if let endDate = endDate {
             endDatePicker.setDate(endDate, animated: true)
+        }
+        
+        if info.billable ?? true {
+            checkBoxButton.isSelected = true
+            checkBoxButton.setImage(UIImage(named: "Checkbox")!, for: .selected)
         }
         
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertController.Style.alert)
@@ -346,7 +412,7 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
                 taskId: info.taskID ?? 0,
                 taskUserId: info.taskUserID ?? 0,
                 note: textField.text ?? "",
-                billable: info.billable ?? false,
+                billable: checkBoxButton.isSelected,
                 startedAt: "\(self.startDatePicker.date)",
                 endedAt: "\(self.endDatePicker.date)"
             ) { result in

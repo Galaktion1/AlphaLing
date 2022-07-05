@@ -19,7 +19,6 @@ class MyTasksViewController: UIViewController {
     let cellSpacingHeight: CGFloat = 10
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadMyTaskData()
@@ -34,9 +33,6 @@ class MyTasksViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
-    
-    
     
     private func loadMyTaskData() {
         viewModel.fetchMyTasksData()

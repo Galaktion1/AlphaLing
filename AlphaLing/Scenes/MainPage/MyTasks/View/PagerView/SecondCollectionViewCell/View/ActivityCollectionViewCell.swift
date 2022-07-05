@@ -25,7 +25,6 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     }
     
     
-    
     var delegate: ActivityCollectionViewCellDelegate?
     
     private let viewModel = TimeTrackingViewModel()
