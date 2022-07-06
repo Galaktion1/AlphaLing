@@ -26,7 +26,7 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var fareLabel: UILabel!
     @IBOutlet weak var firstCommentAuthorLabel: UILabel!
     @IBOutlet weak var fistCommentLabel: UILabel!
-    
+    @IBOutlet weak var seeMoreLabel: UILabel!
     
     var delegate: PagerViewMainCollectionViewCellDelegate?
     var taskData: TaskData?
@@ -40,8 +40,17 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         self.scrollView.contentSize.height = 1.0
         // Initialization code
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapFunction))
+        seeMoreLabel.isUserInteractionEnabled = true
+        seeMoreLabel.addGestureRecognizer(tap)
     }
-
+    
+    
+    @objc func tapFunction(sender:UITapGestureRecognizer) {
+        delegate?.mustPresent(comments: (taskData?.taskUsers?[0].comments) ?? [Comment(id: "", text: "", userID: 0, modifiedAt: "", userOutputName: "")])
+    }
+    
     
     func updateMainUIView(data: TaskData) {
         taskData = data

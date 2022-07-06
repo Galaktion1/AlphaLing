@@ -66,12 +66,16 @@ extension NewTasksViewController: UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        
         let sb = UIStoryboard(name: "NewTasksPageStoryboard", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "NewTaskPageVC") as! NewTaskPageVC
         
         let data = viewModel.cellForRowAt(indexPath: indexPath)
+        UserDefaults.standard.set(data.taskUsers?[0].id, forKey: "ID")
+        
         vc.data = data
-
         
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)

@@ -8,6 +8,7 @@
 import UIKit
 
 class UploadedFilesTableViewCell: UITableViewCell {
+    
 
     @IBOutlet weak var nameOfFileLabel: UILabel!
     

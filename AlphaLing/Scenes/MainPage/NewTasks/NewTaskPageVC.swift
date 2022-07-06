@@ -19,6 +19,8 @@ class NewTaskPageVC: UIViewController {
     @IBOutlet weak var fistCommentLabel: UILabel!
     @IBOutlet weak var bottomButtonsStackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var seeMoreLabel: UILabel!
+    
     
     var data: TaskData?
 
@@ -28,14 +30,38 @@ class NewTaskPageVC: UIViewController {
         view.backgroundColor = .white
         guard let data = data else { return }
         updateMainUIView(data: data)
+        
         if data.taskUsers?[0].status == "offer" {
             bottomButtonsStackView.arrangedSubviews.forEach { $0.removeFromSuperview()
                 self.showAlert(alertText: "ABOUT TASK", alertMessage: "THIS TASK HAS OFFER STATUS", addActionTitle: "OK")
             }
         }
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapFunction))
+        seeMoreLabel.isUserInteractionEnabled = true
+        seeMoreLabel.addGestureRecognizer(tap)
+        
     }
     
+    @IBAction func addCommentButton(_ sender: UIButton) {
+        presentCommentsVC()
+    }
+    
+    
+    @objc func tapFunction(sender:UITapGestureRecognizer) {
+        presentCommentsVC()
+    }
+    
+    
+    
+    private func presentCommentsVC() {
+        let sb = UIStoryboard(name: "Comments", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
+
+        vc.comments = data?.taskUsers?[0].comments ?? []
+
+        self.present(vc, animated: true, completion: nil)
+    }
     
     @IBAction func newTaskAcceptButton(_ sender: UIButton) {
         let apiCall = NewTaskAcceptAPICall()

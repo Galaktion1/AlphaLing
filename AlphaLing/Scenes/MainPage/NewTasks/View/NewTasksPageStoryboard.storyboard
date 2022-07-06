@@ -155,6 +155,9 @@
                                                                     <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
                                                                     <color key="baseForegroundColor" name="AccentColor"/>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="addCommentButton:" destination="PMf-jI-ClS" eventType="touchUpInside" id="w42-EO-A3z"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -343,6 +346,7 @@
                         <outlet property="fistCommentLabel" destination="JJj-fo-Fd0" id="pmt-81-AoA"/>
                         <outlet property="nameTitleLabel" destination="1HK-dh-Aiy" id="52Y-lQ-PCN"/>
                         <outlet property="scrollView" destination="5xP-R7-f7k" id="W3x-tZ-Dja"/>
+                        <outlet property="seeMoreLabel" destination="Vxf-GM-ibH" id="QcH-ud-OVE"/>
                         <outlet property="timeLabel" destination="iyW-d8-lSr" id="xdw-t5-3cL"/>
                     </connections>
                 </viewController>

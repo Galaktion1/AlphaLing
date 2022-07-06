@@ -8,6 +8,9 @@
 import Foundation
 
 class CommentsViewModel {
+    
+    static let comments = CommentsViewModel()
+    
     func addComment(text: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
         
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-users/\(UserDefaults.standard.string(forKey: "ID")!)/comments") else { return }

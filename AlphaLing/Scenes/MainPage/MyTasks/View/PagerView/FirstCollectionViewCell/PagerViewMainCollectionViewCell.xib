@@ -347,6 +347,7 @@
                 <outlet property="fistCommentLabel" destination="Hk3-NG-hbe" id="tQn-MQ-JST"/>
                 <outlet property="nameTitleLabel" destination="3st-5g-iQl" id="ehp-q4-ukH"/>
                 <outlet property="scrollView" destination="M0J-nX-WD6" id="FGD-4G-luf"/>
+                <outlet property="seeMoreLabel" destination="rjd-uE-G8G" id="CXG-so-RH9"/>
                 <outlet property="timeLabel" destination="HXZ-WO-NmC" id="kgh-m2-yTt"/>
             </connections>
             <point key="canvasLocation" x="871.01449275362324" y="127.90178571428571"/>
