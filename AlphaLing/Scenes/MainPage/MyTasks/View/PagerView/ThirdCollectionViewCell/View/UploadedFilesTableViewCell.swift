@@ -39,7 +39,7 @@ class UploadedFilesTableViewCell: UITableViewCell {
     
     func updateCells(documentsInfo: DocumentFetchingResponseModel) {
         let date = (documentsInfo.modifiedAt ?? "0000-00-00T00:00").prefix(16).replacingOccurrences(of: "T", with: " ")
-        updateUI(nameOfFile: documentsInfo.filename ?? "Unnamed", sizeOfFile: "\((documentsInfo.size ?? 0) / 1000)MB \(date)")
+        updateUI(nameOfFile: documentsInfo.filename ?? "Unnamed", sizeOfFile: "\((documentsInfo.size ?? 0) / 10000)MB \(date)")
     }
     
     

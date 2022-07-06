@@ -71,9 +71,7 @@ extension NewTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         
         let data = viewModel.cellForRowAt(indexPath: indexPath)
         vc.data = data
-        if data.taskUsers?[0].status == "offer" {
-//            vc.bottomButtonsStackView.removeFromSuperview()
-        }
+
         
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)

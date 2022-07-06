@@ -13,20 +13,27 @@ class NewTaskPageVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var customerNameLabel: UILabel!
-
     @IBOutlet weak var baseLabel: UILabel!
     @IBOutlet weak var fareLabel: UILabel!
     @IBOutlet weak var firstCommentAuthorLabel: UILabel!
     @IBOutlet weak var fistCommentLabel: UILabel!
     @IBOutlet weak var bottomButtonsStackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var data: TaskData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView.contentSize.height = 1.0
         view.backgroundColor = .white
         guard let data = data else { return }
         updateMainUIView(data: data)
+        if data.taskUsers?[0].status == "offer" {
+            bottomButtonsStackView.arrangedSubviews.forEach { $0.removeFromSuperview()
+                self.showAlert(alertText: "ABOUT TASK", alertMessage: "THIS TASK HAS OFFER STATUS", addActionTitle: "OK")
+            }
+        }
+        
     }
     
     

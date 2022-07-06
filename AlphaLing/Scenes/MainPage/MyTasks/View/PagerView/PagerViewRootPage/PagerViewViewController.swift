@@ -16,7 +16,7 @@ class PagerViewViewController: UIViewController {
     
     @IBOutlet weak var activeIndicatorView: UIView!
     
-    private let viewModel = MyTasksViewModel()
+    let viewModel = MyTasksViewModel()
     var data: TaskData?
     private let screenWidt = UIScreen.main.bounds.width
     
@@ -34,6 +34,7 @@ class PagerViewViewController: UIViewController {
         confHorizontalStackView()
         confVerticalStackView()
         activeIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        viewModel.deactiveButtons(button1: activityButtonOutlet, button2: documentButtonOutlet)
     }
     
     private func moveToNextCollectionViewCell(item: Int) {
@@ -46,6 +47,8 @@ class PagerViewViewController: UIViewController {
         )
         collectionView.isPagingEnabled = true
     }
+    
+    
     
    
     
@@ -266,12 +269,16 @@ class PagerViewViewController: UIViewController {
 
 }
 
-extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
         
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 200)
+        }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         

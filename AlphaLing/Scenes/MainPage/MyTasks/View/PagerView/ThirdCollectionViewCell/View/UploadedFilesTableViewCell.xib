@@ -20,7 +20,7 @@
                         <rect key="frame" x="30" y="27" width="331" height="50"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="6Bv-7O-uhD">
-                                <rect key="frame" x="0.0" y="0.0" width="247" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="230" height="50"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lob-34-1Us">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -31,10 +31,10 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2r3-Wy-1vq">
-                                        <rect key="frame" x="47" y="0.0" width="200" height="40"/>
+                                        <rect key="frame" x="47" y="0.0" width="183" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMG_213123123123131.jpg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vs-2l-Xd3">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="19"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="Ryz-en-64R"/>
                                                 </constraints>
@@ -43,7 +43,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.02MB 02/05/2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg0-oN-OuN">
-                                                <rect key="frame" x="0.0" y="24" width="200" height="16"/>
+                                                <rect key="frame" x="0.0" y="24" width="183" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -59,13 +59,6 @@
                                     <constraint firstAttribute="height" constant="50" id="tUr-oX-7ZR"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOS-A9-L7K">
-                                <rect key="frame" x="287" y="0.0" width="44" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system">
-                                    <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" constant="331" id="OVJ-KI-V2X"/>
@@ -89,6 +82,5 @@
     </objects>
     <resources>
         <image name="doc" catalog="system" width="115" height="128"/>
-        <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>

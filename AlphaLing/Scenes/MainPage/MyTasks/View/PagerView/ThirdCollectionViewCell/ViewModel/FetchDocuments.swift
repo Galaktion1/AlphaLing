@@ -78,7 +78,7 @@ class FetchDocumentsViewModel {
         
     private var apiCall = FetchDocumentsAPICall()
     var reloadTableView: (()->Void)?
-    private var documents = [DocumentFetchingResponseModel?] () {
+    var documents = [DocumentFetchingResponseModel?] () {
         didSet {
             self.reloadTableView?()
         }
@@ -112,9 +112,7 @@ class FetchDocumentsViewModel {
     }
     
     
-    
-    
-    func requestNativeImageUpload(image: UIImage) {
+    func requestNativeImageUpload(image: UIImage, completionHandler: @escaping (Result<Int, Error>) -> Void) {
 
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/assets/document-files/upload/task/\(UserDefaults.standard.value(forKey: "taskDataID") ?? "nil")") else { return }
         let boundary = "Boundary-\(NSUUID().uuidString)"
@@ -137,16 +135,23 @@ class FetchDocumentsViewModel {
         session.dataTask(with: request) { (data, response, error) in
             if let response = response {
                 print(response)
+                
             }
+            
+            
             
             if let data = data {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
+                    completionHandler(.success(1))
                 } catch {
+                    completionHandler(.failure(error))
                     print(error)
                 }
             }
+            
+            
         }.resume()
     }
 

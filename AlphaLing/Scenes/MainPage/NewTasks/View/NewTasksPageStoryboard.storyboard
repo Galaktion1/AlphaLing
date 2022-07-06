@@ -342,6 +342,7 @@
                         <outlet property="firstCommentAuthorLabel" destination="vZr-nS-uhA" id="dmu-zd-ROU"/>
                         <outlet property="fistCommentLabel" destination="JJj-fo-Fd0" id="pmt-81-AoA"/>
                         <outlet property="nameTitleLabel" destination="1HK-dh-Aiy" id="52Y-lQ-PCN"/>
+                        <outlet property="scrollView" destination="5xP-R7-f7k" id="W3x-tZ-Dja"/>
                         <outlet property="timeLabel" destination="iyW-d8-lSr" id="xdw-t5-3cL"/>
                     </connections>
                 </viewController>

@@ -77,6 +77,31 @@ extension DocumentsCollectionViewCell: UITableViewDelegate, UITableViewDataSourc
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            guard let id = viewModel.getActivityInfo()[indexPath.section]?.id else { return }
+            FileDeleteAPICall.shared.deleteFile(id: id) { result in
+                switch result {
+                    
+                case .success(let intNum):
+                    print(intNum)
+                    tableView.beginUpdates()
+                    self.viewModel.documents.remove(at: indexPath.section)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.endUpdates()
+                    
+                case .failure(_):
+                    print("error while deleting")
+                }
+            }
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = viewModel.cellForRowAt(indexPath: indexPath)
@@ -164,7 +189,10 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocume
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let documentURL = urls.first else { return }
         
-        FileUploadAPICall.shared.uploadDocumentRequest(url: documentURL)
+        FileUploadAPICall.shared.uploadDocumentRequest(url: documentURL) { result in
+            self.viewModel.switchResult(result: result, fileType: "Document", viewController: self)
+            
+        }
     }
 }
 
@@ -176,7 +204,9 @@ extension PagerViewViewController: UIImagePickerControllerDelegate, UINavigation
         
         let uploadImage = FetchDocumentsViewModel()
         
-        uploadImage.requestNativeImageUpload(image: image)
+        uploadImage.requestNativeImageUpload(image: image) { result in
+            self.viewModel.switchResult(result: result, fileType: "Image", viewController: self)
+        }
         
         picker.dismiss(animated: true)
     }

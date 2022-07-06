@@ -14,6 +14,8 @@ protocol PagerViewMainCollectionViewCellDelegate {
 class PagerViewMainCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameTitleLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -36,7 +38,7 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.scrollView.contentSize.height = 1.0
         // Initialization code
     }
 

@@ -133,7 +133,7 @@ struct PriceData: Codable {
 }
 
 struct SupplierOfferPriceData: Codable {
-    let basePrice: Int?
+    let basePrice: Double?
 }
 // MARK: - Encode/decode helpers
 

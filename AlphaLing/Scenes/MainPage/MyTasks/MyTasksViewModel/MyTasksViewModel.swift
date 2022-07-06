@@ -126,6 +126,20 @@ class MyTasksViewModel {
         return taskData
     }
     
+    func switchResult(result: Result<Int, Error>, fileType: String, viewController: UIViewController) {
+        
+        switch result {
+        case .success(_):
+            DispatchQueue.main.async {
+                viewController.showAlert(alertText: "SUCCESS", alertMessage: "\(fileType) was successfully uploaded", addActionTitle: "Done")
+            }
+        case .failure(let error):
+            DispatchQueue.main.async {
+                viewController.showAlert(alertText: "FAIL", alertMessage: "\(error)", addActionTitle: "Done")
+            }
+        }
+    }
+    
     
 }
 

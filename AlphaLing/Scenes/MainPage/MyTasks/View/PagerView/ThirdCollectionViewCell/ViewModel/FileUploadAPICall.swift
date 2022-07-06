@@ -11,7 +11,7 @@ import UniformTypeIdentifiers
 class FileUploadAPICall {
     static let shared = FileUploadAPICall()
     
-    func uploadDocumentRequest(url: URL)
+    func uploadDocumentRequest(url: URL, completionHandler: @escaping (Result<Int, Error>) -> Void)
         {
             let boundary = "Boundary-\(NSUUID().uuidString)"
 
@@ -53,8 +53,11 @@ class FileUploadAPICall {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
                         print(json)
+                        completionHandler(.success(1))
+                        
                     } catch {
                         print(error)
+                        completionHandler(.failure(error))
                     }
                 }
             }.resume()

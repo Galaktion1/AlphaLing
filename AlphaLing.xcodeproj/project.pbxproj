@@ -37,6 +37,7 @@
 		9A2543B32850CC2D0006B485 /* PagerViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2543B22850CC2D0006B485 /* PagerViewViewController.swift */; };
 		9A2543B72850D8130006B485 /* PagerViewMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2543B52850D8130006B485 /* PagerViewMainCollectionViewCell.swift */; };
 		9A2543B82850D8130006B485 /* PagerViewMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2543B62850D8130006B485 /* PagerViewMainCollectionViewCell.xib */; };
+		9A3605E8287581DD00D00719 /* FileDeleteAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3605E7287581DD00D00719 /* FileDeleteAPICall.swift */; };
 		9A45BB7F286EE89E00BF47FD /* FileUploadAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */; };
 		9A466D5C284DED3A006FDE81 /* NewTaskPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */; };
 		9A466D5E284E0586006FDE81 /* NewTasksPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */; };
@@ -93,6 +94,7 @@
 		9A2543B22850CC2D0006B485 /* PagerViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerViewViewController.swift; sourceTree = "<group>"; };
 		9A2543B52850D8130006B485 /* PagerViewMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerViewMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A2543B62850D8130006B485 /* PagerViewMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PagerViewMainCollectionViewCell.xib; sourceTree = "<group>"; };
+		9A3605E7287581DD00D00719 /* FileDeleteAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDeleteAPICall.swift; sourceTree = "<group>"; };
 		9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploadAPICall.swift; sourceTree = "<group>"; };
 		9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPageVC.swift; sourceTree = "<group>"; };
 		9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTasksPageStoryboard.storyboard; sourceTree = "<group>"; };
@@ -161,10 +163,10 @@
 		9A070946284697810053A78D /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				9A24690E28475EB5000AD93F /* MainTabBar */,
 				9A2468F5284747D1000AD93F /* MyTasks */,
 				9A2468FC284748CF000AD93F /* NewTasks */,
 				9A24690628474989000AD93F /* Settings */,
-				9A24690E28475EB5000AD93F /* MainTabBar */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -194,6 +196,7 @@
 			children = (
 				9A1A3951286AECEF00B89A76 /* FetchDocuments.swift */,
 				9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */,
+				9A3605E7287581DD00D00719 /* FileDeleteAPICall.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -325,7 +328,6 @@
 		9AA251BB284604F4002516D3 /* AlphaLing */ = {
 			isa = PBXGroup;
 			children = (
-				9AA251CA284604F9002516D3 /* Info.plist */,
 				9AA251D128460556002516D3 /* Resources */,
 				9AA251D028460538002516D3 /* SupportingFiles */,
 				9AA251D22846059D002516D3 /* Scenes */,
@@ -347,6 +349,7 @@
 		9AA251D128460556002516D3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9AA251CA284604F9002516D3 /* Info.plist */,
 				9AA251C5284604F9002516D3 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -577,6 +580,7 @@
 				9A15F73A2847F8E700C775B5 /* MyTasksViewModel.swift in Sources */,
 				9AE04B0E28606C4700DB95AA /* ScheduleUpdateAPICall.swift in Sources */,
 				9A0DD824285B1035007B075A /* ActivityCollectionViewCell.swift in Sources */,
+				9A3605E8287581DD00D00719 /* FileDeleteAPICall.swift in Sources */,
 				9A09F9882865BDDC00373390 /* TaskCountOfferAPICall.swift in Sources */,
 				9A03E37E2852045C004DB5FC /* LogOutViewModel.swift in Sources */,
 				9A1A3955286AEDE400B89A76 /* DocumentFetchingResponseModel.swift in Sources */,
@@ -735,7 +739,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9BZ4794R5K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AlphaLing/Info.plist;
+				INFOPLIST_FILE = AlphaLing/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LoginPage;
@@ -763,7 +767,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9BZ4794R5K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AlphaLing/Info.plist;
+				INFOPLIST_FILE = AlphaLing/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LoginPage;
