@@ -86,18 +86,19 @@ class TimeTrackingViewModel {
     }
     
     func fetchTimeTrackingData() {
+        
         apiService.getTimeTrackingData { [weak self] (result) in
             switch result {
                 
             case .success(let listOf):
-                print("succesful retrived data")
-                
-//                print(listOf)
+                print("succesful retrived timetracking data")
                 self?.activityInfo = listOf
+         
             case .failure(let error):
                 print("error processing json data \(error)")
             }
         }
+        
     }
     
     func numberOfRowsInSection() -> Int {
@@ -110,6 +111,10 @@ class TimeTrackingViewModel {
     
     func getActivityInfo() -> [TimeTrackingModel?] {
         activityInfo
+    }
+    
+    func addActivity(activity: TimeTrackingModel) {
+        activityInfo.append(activity)
     }
     
 }

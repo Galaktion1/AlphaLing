@@ -34,10 +34,9 @@ class MyTasksViewController: UIViewController {
         }
     }
     
-    private func loadMyTaskData() {
-        viewModel.fetchMyTasksData()
+    func loadMyTaskData() {
+        viewModel.fetchMyTasksData(myTastView: view)
     }
-    
     
 }
 
@@ -65,6 +64,7 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         headerView.backgroundColor = UIColor.clear
         return headerView
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

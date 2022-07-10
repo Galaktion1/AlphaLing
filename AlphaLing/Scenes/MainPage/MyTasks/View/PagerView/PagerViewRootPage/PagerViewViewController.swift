@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class PagerViewViewController: UIViewController {
     
     @IBOutlet weak var mainButtonOutlet: UIButton!
@@ -19,6 +20,7 @@ class PagerViewViewController: UIViewController {
     let viewModel = MyTasksViewModel()
     var data: TaskData?
     private let screenWidt = UIScreen.main.bounds.width
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -320,6 +322,7 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
 
 
 extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
+    
     func mustPresent(comments: [Comment]) {
         let sb = UIStoryboard(name: "Comments", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
@@ -334,6 +337,7 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
 
 
 extension PagerViewViewController: ActivityCollectionViewCellDelegate {
+    
     func mustPresentNewScheduleAlert() {
         let startedAtTime: String = "\(startDatePicker.date)"
         let dateFormatter = DateFormatter()
@@ -367,11 +371,40 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
             NewShedule.shared.newScheduleCall(taskId: (UserDefaults.standard.value(forKey: "taskID") ?? 0) as! Int,
                                               taskUserId: (UserDefaults.standard.value(forKey: "ID") ?? 0) as! Int,
                                               note: self.textField.text ?? "",
-                                              billable: true,
+                                              billable: self.checkBoxButton.isSelected,
                                               startedAt: "\(self.startDatePicker.date)",
                                               endedAt: "\(self.endDatePicker.date)") { result in
-//                print(result)
+                
+                
+                
+                
+//                let api = TimeTrackingApiService()
+//                var schedules = [TimeTrackingModel?]() {
+//                    didSet {
+//                        DispatchQueue.main.async {
+//                            tableView.reloadData()
+//                        }
+//
+//                        print("dareloudda mgoni")
+//                    }
+//                }
+//                api.getTimeTrackingData {  res in
+//                    switch res {
+//                    case.success(let sched):
+//                        schedules = sched
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                }
+
             }
+            
+           
+            //
+                                                             
+//            tableView.beginUpdates()
+//            tableView.insertSections(IndexSet(integer: schedules.count - 1), with: .automatic)
+//            tableView.endUpdates()
             
         })
         alertController.addAction(somethingAction)
@@ -440,8 +473,30 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    
+    
+    func askSomethingWithAlert(alertText: String,
+                               alertMessage: String,
+                               actionTitle: String,
+                               action: ((UIAlertAction) -> Void)?
+    ) {
+        self.myTaskActionAlert(alertText: alertText, alertMessage: alertMessage, addActionTitle: actionTitle, action: action)
+    }
+    
+    func dismiss() {
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "MyTasksStoryboard", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "MyTasksViewController")
+            var viewcontrollers = self.navigationController?.viewControllers
+            viewcontrollers?.removeAll()
+            viewcontrollers?.append(vc)
+            self.navigationController?.setViewControllers(viewcontrollers!, animated: true)
+            
+        }
+    }
+    
 }
-
 
 
 

@@ -9,6 +9,12 @@ import UIKit
 
 protocol PagerViewMainCollectionViewCellDelegate {
     func mustPresent(comments: [Comment])
+    func askSomethingWithAlert(alertText: String,
+                               alertMessage: String,
+                               actionTitle: String,
+                               action: ((UIAlertAction) -> Void)?)
+    
+    func dismiss()
 }
 
 class PagerViewMainCollectionViewCell: UICollectionViewCell {
@@ -31,10 +37,7 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     var delegate: PagerViewMainCollectionViewCellDelegate?
     var taskData: TaskData?
     
-    @IBAction func addCommentButton(_ sender: UIButton) {
-        delegate?.mustPresent(comments: (taskData?.taskUsers?[0].comments) ?? [Comment(id: "", text: "", userID: 0, modifiedAt: "", userOutputName: "")])
-    }
-    
+    let viewModel = MainViewViewModel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +48,37 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
         seeMoreLabel.isUserInteractionEnabled = true
         seeMoreLabel.addGestureRecognizer(tap)
     }
+    
+    @IBAction func addCommentButton(_ sender: UIButton) {
+        delegate?.mustPresent(comments: (taskData?.taskUsers?[0].comments) ?? [Comment(id: "", text: "", userID: 0, modifiedAt: "", userOutputName: "")])
+    }
+    
+    
+    @IBAction func completeTaskButton(_ sender: UIButton) {
+        guard let id = taskData?.id else { return }
+        
+        self.delegate?.askSomethingWithAlert(alertText: "Task Accept", alertMessage: "Do you want to complete this task?", actionTitle: "complete") { _ in
+            
+            self.viewModel.acceptMyTask(id: id) { _ in
+                print("Task Accepted succesfully")
+                self.delegate?.dismiss()
+            }
+        }
+        
+    }
+    
+    @IBAction func cancelTaskButton(_ sender: UIButton) {
+        guard let id = taskData?.id else { return }
+        
+        self.delegate?.askSomethingWithAlert(alertText: "Task Rejection", alertMessage: "Do you want to cancel this task?", actionTitle: "Yes") { _ in
+            self.viewModel.cancelMyTask(id: id) {  _ in
+                print("Task rejected succesfully")
+                self.delegate?.dismiss()
+            }
+        }
+    }
+    
+    
     
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {

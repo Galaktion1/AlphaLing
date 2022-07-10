@@ -9,26 +9,24 @@ import UIKit
 
 protocol ActivityCollectionViewCellDelegate {
     func mustPresentAlert(info: TimeTrackingModel)
-    
     func mustPresentNewScheduleAlert()
+    
 }
 
 class ActivityCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var plusButtonBackgroundView: UIView!
+    private let viewModel = TimeTrackingViewModel()
     
+    var delegate: ActivityCollectionViewCellDelegate?
+    
+    var activityInfo = [TimeTrackingModel?]()
     
     @IBAction func plusButton(_ sender: UIButton) {
         delegate?.mustPresentNewScheduleAlert()
     }
-    
-    
-    var delegate: ActivityCollectionViewCellDelegate?
-    
-    private let viewModel = TimeTrackingViewModel()
-    
     
     
     override func awakeFromNib() {
@@ -40,11 +38,12 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         
         
         tableView.register(ScheduleTableViewCell.nib(), forCellReuseIdentifier: ScheduleTableViewCell.identifier)
-        // Initialization code
         
         viewModel.reloadTableView = {
             self.tableView.reloadData()
         }
+        
+        
     }
     
     private func loadNewTaskData() {
@@ -87,18 +86,13 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
 
-            ScheduleDelete.shared.deleteApiCall(id: viewModel.activityInfo[indexPath.section]?.id ?? 0) { result in
-                switch result {
-                    
-                case .success(let intNum):
-                    print(intNum)
-                    tableView.beginUpdates()
-                    self.viewModel.activityInfo.remove(at: indexPath.section)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.endUpdates()
-                case .failure(_):
-                    print("error while deleting")
-                }
+            ScheduleDelete.shared.deleteApiCall(id: viewModel.getActivityInfo()[indexPath.section]?.id ?? 0) { _ in
+                let viewModel = TimeTrackingViewModel()
+                viewModel.activityInfo.remove(at: indexPath.section)
+                
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
             }
         }
     }

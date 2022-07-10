@@ -13,6 +13,9 @@
 		9A070948284697A00053A78D /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A070947284697A00053A78D /* MainTabBar.storyboard */; };
 		9A07094A284697DD0053A78D /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A070949284697DD0053A78D /* MainTabBarViewController.swift */; };
 		9A09F9882865BDDC00373390 /* TaskCountOfferAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A09F9872865BDDC00373390 /* TaskCountOfferAPICall.swift */; };
+		9A0C79582876BC8600D455AC /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C79572876BC8600D455AC /* ActivityView.swift */; };
+		9A0C795A2876C4F700D455AC /* FirstCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C79592876C4F700D455AC /* FirstCollectionViewCellViewModel.swift */; };
+		9A0C795C2876D47000D455AC /* NavigationControllerrr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0C795B2876D47000D455AC /* NavigationControllerrr.swift */; };
 		9A0DD824285B1035007B075A /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0DD822285B1035007B075A /* ActivityCollectionViewCell.swift */; };
 		9A0DD825285B1035007B075A /* ActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A0DD823285B1035007B075A /* ActivityCollectionViewCell.xib */; };
 		9A0DD82B285B1102007B075A /* DocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */; };
@@ -70,6 +73,9 @@
 		9A070947284697A00053A78D /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		9A070949284697DD0053A78D /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		9A09F9872865BDDC00373390 /* TaskCountOfferAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCountOfferAPICall.swift; sourceTree = "<group>"; };
+		9A0C79572876BC8600D455AC /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		9A0C79592876C4F700D455AC /* FirstCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		9A0C795B2876D47000D455AC /* NavigationControllerrr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerrr.swift; sourceTree = "<group>"; };
 		9A0DD822285B1035007B075A /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		9A0DD823285B1035007B075A /* ActivityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCollectionViewCell.xib; sourceTree = "<group>"; };
 		9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -282,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				9A2468FA28474860000AD93F /* MyTasksStoryboard.storyboard */,
+				9A0C795B2876D47000D455AC /* NavigationControllerrr.swift */,
 				9AEBA960285C7A2500AA66FB /* MyTaskCell */,
 				9A2543AF2850CBF50006B485 /* PagerView */,
 			);
@@ -305,6 +312,7 @@
 				9ADCC8DE285877F700827255 /* Comments */,
 				9A2543B62850D8130006B485 /* PagerViewMainCollectionViewCell.xib */,
 				9A2543B52850D8130006B485 /* PagerViewMainCollectionViewCell.swift */,
+				9A0C79592876C4F700D455AC /* FirstCollectionViewCellViewModel.swift */,
 			);
 			path = FirstCollectionViewCell;
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				9AA251D428460E67002516D3 /* UIElementsExtensions.swift */,
+				9A0C79572876BC8600D455AC /* ActivityView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -569,6 +578,7 @@
 				9A466D5C284DED3A006FDE81 /* NewTaskPageVC.swift in Sources */,
 				9A246900284748FB000AD93F /* NewTasksViewController.swift in Sources */,
 				9A0DD833285B2839007B075A /* UploadedFilesTableViewCell.swift in Sources */,
+				9A0C795A2876C4F700D455AC /* FirstCollectionViewCellViewModel.swift in Sources */,
 				9AA251BD284604F4002516D3 /* AppDelegate.swift in Sources */,
 				9AEBA965285C7B2700AA66FB /* TimeTrackingModel.swift in Sources */,
 				9A03E37C2852025C004DB5FC /* LogOutAPICall.swift in Sources */,
@@ -582,7 +592,9 @@
 				9A0DD824285B1035007B075A /* ActivityCollectionViewCell.swift in Sources */,
 				9A3605E8287581DD00D00719 /* FileDeleteAPICall.swift in Sources */,
 				9A09F9882865BDDC00373390 /* TaskCountOfferAPICall.swift in Sources */,
+				9A0C795C2876D47000D455AC /* NavigationControllerrr.swift in Sources */,
 				9A03E37E2852045C004DB5FC /* LogOutViewModel.swift in Sources */,
+				9A0C79582876BC8600D455AC /* ActivityView.swift in Sources */,
 				9A1A3955286AEDE400B89A76 /* DocumentFetchingResponseModel.swift in Sources */,
 				9ADCC8EC2858960400827255 /* CommentsViewModel.swift in Sources */,
 				9A2543B72850D8130006B485 /* PagerViewMainCollectionViewCell.swift in Sources */,

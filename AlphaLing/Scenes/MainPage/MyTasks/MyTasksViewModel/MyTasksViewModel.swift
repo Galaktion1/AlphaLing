@@ -19,7 +19,7 @@ class TaskApiService {
     }
     
     
-    func getMyTasksData(completion: @escaping (Result<TaskModel, Error>) -> Void) {
+    func getMyTasksData(myTaskView: UIView, completion: @escaping (Result<TaskModel, Error>) -> Void) {
         
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/tasks/\(linkSnippet)") else { return }
         
@@ -29,32 +29,48 @@ class TaskApiService {
         request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        
+        ActivityView.shared.showActivity(myView: myTaskView, myTitle: "Loading...")
         dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
+                DispatchQueue.main.async {
+                    ActivityView.shared.removeActivity(myView: myTaskView)
+                }
+                
+                
+                
                 completion(.failure(error))
                 print("error -> \(error)")
             }
             
             guard let response = response as? HTTPURLResponse else {
+                
+                
                 print("Empty Response")
                 return
             }
             print("Response status code: \(response.statusCode)")
             
             guard let data = data else {
+                DispatchQueue.main.async {
+                    ActivityView.shared.removeActivity(myView: myTaskView)
+                }
                 print("Empty data")
                 return
             }
             
             do {
+                
                 let decoder = JSONDecoder()
                 let jsonData = try decoder.decode(TaskModel.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
+                    ActivityView.shared.removeActivity(myView: myTaskView)
                 }
             }
             catch let error {
+                DispatchQueue.main.async {
+                    ActivityView.shared.removeActivity(myView: myTaskView)
+                }
                 completion(.failure(error))
             }
             
@@ -78,8 +94,8 @@ class MyTasksViewModel {
         }
     }
     
-    func fetchMyTasksData() {
-        apiService.getMyTasksData { [weak self] (result) in
+    func fetchMyTasksData(myTastView: UIView) {
+        apiService.getMyTasksData(myTaskView: myTastView) { [weak self] (result) in
             switch result {
                 
             case .success(let listOf):

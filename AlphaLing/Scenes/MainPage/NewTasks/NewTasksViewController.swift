@@ -31,7 +31,7 @@ class NewTasksViewController: UIViewController {
     }
    
     private func loadNewTaskData() {
-        viewModel.fetchNewTasksData()
+        viewModel.fetchNewTasksData(view: view)
     }
 
 }

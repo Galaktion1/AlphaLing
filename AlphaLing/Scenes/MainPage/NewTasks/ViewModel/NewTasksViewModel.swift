@@ -18,8 +18,8 @@ class NewTasksViewModel {
         }
     }
     
-    func fetchNewTasksData() {
-        apiService.getMyTasksData { [weak self] (result) in
+    func fetchNewTasksData(view: UIView) {
+        apiService.getMyTasksData(myTaskView: view) { [weak self] (result) in
             switch result {
             case .success(let listOf):
                 print("succesful retrived data")

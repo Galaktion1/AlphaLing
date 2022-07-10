@@ -31,6 +31,15 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func myTaskActionAlert(alertText : String, alertMessage : String, addActionTitle: String, action: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: alertText, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: addActionTitle, style: .default, handler: action))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func logOutActionSheet() {
         let alert = UIAlertController(title: "Log Out", message: "Please Select an Option", preferredStyle: .actionSheet)
         

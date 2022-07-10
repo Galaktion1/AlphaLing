@@ -70,8 +70,14 @@ class NewTaskPageVC: UIViewController {
                 
             case .success(_):
                 print("task succesfully accepted")
-                self.navigationController?.popToRootViewController(animated: true)
-                
+    
+                let storyboard = UIStoryboard(name: "NewTasksStoryboard", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "NewTasksViewController")
+                var viewcontrollers = self.navigationController?.viewControllers
+                viewcontrollers?.removeAll()
+                viewcontrollers?.append(vc)
+                self.navigationController?.setViewControllers(viewcontrollers!, animated: true)
+        
             case .failure(let fail):
                 print(fail)
             }

@@ -276,6 +276,9 @@
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="28"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="completeTaskButton:" destination="f3U-Cx-U6m" eventType="touchUpInside" id="Ork-qp-EvJ"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dhF-9i-XxQ">
                                                 <rect key="frame" x="0.0" y="55" width="381" height="55"/>
@@ -289,6 +292,9 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="cancelTaskButton:" destination="f3U-Cx-U6m" eventType="touchUpInside" id="5yT-Md-Whh"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
