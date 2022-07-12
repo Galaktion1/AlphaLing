@@ -9,46 +9,65 @@ import UIKit
 
 protocol ActivityCollectionViewCellDelegate {
     func mustPresentAlert(info: TimeTrackingModel)
-    func mustPresentNewScheduleAlert()
+    func mustPresentNewScheduleAlert(cell: UICollectionViewCell)
     
 }
 
 class ActivityCollectionViewCell: UICollectionViewCell {
-    
+  
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var plusButtonBackgroundView: UIView!
-    private let viewModel = TimeTrackingViewModel()
-    
     var delegate: ActivityCollectionViewCellDelegate?
     
-    var activityInfo = [TimeTrackingModel?]()
+    var newModel: TimeTrackingModel! {
+        didSet {
+            activityInfo.append(newModel)
+        }
+    }
+   
+    
+    
+    var activityInfo = [TimeTrackingModel?] () {
+        didSet {
+            self.tableView?.reloadData()
+        }
+    }
     
     @IBAction func plusButton(_ sender: UIButton) {
-        delegate?.mustPresentNewScheduleAlert()
+        delegate?.mustPresentNewScheduleAlert(cell: self)
     }
+    
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.delegate = self
         tableView.dataSource = self
-        loadNewTaskData()
+        fetchTimeTrackingData()
         plusButtonBackgroundView.layer.cornerRadius = plusButtonBackgroundView.frame.width / 2
-        
         
         tableView.register(ScheduleTableViewCell.nib(), forCellReuseIdentifier: ScheduleTableViewCell.identifier)
         
-        viewModel.reloadTableView = {
-            self.tableView.reloadData()
-        }
+    }
+    
+    private func fetchTimeTrackingData() {
+        let apiService = TimeTrackingApiService()
         
+        apiService.getTimeTrackingData { [weak self] (result) in
+            switch result {
+                
+            case .success(let listOf):
+                print("succesful retrived timetracking data")
+                self?.activityInfo = listOf
+         
+            case .failure(let error):
+                print("error processing json data \(error)")
+            }
+        }
         
     }
     
-    private func loadNewTaskData() {
-        viewModel.fetchTimeTrackingData()
-    }
 
 }
 
@@ -58,7 +77,7 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.numberOfRowsInSection()
+        activityInfo.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,25 +102,22 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
         return .delete
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        
+        ScheduleDelete.shared.deleteApiCall(id: activityInfo[indexPath.section]?.id ?? 0)
+        
         if editingStyle == .delete {
-
-            ScheduleDelete.shared.deleteApiCall(id: viewModel.getActivityInfo()[indexPath.section]?.id ?? 0) { _ in
-                let viewModel = TimeTrackingViewModel()
-                viewModel.activityInfo.remove(at: indexPath.section)
-                
-                self.tableView.beginUpdates()
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                self.tableView.endUpdates()
-            }
+            self.activityInfo.remove(at: indexPath.section)
+            
         }
     }
-    
-    
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let info = viewModel.cellForRowAt(indexPath: indexPath)
+        let info = activityInfo[indexPath.section]!
         
         delegate?.mustPresentAlert(info: info)
         
@@ -111,11 +127,9 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
         
-        let data = viewModel.cellForRowAt(indexPath: indexPath)
+        let data = activityInfo[indexPath.section]!
         cell.updateCells(scheduleInfo: data)
         return cell
     }
-    
-    
 }
 

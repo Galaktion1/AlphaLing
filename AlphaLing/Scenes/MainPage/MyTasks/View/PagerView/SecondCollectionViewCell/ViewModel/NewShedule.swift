@@ -7,7 +7,14 @@
 
 import Foundation
 
+protocol NewSheduleDelegate {
+    func createSchedule(data: TimeTrackingModel)
+}
+
 class NewShedule {
+    
+    var delegate: NewSheduleDelegate?
+    
     static let shared = NewShedule()
     func newScheduleCall(taskId: Int, taskUserId: Int, note: String, billable: Bool, startedAt: String, endedAt: String, completionHandler: @escaping (Result<TimeTrackingModel, Error>) -> Void) {
         
@@ -50,6 +57,7 @@ class NewShedule {
                 if let result = response {
 //                    print("...\n \(result) ...\n")
                     completionHandler(.success(result))
+                    
                 }
                 else {
                     completionHandler(.failure(APIError.incorrectValues))

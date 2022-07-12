@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class PagerViewViewController: UIViewController {
     
     @IBOutlet weak var mainButtonOutlet: UIButton!
@@ -338,7 +337,7 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
 
 extension PagerViewViewController: ActivityCollectionViewCellDelegate {
     
-    func mustPresentNewScheduleAlert() {
+    func mustPresentNewScheduleAlert(cell: UICollectionViewCell) {
         let startedAtTime: String = "\(startDatePicker.date)"
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -366,45 +365,24 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
         let somethingAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: {  _ in
-           
-
-            NewShedule.shared.newScheduleCall(taskId: (UserDefaults.standard.value(forKey: "taskID") ?? 0) as! Int,
+            
+       NewShedule.shared.newScheduleCall(taskId: (UserDefaults.standard.value(forKey: "taskID") ?? 0) as! Int,
                                               taskUserId: (UserDefaults.standard.value(forKey: "ID") ?? 0) as! Int,
                                               note: self.textField.text ?? "",
                                               billable: self.checkBoxButton.isSelected,
                                               startedAt: "\(self.startDatePicker.date)",
-                                              endedAt: "\(self.endDatePicker.date)") { result in
-                
-                
-                
-                
-//                let api = TimeTrackingApiService()
-//                var schedules = [TimeTrackingModel?]() {
-//                    didSet {
-//                        DispatchQueue.main.async {
-//                            tableView.reloadData()
-//                        }
-//
-//                        print("dareloudda mgoni")
-//                    }
-//                }
-//                api.getTimeTrackingData {  res in
-//                    switch res {
-//                    case.success(let sched):
-//                        schedules = sched
-//                    case .failure(let error):
-//                        print(error)
-//                    }
-//                }
-
+                                              endedAt: "\(self.endDatePicker.date)") { res in
+                switch res {
+                case .success(let model):
+//                    print(model)
+                    DispatchQueue.main.async {
+                        let casted = cell as! ActivityCollectionViewCell
+                        casted.newModel = model
+                    }
+                case .failure(let err):
+                    print(err)
+                }
             }
-            
-           
-            //
-                                                             
-//            tableView.beginUpdates()
-//            tableView.insertSections(IndexSet(integer: schedules.count - 1), with: .automatic)
-//            tableView.endUpdates()
             
         })
         alertController.addAction(somethingAction)
@@ -460,6 +438,7 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
                     
                 case .success(_):
 //                    print(final)
+                    
                     print("success while patch")
                 case .failure(_):
                     print("errror while patch")
@@ -497,7 +476,3 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
     }
     
 }
-
-
-
-

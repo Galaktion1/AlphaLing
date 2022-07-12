@@ -10,7 +10,7 @@ import Foundation
 class ScheduleDelete {
     static let shared = ScheduleDelete()
     
-    func deleteApiCall(id: Int, completionHandler: @escaping (Result<Int, Error>) -> Void) {
+    func deleteApiCall(id: Int) {
         
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-time-tracking/\(id)") else { return }
         
@@ -25,7 +25,7 @@ class ScheduleDelete {
         
         let task = URLSession.shared.dataTask(with: request) { data, statusCode, error in
             guard let data = data, error == nil else {
-                completionHandler(.failure(Error.self as! Error))
+                
                 return }
             
             do{
@@ -37,10 +37,10 @@ class ScheduleDelete {
                 
                 if let result = response {
                     print("...\n \(result) ...\n")
-                    completionHandler(.success(result))
+                    
                 }
                 else {
-                    completionHandler(.failure(APIError.incorrectValues))
+                    
                 }
             }
             catch {
