@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xP-R7-f7k">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xP-R7-f7k">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Whh-z9-Jl0">
@@ -242,28 +242,28 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="74" id="7Yl-SB-ykC"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-k9-T6N">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-k9-T6N">
                                                 <rect key="frame" x="31" y="690" width="352" height="110"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAJ-Fv-WOA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="352" height="55"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="352" height="52.5"/>
                                                         <color key="backgroundColor" name="AccentColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Accept">
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="newTaskAcceptButton:" destination="PMf-jI-ClS" eventType="touchUpInside" id="Agu-DA-hym"/>
                                                         </connections>
                                                     </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kKM-SZ-cFF">
-                                                        <rect key="frame" x="0.0" y="55" width="352" height="55"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="kKM-SZ-cFF">
+                                                        <rect key="frame" x="0.0" y="57.5" width="352" height="52.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okc-Lk-T0H">
-                                                                <rect key="frame" x="0.0" y="0.0" width="176" height="55"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="174" height="52.5"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" title="Countoffer">
                                                                     <color key="baseForegroundColor" systemColor="systemRedColor"/>
@@ -276,7 +276,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcT-dR-iUD">
-                                                                <rect key="frame" x="176" y="0.0" width="176" height="55"/>
+                                                                <rect key="frame" x="178" y="0.0" width="174" height="52.5"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" title="Reject">
                                                                     <color key="baseForegroundColor" systemColor="systemRedColor"/>
@@ -339,12 +339,15 @@
                     <connections>
                         <outlet property="baseLabel" destination="X0B-Ln-b41" id="zYP-8v-D6i"/>
                         <outlet property="bottomButtonsStackView" destination="Ne8-k9-T6N" id="A6D-z8-ZDK"/>
+                        <outlet property="compersationStackView" destination="B7O-LZ-vMm" id="amq-a3-vlV"/>
+                        <outlet property="countOfferButtonOutlet" destination="Okc-Lk-T0H" id="mKS-1j-1J1"/>
                         <outlet property="customerNameLabel" destination="3Dg-Ec-hCz" id="nTf-A5-MNC"/>
                         <outlet property="dateLabel" destination="xEh-Cr-tdk" id="Aph-kS-QAS"/>
                         <outlet property="fareLabel" destination="2jz-cD-w5f" id="IdM-dQ-EaL"/>
                         <outlet property="firstCommentAuthorLabel" destination="vZr-nS-uhA" id="dmu-zd-ROU"/>
                         <outlet property="fistCommentLabel" destination="JJj-fo-Fd0" id="pmt-81-AoA"/>
                         <outlet property="nameTitleLabel" destination="1HK-dh-Aiy" id="52Y-lQ-PCN"/>
+                        <outlet property="rejectButtonOutlet" destination="PcT-dR-iUD" id="iRT-Wy-rE3"/>
                         <outlet property="scrollView" destination="5xP-R7-f7k" id="W3x-tZ-Dja"/>
                         <outlet property="seeMoreLabel" destination="Vxf-GM-ibH" id="QcH-ud-OVE"/>
                         <outlet property="timeLabel" destination="iyW-d8-lSr" id="xdw-t5-3cL"/>

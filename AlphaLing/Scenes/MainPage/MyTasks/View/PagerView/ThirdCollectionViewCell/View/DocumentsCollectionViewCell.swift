@@ -11,21 +11,19 @@ import UniformTypeIdentifiers
 
 protocol DocumentsCollectionViewCellDelegate {
     func downloadFile(with url: URL)
-    func imageOrFileUploadActionSheet()
+    func imageOrFileUploadActionSheet(cell: UICollectionViewCell)
 }
 
 class DocumentsCollectionViewCell: UICollectionViewCell {
-        
-    
-    @IBAction func fileUploadButton(_ sender: UIButton) {
-        delegate?.imageOrFileUploadActionSheet()
-        
-    }
-    
     
     @IBOutlet weak var tableView: UITableView!
+    private var apiCall = FetchDocumentsAPICall()
+    var documents = [DocumentFetchingResponseModel?] () {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
-    let viewModel = FetchDocumentsViewModel()
     
     var delegate: DocumentsCollectionViewCellDelegate?
     
@@ -34,20 +32,33 @@ class DocumentsCollectionViewCell: UICollectionViewCell {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        loadNewDocuments()
+        fetchDocumentsData()
         
         tableView.register(UploadedFilesTableViewCell.nib(), forCellReuseIdentifier: UploadedFilesTableViewCell.identifier)
-        // Initialization code
+     
+    }
+    
+    @IBAction func fileUploadButton(_ sender: UIButton) {
+        delegate?.imageOrFileUploadActionSheet(cell: self)
         
-        
-        viewModel.reloadTableView = {
-            self.tableView.reloadData()
+    }
+
+    
+    func fetchDocumentsData() {
+        apiCall.getFetchedDocuments { [weak self] (result) in
+            switch result {
+                
+            case .success(let listOf):
+                print("succesful retrived data")
+                
+//                print(listOf)
+                self?.documents = listOf
+            case .failure(let error):
+                print("error processing json data \(error)")
+            }
         }
     }
     
-    private func loadNewDocuments() {
-        viewModel.fetchDocumentsData()
-    }
     
 }
 
@@ -57,7 +68,7 @@ extension DocumentsCollectionViewCell: UITableViewDelegate, UITableViewDataSourc
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.numberOfRowsInSection()
+        documents.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,27 +95,17 @@ extension DocumentsCollectionViewCell: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            guard let id = viewModel.getActivityInfo()[indexPath.section]?.id else { return }
-            FileDeleteAPICall.shared.deleteFile(id: id) { result in
-                switch result {
-                    
-                case .success(let intNum):
-                    print(intNum)
-                    tableView.beginUpdates()
-                    self.viewModel.documents.remove(at: indexPath.section)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.endUpdates()
-                    
-                case .failure(_):
-                    print("error while deleting")
-                }
+            guard let id = documents[indexPath.section]?.id else { return }
+            FileDeleteAPICall.shared.deleteFile(id: id)
+            if editingStyle == .delete {
+                self.documents.remove(at: indexPath.section)
             }
         }
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = viewModel.cellForRowAt(indexPath: indexPath)
+        guard let data = documents[indexPath.section] else { return }
         
         guard let url = URL(string: "https://alphatest.webmitplan.de/" + (data.fileKey ?? "")) else { return }
         
@@ -114,15 +115,14 @@ extension DocumentsCollectionViewCell: UITableViewDelegate, UITableViewDataSourc
 //            print("PDF File downloaded to : \(path!)")
 //        }
         
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UploadedFilesTableViewCell", for: indexPath) as! UploadedFilesTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UploadedFilesTableViewCell", for: indexPath) as? UploadedFilesTableViewCell else { return UITableViewCell()}
         
-        let data = viewModel.cellForRowAt(indexPath: indexPath)
-        cell.updateCells(documentsInfo: data)
-        
+        if let data = documents[indexPath.section] {
+            cell.updateCells(documentsInfo: data)
+        }
         return cell
     }
 }
@@ -147,8 +147,10 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocume
         self.present(alert, animated: true, completion: nil)
     }
     
-    func imageOrFileUploadActionSheet() {
+    func imageOrFileUploadActionSheet(cell: UICollectionViewCell) {
         let alert = UIAlertController(title: "UPLOAD", message: "Please Select an Option", preferredStyle: .actionSheet)
+        
+        self.documentsCell = cell
         
         
         alert.addAction(UIAlertAction(title: "Image upload", style: .default, handler: { (_) in
@@ -190,8 +192,7 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocume
         guard let documentURL = urls.first else { return }
         
         FileUploadAPICall.shared.uploadDocumentRequest(url: documentURL) { result in
-            self.viewModel.switchResult(result: result, fileType: "Document", viewController: self)
-            
+            self.viewModel.switchResult(result: result, fileType: "Document", viewController: self, cell: self.documentsCell)
         }
     }
 }
@@ -205,7 +206,7 @@ extension PagerViewViewController: UIImagePickerControllerDelegate, UINavigation
         let uploadImage = FetchDocumentsViewModel()
         
         uploadImage.requestNativeImageUpload(image: image) { result in
-            self.viewModel.switchResult(result: result, fileType: "Image", viewController: self)
+            self.viewModel.switchResult(result: result, fileType: "Image", viewController: self, cell: self.documentsCell)
         }
         
         picker.dismiss(animated: true)

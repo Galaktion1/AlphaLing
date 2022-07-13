@@ -51,7 +51,7 @@ class FileUploadAPICall {
 
                 if let data = data {
                     do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        let json = try JSONDecoder().decode(TimeTrackingModel.self, from: data)
                         print(json)
                         completionHandler(.success(1))
                         

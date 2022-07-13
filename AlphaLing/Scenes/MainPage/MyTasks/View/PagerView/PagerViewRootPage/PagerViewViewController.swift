@@ -20,11 +20,15 @@ class PagerViewViewController: UIViewController {
     var data: TaskData?
     private let screenWidt = UIScreen.main.bounds.width
     
+    var documentsCell: UICollectionViewCell!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.delegate = self
         collectionView?.dataSource = self
+        
+        self.tabBarController?.tabBar.isHidden = true
         
         collectionView.register(UINib(nibName: "PagerViewMainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PagerViewMainCollectionViewCell")
         
@@ -37,6 +41,12 @@ class PagerViewViewController: UIViewController {
         activeIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         viewModel.deactiveButtons(button1: activityButtonOutlet, button2: documentButtonOutlet)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     
     private func moveToNextCollectionViewCell(item: Int) {
         collectionView.isPagingEnabled = false
@@ -278,7 +288,7 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 200)
+        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -325,10 +335,12 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
     func mustPresent(comments: [Comment]) {
         let sb = UIStoryboard(name: "Comments", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
-
+        
+//        let vm = MyTasksViewModel()
+//        vm.fetchMyTasksData(myTastView: self.view)
+        
         vc.comments = comments
-
-//        print(comments[0].userOutputName ?? "")
+        
 
         self.present(vc, animated: true, completion: nil)
     }
@@ -392,7 +404,7 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
     
     
     
-    func mustPresentAlert(info: TimeTrackingModel) {
+    func mustPresentAlert(info: TimeTrackingModel, cell: UICollectionViewCell) {
         
         let startedAtTime: String = "\(info.startedAt?[0 ... 9] ?? "0000-00-00") \(info.startedAt?[11 ... 15] ?? "00:00")"
         let dateFormatter = DateFormatter()
@@ -438,6 +450,12 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
                     
                 case .success(_):
 //                    print(final)
+                    let vm = TimeTrackingApiService()
+                    vm.getTimeTrackingData { _ in
+                        if let castedCell = cell as? ActivityCollectionViewCell{
+                            castedCell.fetchTimeTrackingData()
+                        }
+                    }
                     
                     print("success while patch")
                 case .failure(_):

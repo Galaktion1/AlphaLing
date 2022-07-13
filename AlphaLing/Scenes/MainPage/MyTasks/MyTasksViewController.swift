@@ -16,7 +16,7 @@ class MyTasksViewController: UIViewController {
     
     private var viewModel = MyTasksViewModel()
     
-    let cellSpacingHeight: CGFloat = 10
+    let cellSpacingHeight: CGFloat = 0
     
     
     override func viewDidLoad() {

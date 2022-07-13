@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ActivityCollectionViewCellDelegate {
-    func mustPresentAlert(info: TimeTrackingModel)
+    func mustPresentAlert(info: TimeTrackingModel, cell: UICollectionViewCell)
     func mustPresentNewScheduleAlert(cell: UICollectionViewCell)
     
 }
@@ -51,7 +51,7 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         
     }
     
-    private func fetchTimeTrackingData() {
+    func fetchTimeTrackingData() {
         let apiService = TimeTrackingApiService()
         
         apiService.getTimeTrackingData { [weak self] (result) in
@@ -119,7 +119,7 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
         
         let info = activityInfo[indexPath.section]!
         
-        delegate?.mustPresentAlert(info: info)
+        delegate?.mustPresentAlert(info: info, cell: self)
         
     }
     

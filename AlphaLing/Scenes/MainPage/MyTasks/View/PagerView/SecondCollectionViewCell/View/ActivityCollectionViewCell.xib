@@ -24,7 +24,7 @@
                         <color key="sectionIndexBackgroundColor" name="commonColor"/>
                     </tableView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNg-B8-Luo">
-                        <rect key="frame" x="326" y="660" width="60" height="60"/>
+                        <rect key="frame" x="326" y="560" width="60" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7I5-Vn-V6T">
                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -56,7 +56,7 @@
                 <constraint firstItem="ibq-ka-3Ee" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="p2Q-ey-EnV"/>
                 <constraint firstAttribute="bottom" secondItem="ibq-ka-3Ee" secondAttribute="bottom" constant="20" id="uNG-ID-X1k"/>
                 <constraint firstAttribute="trailing" secondItem="ibq-ka-3Ee" secondAttribute="trailing" constant="15" id="us6-3J-rME"/>
-                <constraint firstAttribute="bottom" secondItem="JNg-B8-Luo" secondAttribute="bottom" constant="84" id="xne-mo-P2i"/>
+                <constraint firstAttribute="bottom" secondItem="JNg-B8-Luo" secondAttribute="bottom" constant="184" id="xne-mo-P2i"/>
             </constraints>
             <connections>
                 <outlet property="plusButtonBackgroundView" destination="JNg-B8-Luo" id="Rhf-sg-CZq"/>

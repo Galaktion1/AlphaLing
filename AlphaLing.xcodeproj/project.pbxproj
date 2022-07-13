@@ -210,10 +210,10 @@
 		9A1A3950286AECB900B89A76 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9A0DD832285B2839007B075A /* UploadedFilesTableViewCell.xib */,
 				9A0DD831285B2839007B075A /* UploadedFilesTableViewCell.swift */,
-				9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */,
+				9A0DD832285B2839007B075A /* UploadedFilesTableViewCell.xib */,
 				9A0DD82A285B1102007B075A /* DocumentsCollectionViewCell.xib */,
+				9A0DD829285B1102007B075A /* DocumentsCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

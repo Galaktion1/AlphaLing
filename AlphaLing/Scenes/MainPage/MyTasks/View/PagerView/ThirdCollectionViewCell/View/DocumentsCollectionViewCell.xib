@@ -18,11 +18,11 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fki-Wr-nNF">
-                        <rect key="frame" x="10" y="0.0" width="394" height="509"/>
+                        <rect key="frame" x="10" y="0.0" width="394" height="399"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </tableView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnk-fC-4bP">
-                        <rect key="frame" x="32" y="559" width="350" height="56"/>
+                        <rect key="frame" x="32" y="449" width="350" height="56"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="350" id="RdH-IO-qZ6"/>
                             <constraint firstAttribute="height" constant="56" id="ubo-qd-VRe"/>
@@ -46,7 +46,7 @@
             <constraints>
                 <constraint firstItem="gnk-fC-4bP" firstAttribute="top" secondItem="fki-Wr-nNF" secondAttribute="bottom" constant="50" id="6dX-EF-gDe"/>
                 <constraint firstItem="gnk-fC-4bP" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="8rP-xd-uO6"/>
-                <constraint firstAttribute="bottom" secondItem="gnk-fC-4bP" secondAttribute="bottom" constant="60" id="GvN-KC-NZ9"/>
+                <constraint firstAttribute="bottom" secondItem="gnk-fC-4bP" secondAttribute="bottom" constant="170" id="GvN-KC-NZ9"/>
                 <constraint firstAttribute="trailing" secondItem="fki-Wr-nNF" secondAttribute="trailing" constant="10" id="Jxy-yI-nXu"/>
                 <constraint firstItem="fki-Wr-nNF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="USu-WY-pcn"/>
                 <constraint firstItem="fki-Wr-nNF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="ng3-nG-r4I"/>

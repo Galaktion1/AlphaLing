@@ -13,7 +13,7 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     
-    var newComment: Comment?
+    
     let viewModel = CommentsViewModel()
     
     var commentAddResponse: (() -> Void)?
@@ -24,17 +24,33 @@ class CommentsViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+  
+    
+   
+    
     @IBAction func commentButton(_ sender: UIButton) {
         
         if let comment = commentTextField.text{
-            commentTextField.text = nil
+            
             if comment.count > 0 {
-                viewModel.addComment(text: comment) { [self] result in
+                let newComment = Comment(id: (UserDefaults.standard.value(forKey: "ID") as? String) , text: self.commentTextField.text ?? "", userID: UserDefaults.standard.value(forKey: "taskID") as? Int , modifiedAt: "", userOutputName: "Me")
+                
+                viewModel.addComment(text: comment) { [weak self ] result in
 //                    print(result)
                     
-                    newComment = Comment(id: (UserDefaults.standard.value(forKey: "ID") as? String) , text: commentTextField.text ?? "", userID: UserDefaults.standard.value(forKey: "taskID") as? Int , modifiedAt: "", userOutputName: "Me")
-                  
+                   
+                    
                 }
+                
+                DispatchQueue.main.async {
+                    self.comments?.append(newComment)
+                }
+                commentTextField.text = nil
             }
         }
         
@@ -56,9 +72,8 @@ class CommentsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-        if let newComment = newComment {
-            self.comments?.append(newComment)
-        }
+        
+
     }
     
     
@@ -142,9 +157,10 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
                     
                 case .success(let random):
                     print(random)
-                    tableView.beginUpdates()
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                    tableView.endUpdates()
+                    self.comments?.remove(at: indexPath.section)
+//                    tableView.beginUpdates()
+//                    tableView.deleteRows(at: [indexPath], with: .fade)
+//                    tableView.endUpdates()
                 case .failure(_):
                     print("error while deleting")
                 }

@@ -9,7 +9,7 @@ import Foundation
 class FileDeleteAPICall {
     static let shared = FileDeleteAPICall()
     
-    func deleteFile(id: Int, completionHandler: @escaping (Result<Int, Error>) -> Void) {
+    func deleteFile(id: Int) {
         
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/assets/document-files/\(id)") else { return }
         
@@ -24,7 +24,7 @@ class FileDeleteAPICall {
         
         let task = URLSession.shared.dataTask(with: request) { data, statusCode, error in
             guard let data = data, error == nil else {
-                completionHandler(.failure(Error.self as! Error))
+                
                 return }
             
             do{
@@ -36,11 +36,9 @@ class FileDeleteAPICall {
                 
                 if let result = response {
                     print("...\n \(result) ...\n")
-                    completionHandler(.success(result))
+                    
                 }
-                else {
-                    completionHandler(.failure(APIError.incorrectValues))
-                }
+                
             }
             catch {
                 print(error)

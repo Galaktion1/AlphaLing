@@ -80,11 +80,11 @@
                             <constraint firstItem="66J-gh-Ocw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RhA-wN-IbH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="66J-gh-Ocw" secondAttribute="trailing" id="SbV-M8-4mW"/>
                             <constraint firstAttribute="bottom" secondItem="eSl-ok-tan" secondAttribute="bottom" id="UPh-QG-REi"/>
-                            <constraint firstItem="eSl-ok-tan" firstAttribute="top" secondItem="dhW-bg-jiO" secondAttribute="bottom" id="bED-Rr-cM1"/>
                             <constraint firstItem="dhW-bg-jiO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="1" id="f8S-jd-sTe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eSl-ok-tan" secondAttribute="trailing" id="hcF-5u-ciC"/>
                             <constraint firstItem="66J-gh-Ocw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="sC1-1X-X6a"/>
                             <constraint firstItem="eSl-ok-tan" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="y7r-vO-Riq"/>
+                            <constraint firstItem="eSl-ok-tan" firstAttribute="top" secondItem="dhW-bg-jiO" secondAttribute="bottom" id="yyg-Uq-4wj"/>
                         </constraints>
                     </view>
                     <connections>

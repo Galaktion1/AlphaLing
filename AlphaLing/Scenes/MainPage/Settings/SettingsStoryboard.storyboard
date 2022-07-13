@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hxu-jL-sdV">
-                                <rect key="frame" x="25" y="159" width="364" height="122"/>
+                                <rect key="frame" x="25" y="108" width="364" height="122"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3x-Uo-J1i">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="56"/>
@@ -26,7 +26,7 @@
                                             <constraint firstAttribute="height" constant="56" id="mv6-lN-lqM"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="network" catalog="system">
+                                        <buttonConfiguration key="configuration" style="plain" image="network" catalog="system" imagePlacement="leading" imagePadding="0.0">
                                             <backgroundConfiguration key="background">
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                             </backgroundConfiguration>
@@ -47,7 +47,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nin-9E-CjG">
                                         <rect key="frame" x="0.0" y="66" width="364" height="56"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system">
+                                        <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system" imagePlacement="leading" imagePadding="0.0">
                                             <backgroundConfiguration key="background">
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                             </backgroundConfiguration>
@@ -55,7 +55,7 @@
                                                 <fragment content="   Logout">
                                                     <attributes>
                                                         <font key="NSFont" size="16" name="Helvetica"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -78,13 +78,17 @@
                         <color key="backgroundColor" name="commonColor"/>
                         <constraints>
                             <constraint firstItem="Hxu-jL-sdV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="3W7-T5-maV"/>
-                            <constraint firstItem="Hxu-jL-sdV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="71" id="MjF-B0-XRS"/>
+                            <constraint firstItem="Hxu-jL-sdV" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="MjF-B0-XRS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Hxu-jL-sdV" secondAttribute="trailing" constant="25" id="q4c-Y2-q1g"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Opx-d8-TXL"/>
                     <navigationItem key="navigationItem" title="Settings" id="8Cm-Df-ngC"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="languageButtonOutlet" destination="O3x-Uo-J1i" id="7Vk-Jx-7Ml"/>
+                        <outlet property="logOutButtonOutlet" destination="nin-9E-CjG" id="cJN-wr-iU0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

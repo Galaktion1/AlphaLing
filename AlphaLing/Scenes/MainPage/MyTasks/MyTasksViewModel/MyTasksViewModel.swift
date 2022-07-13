@@ -88,7 +88,7 @@ class MyTasksViewModel {
         
     private var apiService = TaskApiService(linkSnippet: "my")
     var reloadTableView: (()->Void)?
-    private var userInfo = [TaskData](){
+    var userInfo = [TaskData](){
         didSet {
             self.reloadTableView?()
         }
@@ -142,11 +142,21 @@ class MyTasksViewModel {
         return taskData
     }
     
-    func switchResult(result: Result<Int, Error>, fileType: String, viewController: UIViewController) {
+    func switchResult(result: Result<Int, Error>, fileType: String, viewController: UIViewController, cell: UICollectionViewCell) {
         
         switch result {
         case .success(_):
             DispatchQueue.main.async {
+                
+                switch result {
+                case .success(_):
+                    let casted = cell as! DocumentsCollectionViewCell
+                    casted.fetchDocumentsData()
+                    
+                case .failure(let err):
+                    print("error while uploading file", err)
+                }
+                
                 viewController.showAlert(alertText: "SUCCESS", alertMessage: "\(fileType) was successfully uploaded", addActionTitle: "Done")
             }
         case .failure(let error):

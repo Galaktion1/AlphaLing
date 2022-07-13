@@ -74,44 +74,7 @@ class FetchDocumentsAPICall {
 
 
 class FetchDocumentsViewModel {
-    
-        
-    private var apiCall = FetchDocumentsAPICall()
-    var reloadTableView: (()->Void)?
-    var documents = [DocumentFetchingResponseModel?] () {
-        didSet {
-            self.reloadTableView?()
-        }
-    }
-    
-    func fetchDocumentsData() {
-        apiCall.getFetchedDocuments { [weak self] (result) in
-            switch result {
-                
-            case .success(let listOf):
-                print("succesful retrived data")
-                
-//                print(listOf)
-                self?.documents = listOf
-            case .failure(let error):
-                print("error processing json data \(error)")
-            }
-        }
-    }
-    
-    func numberOfRowsInSection() -> Int {
-        (documents.count != 0 ) ? documents.count : 0
-    }
-    
-    func cellForRowAt (indexPath: IndexPath) -> DocumentFetchingResponseModel {
-        documents[indexPath.section]!
-    }
-    
-    func getActivityInfo() -> [DocumentFetchingResponseModel?] {
-        documents
-    }
-    
-    
+
     func requestNativeImageUpload(image: UIImage, completionHandler: @escaping (Result<Int, Error>) -> Void) {
 
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/assets/document-files/upload/task/\(UserDefaults.standard.value(forKey: "taskDataID") ?? "nil")") else { return }
@@ -142,7 +105,7 @@ class FetchDocumentsViewModel {
             
             if let data = data {
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONDecoder().decode(TimeTrackingModel.self, from: data)
                     print(json)
                     completionHandler(.success(1))
                 } catch {

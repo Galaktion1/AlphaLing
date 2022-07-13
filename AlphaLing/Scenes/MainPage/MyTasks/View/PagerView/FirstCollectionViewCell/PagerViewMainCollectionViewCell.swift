@@ -50,7 +50,32 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func addCommentButton(_ sender: UIButton) {
-        delegate?.mustPresent(comments: (taskData?.taskUsers?[0].comments) ?? [Comment(id: "", text: "", userID: 0, modifiedAt: "", userOutputName: "")])
+//        delegate?.mustPresent(comments: (taskData?.taskUsers?[0].comments) ?? [Comment(id: "", text: "", userID: 0, modifiedAt: "", userOutputName: "")])
+        let vm = MyTasksViewModel()
+        
+        var info = vm.userInfo {
+            didSet {
+                if let comment = info[0].taskUsers?[0].comments {
+                    delegate?.mustPresent(comments: comment)
+                }
+            }
+        }
+        
+        vm.fetchMyTasksData(myTastView: self.contentView)
+        
+        
+        
+        
+        
+        
+//        var info = vm.userInfo {
+//            didSet{
+//                DispatchQueue.main.async {
+//                    self.delegate?.mustPresent(comments: info[0].taskUsers?[0].comments ?? [Comment(id: "", text: "", userID: 0, modifiedAt: "", userOutputName: "")])
+//                }
+//
+//            }
+//        }
     }
     
     

@@ -17,9 +17,15 @@ class NewTaskPageVC: UIViewController {
     @IBOutlet weak var fareLabel: UILabel!
     @IBOutlet weak var firstCommentAuthorLabel: UILabel!
     @IBOutlet weak var fistCommentLabel: UILabel!
+    
     @IBOutlet weak var bottomButtonsStackView: UIStackView!
+    @IBOutlet weak var compersationStackView: UIStackView!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var seeMoreLabel: UILabel!
+    
+    @IBOutlet weak var countOfferButtonOutlet: UIButton!
+    @IBOutlet weak var rejectButtonOutlet: UIButton!
     
     
     var data: TaskData?
@@ -30,17 +36,23 @@ class NewTaskPageVC: UIViewController {
         view.backgroundColor = .white
         guard let data = data else { return }
         updateMainUIView(data: data)
+        self.tabBarController?.tabBar.isHidden = true
         
-        if data.taskUsers?[0].status == "offer" {
-            bottomButtonsStackView.arrangedSubviews.forEach { $0.removeFromSuperview()
-                self.showAlert(alertText: "ABOUT TASK", alertMessage: "THIS TASK HAS OFFER STATUS", addActionTitle: "OK")
-            }
-        }
+        
+        
+        giveOfferStatusView()
+        configureButtonBorder(button: countOfferButtonOutlet)
+        configureButtonBorder(button: rejectButtonOutlet)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapFunction))
         seeMoreLabel.isUserInteractionEnabled = true
         seeMoreLabel.addGestureRecognizer(tap)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func addCommentButton(_ sender: UIButton) {
@@ -53,6 +65,25 @@ class NewTaskPageVC: UIViewController {
     }
     
     
+    func giveOfferStatusView() {
+        if data?.taskUsers?[0].status == "offer" {
+            bottomButtonsStackView.arrangedSubviews.forEach { $0.removeFromSuperview()
+                
+                compersationStackView.arrangedSubviews.forEach {
+                    $0.removeFromSuperview()
+                }
+            }
+            self.showAlert(alertText: "ABOUT TASK", alertMessage: "THIS TASK HAS OFFER STATUS", addActionTitle: "OK")
+        }
+    }
+    
+    
+    
+    private func configureButtonBorder(button: UIButton) {
+       button.layer.cornerRadius = 15
+       button.layer.borderWidth = 1
+       button.layer.borderColor = CGColor(red: 1, green: 0, blue: 0, alpha: 1)
+    }
     
     private func presentCommentsVC() {
         let sb = UIStoryboard(name: "Comments", bundle: nil)

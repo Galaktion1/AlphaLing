@@ -15,7 +15,7 @@ class MyTasksTableViewCell: UITableViewCell {
     
     @IBOutlet weak var docIconImage: UIImageView!
     
-    @IBOutlet weak var docIconBackgroundView: UIView!
+  
     
     static let identifier = "MyTasksTableViewCell"
     override func awakeFromNib() {
@@ -38,18 +38,12 @@ class MyTasksTableViewCell: UITableViewCell {
     }
     
     func configureRedCells() {
-//        
-//        senderLabel.text = "Dolmetschen vor Ort Litauisch"
-//        dateLabel.text = "2021-09-02"
-//        timeLabel.text = "23:00 - 23:45"
         
-        docIconImage.image = UIImage(systemName: "doc")?.withRenderingMode(.alwaysTemplate)
+        docIconImage.image = UIImage(named: "newtasksitem")?.withRenderingMode(.alwaysTemplate)
         
         docIconImage.tintColor = .systemPink
         docIconImage.backgroundColor = UIColor(named: "redDocBackgroundColor")
         
-        docIconBackgroundView.backgroundColor = UIColor(named: "redDocBackgroundColor")
-  
     }
     
     
