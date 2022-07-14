@@ -30,7 +30,7 @@ struct TaskData: Codable {
     let geoLocation: GeoLocation?
     let tags: [JSONAny]?
     let releasedAt, createdAt, modifiedAt: String?
-    let taskUsers: [TaskUser]?
+    var taskUsers: [TaskUser]?
 
     enum CodingKeys: String, CodingKey {
         case id, baseTaskKey, status, statusHistory, statusNotes, awardProcess, billingMethod, singleEditor
@@ -77,7 +77,7 @@ struct TaskUser: Codable {
     let customTravelPrice: Bool?
     let customTravelPriceData, billingDetailID, travelCostsConditions: JSONNull?
     let supplierOfferTravelPriceData: SupplierOfferPriceData?
-    let comments: [Comment]?
+    var comments: [Comment]?
     let tags: [JSONAny]?
     let pricePositions: PricePositions?
 

@@ -88,6 +88,7 @@ class NewTaskPageVC: UIViewController {
     private func presentCommentsVC() {
         let sb = UIStoryboard(name: "Comments", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
+        vc.reloadDataForNewTask()
 
         vc.comments = data?.taskUsers?[0].comments ?? []
 

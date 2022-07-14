@@ -335,10 +335,8 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
     func mustPresent(comments: [Comment]) {
         let sb = UIStoryboard(name: "Comments", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "CommentsViewController") as! CommentsViewController
-        
-//        let vm = MyTasksViewModel()
-//        vm.fetchMyTasksData(myTastView: self.view)
-        
+        vc.reloadDataForMyTask()
+
         vc.comments = comments
         
 
@@ -358,7 +356,7 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         let endedAtTime: String = "\(endDatePicker.date)"
         let endDate = dateFormatter.date(from: endedAtTime)
         
-        
+    
         if let startDate = startDate {
             startDatePicker.setDate(startDate, animated: true)
         }

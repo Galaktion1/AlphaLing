@@ -15,7 +15,7 @@ class NewTasksViewController: UIViewController {
     
     private var viewModel = NewTasksViewModel()
     
-    let cellSpacingHeight: CGFloat = 10
+    let cellSpacingHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +75,8 @@ extension NewTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         let data = viewModel.cellForRowAt(indexPath: indexPath)
         UserDefaults.standard.set(data.taskUsers?[0].id, forKey: "ID")
         
+        UserDefaults.standard.setValue(indexPath.section, forKey: "numberOfSectionTappedInMyTask")
+        
         vc.data = data
         
         vc.navigationItem.largeTitleDisplayMode = .never
@@ -92,7 +94,5 @@ extension NewTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         
         return cell
     }
-
-    
  
 }

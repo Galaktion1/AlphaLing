@@ -13,49 +13,20 @@ class CommentsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     
-    
     let viewModel = CommentsViewModel()
     
-    var commentAddResponse: (() -> Void)?
-
     var comments: [Comment]? {
         didSet {
             self.tableView?.reloadData()
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
-  
-    
-   
-    
-    @IBAction func commentButton(_ sender: UIButton) {
-        
-        if let comment = commentTextField.text{
-            
-            if comment.count > 0 {
-                let newComment = Comment(id: (UserDefaults.standard.value(forKey: "ID") as? String) , text: self.commentTextField.text ?? "", userID: UserDefaults.standard.value(forKey: "taskID") as? Int , modifiedAt: "", userOutputName: "Me")
-                
-                viewModel.addComment(text: comment) { [weak self ] result in
-//                    print(result)
-                    
-                   
-                    
-                }
-                
-                DispatchQueue.main.async {
-                    self.comments?.append(newComment)
-                }
-                commentTextField.text = nil
-            }
+    var model: TaskModel!
+    {
+        didSet {
+            let currentSection = UserDefaults.standard.integer(forKey: "numberOfSectionTappedInMyTask")
+            comments = model.data?[currentSection].taskUsers?[0].comments
         }
-        
-
-        
     }
 
     override func viewDidLoad() {
@@ -71,10 +42,68 @@ class CommentsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+    }
+    
+  
+    
+   
+    
+    @IBAction func commentButton(_ sender: UIButton) {
+        
+       
+        if let comment = commentTextField.text{
+            
+            if comment.count > 0 {
+                let newComment = Comment(id: (UserDefaults.standard.value(forKey: "ID") as? String) , text: self.commentTextField.text ?? "", userID: UserDefaults.standard.value(forKey: "taskID") as? Int , modifiedAt: "", userOutputName: "Me")
+                
+                viewModel.addComment(text: comment) { _ in
+//                    print(result)
+                    
+                }
+                
+                self.comments?.append(newComment)
+    
+                    
+                
+                commentTextField.text = nil
+            }
+        }
         
 
+        
     }
+
+    
+    func reloadDataForMyTask() {
+        let vm = TaskApiService(linkSnippet: "my")
+        
+        vm.getMyTasksData(myTaskView: self.view) { result in
+            switch result {
+            case .success(let taskModel):
+                self.model = taskModel
+            case .failure(let error):
+                print("error while getMyTaskForComments: \(error)")
+            }
+        }
+    }
+    
+    func reloadDataForNewTask() {
+        let vm = TaskApiService(linkSnippet: "my-new")
+        
+        vm.getMyTasksData(myTaskView: self.view) { result in
+            switch result {
+            case .success(let taskModel):
+                self.model = taskModel
+            case .failure(let error):
+                print("error while getMyTaskForComments: \(error)")
+            }
+        }
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.dismiss(animated: true)
+//    }
     
     
     private func addDoneButtonOnKeyboard(){
@@ -152,17 +181,15 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
 
             guard let id = comments?[indexPath.section].id else { return }
             
+            self.comments?.remove(at: indexPath.section)
+            
             viewModel.deleteComment(commentId: id) { result in
                 switch result {
-                    
                 case .success(let random):
                     print(random)
-                    self.comments?.remove(at: indexPath.section)
-//                    tableView.beginUpdates()
-//                    tableView.deleteRows(at: [indexPath], with: .fade)
-//                    tableView.endUpdates()
-                case .failure(_):
-                    print("error while deleting")
+                    
+                case .failure(let error):
+                    print("error while deleting \(error)")
                 }
             }
         }

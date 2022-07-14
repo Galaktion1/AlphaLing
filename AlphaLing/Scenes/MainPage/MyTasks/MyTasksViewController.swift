@@ -72,6 +72,8 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
         let sb = UIStoryboard(name: "PagerViewStoryboard", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "PagerViewViewController") as! PagerViewViewController
         
+        UserDefaults.standard.setValue(indexPath.section, forKey: "numberOfSectionTappedInMyTask")
+        
         let data = viewModel.cellForRowAt(indexPath: indexPath)
         vc.data = data
         
