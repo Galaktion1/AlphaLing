@@ -82,7 +82,7 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
+//    ingrida.k@gmail.com   alpha48145
     
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {

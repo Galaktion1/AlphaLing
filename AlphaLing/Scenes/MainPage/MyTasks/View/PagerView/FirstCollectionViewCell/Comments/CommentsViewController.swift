@@ -62,6 +62,7 @@ class CommentsViewController: UIViewController {
                 }
                 
                 self.comments?.append(newComment)
+                view.endEditing(true)
     
                     
                 

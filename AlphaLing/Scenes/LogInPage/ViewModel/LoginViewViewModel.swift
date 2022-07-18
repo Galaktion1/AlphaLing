@@ -14,7 +14,7 @@ class LoginViewViewModel {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.gray.cgColor
-        textField.setLeftPaddingPoints(15)
+//        textField.setLeftPaddingPoints(5)
     }
     
     func checkCompletion(result: Result<String, Error>, viewController: UIViewController) {

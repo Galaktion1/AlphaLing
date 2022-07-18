@@ -14,8 +14,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        languageButtonOutlet.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
-        logOutButtonOutlet.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        languageButtonOutlet?.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+        logOutButtonOutlet?.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
     }
     
     @IBAction func logOutButton(_ sender: UIButton) {

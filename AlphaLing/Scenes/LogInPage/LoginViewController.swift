@@ -39,6 +39,8 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
         usernameTextField.delegate = self
         self.addDoneButtonOnKeyboard()
+        navigationController?.navigationBar.isHidden = true
+       
         
     }
     
@@ -83,7 +85,7 @@ extension LoginViewController: UITextFieldDelegate {
         textField.layer.borderWidth = 3
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor(named: "specialBlue")?.cgColor
-        textField.setLeftPaddingPoints(15)
+//        textField.setLeftPaddingPoints(5)
         
     }
     
@@ -91,5 +93,6 @@ extension LoginViewController: UITextFieldDelegate {
         viewModel.modifyTextField(textField: textField)
     }
 }
+
 
 

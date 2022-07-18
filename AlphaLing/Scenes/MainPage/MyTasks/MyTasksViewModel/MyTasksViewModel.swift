@@ -114,15 +114,15 @@ class MyTasksViewModel {
     
     func activeButton(button: UIButton) {
         button.tintColor = UIColor(named: "specialBlue")
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
+        
     }
     
     func deactiveButtons(button1: UIButton, button2: UIButton) {
         button1.tintColor = .gray
-        button1.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        
         
         button2.tintColor = .gray
-        button2.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        
     }
     
     func moveActiviveIndicatorView(point: CGFloat, indicatorView: UIView) {

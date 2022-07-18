@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Main">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="mainButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AK9-wQ-4QJ"/>
@@ -34,7 +34,7 @@
                                         <rect key="frame" x="138" y="0.0" width="138" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Activity">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="activityButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YLZ-4V-BxT"/>
@@ -43,7 +43,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ire-Vl-KuI">
                                         <rect key="frame" x="276" y="0.0" width="138" height="45"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Documents"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Documents">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="documentsButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="M6O-49-ZII"/>
                                         </connections>

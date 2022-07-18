@@ -161,8 +161,8 @@ class PagerViewViewController: UIViewController {
     
     let startLabel: UILabel = {
         let label = UILabel()
-        label.text = " Start At:"
-        label.font.withSize(11)
+        label.text = "   Start:"
+        label.font.withSize(15)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -173,8 +173,8 @@ class PagerViewViewController: UIViewController {
     
     let endLabel: UILabel = {
         let label = UILabel()
-        label.text = " End At:"
-        label.font.withSize(11)
+        label.text = "   End:"
+        label.font.withSize(15)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.heightAnchor.constraint(equalToConstant: 50).isActive = true

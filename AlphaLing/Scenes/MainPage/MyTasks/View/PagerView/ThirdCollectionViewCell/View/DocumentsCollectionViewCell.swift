@@ -178,9 +178,7 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocume
             self.present(documentPicker, animated: true, completion: nil)
             
         }))
-        
-        
-        
+      
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
             print("User click Dismiss button")
         }))
