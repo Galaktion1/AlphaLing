@@ -135,6 +135,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="Owt-LY-znM">
+            <size key="intrinsicContentSize" width="91" height="18.5"/>
+        </designable>
         <designable name="eaO-lr-5CF">
             <size key="intrinsicContentSize" width="99" height="18.5"/>
         </designable>

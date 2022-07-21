@@ -40,6 +40,8 @@ class PagerViewViewController: UIViewController {
         confVerticalStackView()
         activeIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         viewModel.deactiveButtons(button1: activityButtonOutlet, button2: documentButtonOutlet)
+        
+        textField.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -133,8 +135,6 @@ class PagerViewViewController: UIViewController {
     let startDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.timeZone = NSTimeZone.local
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.heightAnchor.constraint(equalToConstant: 40).isActive = true
         datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         
         return datePicker
@@ -143,8 +143,6 @@ class PagerViewViewController: UIViewController {
     let endDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.timeZone = NSTimeZone.local
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.heightAnchor.constraint(equalToConstant: 40).isActive = true
         datePicker.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         
         return datePicker
@@ -152,10 +150,13 @@ class PagerViewViewController: UIViewController {
     
     let textField: UITextField = {
         let textField = UITextField()
+        
         textField.placeholder = "Leave Note Here"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.widthAnchor.constraint(equalToConstant: 267).isActive = true
+        textField.clearButtonMode = .always
         textField.setLeftPaddingPoints(15)
-        
+        textField.returnKeyType = .done
         return textField
     }()
     
@@ -164,8 +165,6 @@ class PagerViewViewController: UIViewController {
         label.text = "   Start:"
         label.font.withSize(15)
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
         label.textColor = UIColor(named: "specialBlue")
         
         return label
@@ -176,8 +175,6 @@ class PagerViewViewController: UIViewController {
         label.text = "   End:"
         label.font.withSize(15)
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.heightAnchor.constraint(equalToConstant: 50).isActive = true
         label.textColor = UIColor(named: "specialBlue")
         
         return label
@@ -491,4 +488,12 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         }
     }
     
+}
+
+
+extension PagerViewViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

@@ -17,6 +17,8 @@ class NewTasksViewController: UIViewController {
     
     let cellSpacingHeight: CGFloat = 0
     
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadNewTaskData()
@@ -28,12 +30,22 @@ class NewTasksViewController: UIViewController {
         viewModel.reloadTableView = {
             self.tableView.reloadData()
         }
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl) // not required when using UITableViewController
     }
+  
    
     private func loadNewTaskData() {
         viewModel.fetchNewTasksData(view: view)
     }
 
+    @objc func refresh(_ sender: AnyObject) {
+        loadNewTaskData()
+        
+        refreshControl.endRefreshing()
+    }
 }
 
 extension NewTasksViewController: UITableViewDelegate, UITableViewDataSource  {

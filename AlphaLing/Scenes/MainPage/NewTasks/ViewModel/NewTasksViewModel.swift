@@ -23,7 +23,9 @@ class NewTasksViewModel {
             switch result {
             case .success(let listOf):
                 print("succesful retrived data")
-                self?.userInfo = listOf.data!
+                if let data = listOf.data {
+                    self?.userInfo = data
+                }
             case .failure(let error):
                 print("error processing json data \(error)")
             }

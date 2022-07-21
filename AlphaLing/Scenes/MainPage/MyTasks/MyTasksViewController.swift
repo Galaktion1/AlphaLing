@@ -18,6 +18,7 @@ class MyTasksViewController: UIViewController {
     
     let cellSpacingHeight: CGFloat = 0
     
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,24 @@ class MyTasksViewController: UIViewController {
         viewModel.reloadTableView = {
             self.tableView.reloadData()
         }
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl) // not required when using UITableViewController
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        loadMyTaskData()
+            
+        refreshControl.endRefreshing()
+            
+        
     }
     
     func loadMyTaskData() {
         viewModel.fetchMyTasksData(myTastView: view)
     }
+    
     
 }
 

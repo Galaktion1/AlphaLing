@@ -8,9 +8,9 @@ import Foundation
 // MARK: - Welcome
 struct TaskModel: Codable {
     let data: [TaskData]?
-    let total: Int?
-    let fromDate: String?
-    let toDate: JSONNull?
+//    let total: Int?
+//    let fromDate: String?
+//    let toDate: JSONNull?
 }
 
 // MARK: - Datum
@@ -59,23 +59,24 @@ struct AutoListPreview: Codable {
 // MARK: - TaskUser
 struct TaskUser: Codable {
     let id, taskID: Int?
-    let quantity: JSONNull?
+    let quantity: Int?
     let taskRole, status: String?
     let statusHistory: [StatusHistory]?
-    let userID: JSONNull?
+    let userID: Int?
     let contactID: Int?
-    let externalEmail, externalAuthToken: JSONNull?
+    let externalEmail, externalAuthToken: String?
     let releaseDelay: Int?
     let releasedAt, acceptedAt: String?
-    let declinedAt, canceledAt: JSONNull?
+    let declinedAt, canceledAt: String?
     let supplierPriceData: PriceData?
     let customSupplierPrice: Bool?
-    let customSupplierPriceData: JSONNull?
+    let customSupplierPriceData: CustomPriceData?
     let supplierOfferPriceData: SupplierOfferPriceData?
     let travelDistanceData: TravelDistanceData?
     let travelFlatRatePriceData, travelDistancePriceData: PriceData?
     let customTravelPrice: Bool?
-    let customTravelPriceData, billingDetailID, travelCostsConditions: JSONNull?
+    let customTravelPriceData: CustomPriceData?
+    let billingDetailID, travelCostsConditions: JSONNull?
     let supplierOfferTravelPriceData: SupplierOfferPriceData?
     var comments: [Comment]?
     let tags: [JSONAny]?
@@ -122,6 +123,10 @@ struct TravelEPrice: Codable {
 // MARK: - StatusHistory
 struct StatusHistory: Codable {
     let at, status: String?
+}
+
+struct CustomPriceData: Codable {
+    let basePrice: JSONNull?
 }
 
 // MARK: - PriceData

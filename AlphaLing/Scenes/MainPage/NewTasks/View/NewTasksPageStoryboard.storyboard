@@ -294,7 +294,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="specialWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="B7O-LZ-vMm" secondAttribute="trailing" constant="24" id="1Cm-16-V73"/>
                                             <constraint firstAttribute="trailing" secondItem="Ne8-k9-T6N" secondAttribute="trailing" constant="31" id="7P0-WM-Ug1"/>
@@ -317,6 +317,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" name="specialWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Whh-z9-Jl0" secondAttribute="bottom" id="Wwm-wg-Bt7"/>
                                     <constraint firstItem="Whh-z9-Jl0" firstAttribute="leading" secondItem="5xP-R7-f7k" secondAttribute="leading" id="na6-5g-KhB"/>
@@ -326,7 +327,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aB3-MA-7q9"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="specialWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="5xP-R7-f7k" secondAttribute="bottom" id="3ku-13-2x1"/>
                             <constraint firstItem="Whh-z9-Jl0" firstAttribute="width" secondItem="XRD-oj-Qi5" secondAttribute="width" id="GO2-7f-80c"/>
@@ -365,9 +366,9 @@
         <namedColor name="AccentColor">
             <color red="0.026000000536441803" green="0.32499998807907104" blue="0.64899998903274536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="specialWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -36,10 +36,10 @@ class NewTaskPageVC: UIViewController {
         view.backgroundColor = .white
         guard let data = data else { return }
         updateMainUIView(data: data)
+        
+        self.view.backgroundColor = UIColor(named: "specialWhite")!
         self.tabBarController?.tabBar.isHidden = true
-        
-        
-        
+
         giveOfferStatusView()
         configureButtonBorder(button: countOfferButtonOutlet)
         configureButtonBorder(button: rejectButtonOutlet)
@@ -50,9 +50,11 @@ class NewTaskPageVC: UIViewController {
         
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+
     }
     
     @IBAction func addCommentButton(_ sender: UIButton) {
@@ -96,24 +98,39 @@ class NewTaskPageVC: UIViewController {
     }
     
     @IBAction func newTaskAcceptButton(_ sender: UIButton) {
-        let apiCall = NewTaskAcceptAPICall()
-        apiCall.getMyTasksData(acceptedID: data?.taskUsers?[0].id ?? -1, linkSnippet: "accept-task") { result in
-            switch result {
-                
-            case .success(_):
-                print("task succesfully accepted")
-    
-                let storyboard = UIStoryboard(name: "NewTasksStoryboard", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "NewTasksViewController")
-                var viewcontrollers = self.navigationController?.viewControllers
-                viewcontrollers?.removeAll()
-                viewcontrollers?.append(vc)
-                self.navigationController?.setViewControllers(viewcontrollers!, animated: true)
         
-            case .failure(let fail):
-                print(fail)
+        let alert = UIAlertController(title: "Important", message: "Do you really want to accept this task?", preferredStyle: UIAlertController.Style.alert)
+        
+        
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            let apiCall = NewTaskAcceptAPICall()
+            apiCall.getMyTasksData(acceptedID: self.data?.taskUsers?[0].id ?? -1, linkSnippet: "accept-task") { result in
+                switch result {
+                    
+                case .success(_):
+                    print("task succesfully accepted")
+        
+                    let storyboard = UIStoryboard(name: "NewTasksStoryboard", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "NewTasksViewController")
+                    var viewcontrollers = self.navigationController?.viewControllers
+                    viewcontrollers?.removeAll()
+                    viewcontrollers?.append(vc)
+                    self.navigationController?.setViewControllers(viewcontrollers!, animated: true)
+            
+                case .failure(let fail):
+                    print(fail)
+                }
             }
-        }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
+            print("User click Dismiss button")
+        }))
+        
+        
+        //Add more actions as you see fit
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func modifyTextField(textField: UITextField, placeHolder: String) {
