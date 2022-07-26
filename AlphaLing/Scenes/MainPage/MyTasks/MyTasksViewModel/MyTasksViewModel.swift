@@ -112,19 +112,14 @@ class MyTasksViewModel {
         (userInfo.count != 0 ) ? userInfo.count : 0
     }
     
-    func activeButton(button: UIButton) {
+    func activeButton(button: UIButton, button1: UIButton, button2: UIButton) {
         button.tintColor = UIColor(named: "specialBlue")
         
-    }
-    
-    func deactiveButtons(button1: UIButton, button2: UIButton) {
         button1.tintColor = .gray
-        
-        
         button2.tintColor = .gray
-        
     }
     
+
     func moveActiviveIndicatorView(point: CGFloat, indicatorView: UIView) {
         UIView.animate(withDuration: 0.2, delay: 0.0, options:[], animations: {
             indicatorView.transform = CGAffineTransform(translationX: point, y: 0)

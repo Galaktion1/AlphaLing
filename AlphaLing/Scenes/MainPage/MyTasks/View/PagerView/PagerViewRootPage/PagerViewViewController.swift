@@ -39,7 +39,7 @@ class PagerViewViewController: UIViewController {
         confHorizontalStackView()
         confVerticalStackView()
         activeIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        viewModel.deactiveButtons(button1: activityButtonOutlet, button2: documentButtonOutlet)
+        viewModel.activeButton(button: mainButtonOutlet, button1: activityButtonOutlet, button2: documentButtonOutlet)
         
         textField.delegate = self
     }
@@ -66,24 +66,21 @@ class PagerViewViewController: UIViewController {
    
     
     @IBAction func mainButton(_ sender: UIButton) {
-        viewModel.activeButton(button: mainButtonOutlet)
-        viewModel.deactiveButtons(button1: documentButtonOutlet, button2: activityButtonOutlet)
+        viewModel.activeButton(button: mainButtonOutlet, button1: documentButtonOutlet, button2: activityButtonOutlet)
         moveToNextCollectionViewCell(item: 0)
         viewModel.moveActiviveIndicatorView(point: 0, indicatorView: self.activeIndicatorView)
     }
     
     
     @IBAction func activityButton(_ sender: UIButton) {
-        viewModel.activeButton(button: activityButtonOutlet)
-        viewModel.deactiveButtons(button1: mainButtonOutlet, button2: documentButtonOutlet)
+        viewModel.activeButton(button: activityButtonOutlet, button1: documentButtonOutlet, button2: mainButtonOutlet)
         moveToNextCollectionViewCell(item: 1)
         viewModel.moveActiviveIndicatorView(point: screenWidt / 3, indicatorView: self.activeIndicatorView)
     }
     
     
     @IBAction func documentsButton(_ sender: UIButton) {
-        viewModel.activeButton(button: documentButtonOutlet)
-        viewModel.deactiveButtons(button1: mainButtonOutlet, button2: activityButtonOutlet)
+        viewModel.activeButton(button: documentButtonOutlet, button1: mainButtonOutlet, button2: activityButtonOutlet)
         moveToNextCollectionViewCell(item: 2)
         viewModel.moveActiviveIndicatorView(point: screenWidt * 2 / 3, indicatorView: self.activeIndicatorView)
     }

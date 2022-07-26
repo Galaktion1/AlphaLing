@@ -74,7 +74,7 @@ struct TaskUser: Codable {
     let supplierOfferPriceData: SupplierOfferPriceData?
     let travelDistanceData: TravelDistanceData?
     let travelFlatRatePriceData, travelDistancePriceData: PriceData?
-    let customTravelPrice: Bool?
+    let customTravelPrice: String?
     let customTravelPriceData: CustomPriceData?
     let billingDetailID, travelCostsConditions: JSONNull?
     let supplierOfferTravelPriceData: SupplierOfferPriceData?

@@ -47,7 +47,7 @@ class CommentsViewModel {
                 let response = try JSONDecoder().decode(TaskUser.self, from: data)
                 
                 if let result = response.status {
-//                    print("...\n \(result) ...\n")
+                    print("...\n \(result) ...\n")
                     completionHandler(.success(result))
                     
                 }

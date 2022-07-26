@@ -56,22 +56,17 @@ class CommentsViewController: UIViewController {
             if comment.count > 0 {
                 let newComment = Comment(id: (UserDefaults.standard.value(forKey: "ID") as? String) , text: self.commentTextField.text ?? "", userID: UserDefaults.standard.value(forKey: "taskID") as? Int , modifiedAt: "", userOutputName: "Me")
                 
-                viewModel.addComment(text: comment) { _ in
-//                    print(result)
-                    
+                viewModel.addComment(text: comment) { result in
+                    print(result)
                 }
                 
                 self.comments?.append(newComment)
+                self.tableView.reloadData()
                 view.endEditing(true)
     
-                    
-                
                 commentTextField.text = nil
             }
         }
-        
-
-        
     }
 
     
@@ -181,6 +176,8 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
 
             guard let id = comments?[indexPath.section].id else { return }
+            
+            self.tableView.reloadData()
             
             self.comments?.remove(at: indexPath.section)
             
