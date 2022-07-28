@@ -11,7 +11,7 @@ class CommentsViewModel {
     
     static let comments = CommentsViewModel()
     
-    func addComment(text: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func addComment(text: String, completionHandler: @escaping (Result<[Comment], Error>) -> Void) {
         
         guard let url = URL(string: "https://alphatest.webmitplan.de/api/task/task-users/\(UserDefaults.standard.string(forKey: "ID")!)/comments") else { return }
         
@@ -34,23 +34,23 @@ class CommentsViewModel {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
-            guard let response = response else {
+            if let response = response {
+                print(response, "<- comment add response")
+            }
+
+            guard let data = data else {
                 return
             }
-            print(response)
-
-            guard let data = data, error == nil else {
-                completionHandler(.failure(Error.self as! Error))
-                return }
+            
             
             do{
-                let response = try JSONDecoder().decode(TaskUser.self, from: data)
+                let jsonDecoded = try JSONDecoder().decode(CommentAddResponse.self, from: data)
                 
-                if let result = response.status {
-                    print("...\n \(result) ...\n")
-                    completionHandler(.success(result))
-                    
+                if let comments = jsonDecoded.taskUser?.comments {
+                    completionHandler(.success(comments))
                 }
+                
+             
                
             }
             catch {

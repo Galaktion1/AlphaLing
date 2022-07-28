@@ -56,6 +56,11 @@ struct Title: Codable {
 struct AutoListPreview: Codable {
 }
 
+
+struct CommentAddResponse: Codable {
+    let taskUser: TaskUser?
+}
+
 // MARK: - TaskUser
 struct TaskUser: Codable {
     let id, taskID: Int?
