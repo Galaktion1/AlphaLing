@@ -40,10 +40,7 @@ class LoginViewController: UIViewController {
         usernameTextField.delegate = self
         self.addDoneButtonOnKeyboard()
         navigationController?.navigationBar.isHidden = true
-       
-        
     }
-    
     
     
     override func viewDidLayoutSubviews() {
@@ -52,10 +49,19 @@ class LoginViewController: UIViewController {
         viewModel.modifyTextField(textField: usernameTextField)
         viewModel.modifyTextField(textField: passwordTextField)
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkInternetConnection()
     }
     
     
+    private func checkInternetConnection() {
+        if !Reachability.isConnectedToNetwork() {
+            self.showAlert(alertText: "Internet connection fault", alertMessage: "Internet Connection not Available", addActionTitle: "Ok")
+        }
+    }
     
     private func addDoneButtonOnKeyboard(){
             let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))

@@ -253,7 +253,7 @@ class PagerViewViewController: UIViewController {
     
     
     @objc func checkBoxAction() {
-        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear, animations: {
             self.checkBoxButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         }) { (success) in
             if self.checkBoxButton.isSelected {
@@ -264,11 +264,15 @@ class PagerViewViewController: UIViewController {
                 self.checkBoxButton.setImage(UIImage(named: "Checkbox")!, for: .selected)
                 self.checkBoxButton.isSelected.toggle()
             }
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear, animations: {
                 self.checkBoxButton.transform = .identity
             }, completion: nil)
         }
 
+    }
+    
+    deinit {
+        print("pagerView deinited")
     }
     
 
@@ -474,13 +478,13 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
     }
     
     func dismiss() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             let storyboard = UIStoryboard(name: "MyTasksStoryboard", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "MyTasksViewController")
-            var viewcontrollers = self.navigationController?.viewControllers
+            var viewcontrollers = self?.navigationController?.viewControllers
             viewcontrollers?.removeAll()
             viewcontrollers?.append(vc)
-            self.navigationController?.setViewControllers(viewcontrollers!, animated: true)
+            self?.navigationController?.setViewControllers(viewcontrollers!, animated: true)
             
         }
     }

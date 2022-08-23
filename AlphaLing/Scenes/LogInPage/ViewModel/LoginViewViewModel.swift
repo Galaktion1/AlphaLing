@@ -35,11 +35,6 @@ class LoginViewViewModel {
             UserDefaults.standard.set(true, forKey: "UserLoggedIn")
             UserDefaults.standard.synchronize()
             
-         
-            
-            
-            
-            
         case .failure(let failure):
             DispatchQueue.main.async {
                 viewController.showAlert(alertText: "Error", alertMessage: "Invalid username or password.", addActionTitle: "Ok")
@@ -47,7 +42,6 @@ class LoginViewViewModel {
                 }
                 
             }
-        
         }
 }
 
@@ -75,7 +69,7 @@ class APIService {
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
-                completionHandler(.failure(Error.self as! Error))
+//                completionHandler(.failure(Error.self as Error?))
                 return }
             
             do{

@@ -11,13 +11,13 @@ class NewTasksViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-//    var myTaskApiService = TaskApiService(linkSnippet: "my-new")
-    
     private var viewModel = NewTasksViewModel()
     
     let cellSpacingHeight: CGFloat = 0
     
     let refreshControl = UIRefreshControl()
+    
+    let label = EmptyColllectionExtension.shared.centerLabel(text: "There are no new tasks 🌐")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,9 @@ class NewTasksViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(MyTasksTableViewCell.nib(), forCellReuseIdentifier: MyTasksTableViewCell.identifier)
         
-        viewModel.reloadTableView = {
-            self.tableView.reloadData()
+        viewModel.reloadTableView = { [weak self] in
+            self?.tableView.reloadData()
+            self?.presentEmptyTasksNotifyLabel()
         }
         
         refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
@@ -43,8 +44,18 @@ class NewTasksViewController: UIViewController {
 
     @objc func refresh(_ sender: AnyObject) {
         loadNewTaskData()
-        
+        presentEmptyTasksNotifyLabel()
         refreshControl.endRefreshing()
+    }
+    
+    private func presentEmptyTasksNotifyLabel() {
+        if viewModel.numberOfRowsInSection() == 0 {
+            tableView.addSubview(label)
+            label.topAnchor.constraint(equalTo: tableView.topAnchor, constant: (tableView.frame.height / 2) - 20).isActive = true
+            label.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        } else {
+            label.removeFromSuperview()
+        }
     }
 }
 

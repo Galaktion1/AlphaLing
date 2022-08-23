@@ -80,10 +80,10 @@ class CommentsViewController: UIViewController {
     func reloadDataForMyTask() {
         let vm = TaskApiService(linkSnippet: "my")
         
-        vm.getMyTasksData(myTaskView: self.view) { result in
+        vm.getMyTasksData(myTaskView: self.view) { [weak self] result in
             switch result {
             case .success(let taskModel):
-                self.model = taskModel
+                self?.model = taskModel
             case .failure(let error):
                 print("error while getMyTaskForComments: \(error)")
             }
@@ -93,10 +93,10 @@ class CommentsViewController: UIViewController {
     func reloadDataForNewTask() {
         let vm = TaskApiService(linkSnippet: "my-new")
         
-        vm.getMyTasksData(myTaskView: self.view) { result in
+        vm.getMyTasksData(myTaskView: self.view) { [weak self] result in
             switch result {
             case .success(let taskModel):
-                self.model = taskModel
+                self?.model = taskModel
             case .failure(let error):
                 print("error while getMyTaskForComments: \(error)")
             }

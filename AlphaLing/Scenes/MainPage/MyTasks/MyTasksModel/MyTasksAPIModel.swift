@@ -8,9 +8,6 @@ import Foundation
 // MARK: - Welcome
 struct TaskModel: Codable {
     let data: [TaskData]?
-//    let total: Int?
-//    let fromDate: String?
-//    let toDate: JSONNull?
 }
 
 // MARK: - Datum
@@ -18,7 +15,7 @@ struct TaskData: Codable {
     let id: Int?
     let baseTaskKey, status: String?
     let statusHistory: JSONNull?
-    let statusNotes: [JSONAny]?
+    let statusNotes: [String]
     let awardProcess, billingMethod: String?
     let singleEditor: Bool?
     let orderPositionID, unitID: Int?
@@ -120,7 +117,7 @@ struct PricePositions: Codable {
 }
 
 struct TravelEPrice: Codable {
-    let pricePerUnit: Int?
+    let pricePerUnit: Double?
     let total, quantity: Double?
     let info: AutoListPreview?
 }
@@ -137,7 +134,7 @@ struct CustomPriceData: Codable {
 // MARK: - PriceData
 struct PriceData: Codable {
     let periods: [JSONAny]?
-    let basePrice: Int?
+    let basePrice: Double?
     let usePeriods: String?
     let quantityPrices: [JSONAny]?
 }
@@ -189,7 +186,7 @@ struct Recommended: Codable {
 // MARK: - Distance
 struct Distance: Codable {
     let text: String?
-    let value: Int?
+    let value: Double?
 }
 
 class JSONCodingKey: CodingKey {

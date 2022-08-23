@@ -13,6 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        if Reachability.isConnectedToNetwork(){
+            print("Internet Connection Available!")
+        } else{
+            print("Internet Connection not Available")
+            
+        }
         // Override point for customization after application launch.
         return true
     }

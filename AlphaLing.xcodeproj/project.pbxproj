@@ -44,6 +44,7 @@
 		9A45BB7F286EE89E00BF47FD /* FileUploadAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */; };
 		9A466D5C284DED3A006FDE81 /* NewTaskPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */; };
 		9A466D5E284E0586006FDE81 /* NewTasksPageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */; };
+		9A6D7A722893E4CD009CD432 /* InternetConnectionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6D7A712893E4CD009CD432 /* InternetConnectionChecker.swift */; };
 		9AA251BD284604F4002516D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251BC284604F4002516D3 /* AppDelegate.swift */; };
 		9AA251BF284604F4002516D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251BE284604F4002516D3 /* SceneDelegate.swift */; };
 		9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA251C0284604F4002516D3 /* LoginViewController.swift */; };
@@ -104,6 +105,7 @@
 		9A45BB7E286EE89E00BF47FD /* FileUploadAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploadAPICall.swift; sourceTree = "<group>"; };
 		9A466D5B284DED3A006FDE81 /* NewTaskPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskPageVC.swift; sourceTree = "<group>"; };
 		9A466D5D284E0586006FDE81 /* NewTasksPageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTasksPageStoryboard.storyboard; sourceTree = "<group>"; };
+		9A6D7A712893E4CD009CD432 /* InternetConnectionChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionChecker.swift; sourceTree = "<group>"; };
 		9AA251B9284604F4002516D3 /* AlphaLing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphaLing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA251BC284604F4002516D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AA251BE284604F4002516D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			children = (
 				9AA251D428460E67002516D3 /* UIElementsExtensions.swift */,
 				9A0C79572876BC8600D455AC /* ActivityView.swift */,
+				9A6D7A712893E4CD009CD432 /* InternetConnectionChecker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				9ADCC8E92858863B00827255 /* CommentsTableViewCell.swift in Sources */,
 				9AA251C1284604F4002516D3 /* LoginViewController.swift in Sources */,
 				9ACA666F2863354300A9B575 /* NewShedule.swift in Sources */,
+				9A6D7A722893E4CD009CD432 /* InternetConnectionChecker.swift in Sources */,
 				9AFC0318286C59E300C0F062 /* FileUploadResponse.swift in Sources */,
 				9A2468F928474851000AD93F /* MyTasksViewController.swift in Sources */,
 				9AEA8B942864665A00C2C023 /* ScheduleDelete.swift in Sources */,

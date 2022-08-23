@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ActivityCollectionViewCellDelegate {
+protocol ActivityCollectionViewCellDelegate: AnyObject {
     func mustPresentAlert(info: TimeTrackingModel, cell: UICollectionViewCell)
     func mustPresentNewScheduleAlert(cell: UICollectionViewCell)
     
@@ -18,7 +18,7 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var plusButtonBackgroundView: UIView!
-    var delegate: ActivityCollectionViewCellDelegate?
+    weak var delegate: ActivityCollectionViewCellDelegate?
     
     var newModel: TimeTrackingModel! {
         didSet {

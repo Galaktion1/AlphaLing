@@ -9,7 +9,7 @@ import UIKit
 import MobileCoreServices
 import UniformTypeIdentifiers
 
-protocol DocumentsCollectionViewCellDelegate {
+protocol DocumentsCollectionViewCellDelegate: AnyObject {
     func downloadFile(with url: URL)
     func imageOrFileUploadActionSheet(cell: UICollectionViewCell)
 }
@@ -25,7 +25,7 @@ class DocumentsCollectionViewCell: UICollectionViewCell {
     }
     
     
-    var delegate: DocumentsCollectionViewCellDelegate?
+    weak var delegate: DocumentsCollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -111,9 +111,6 @@ extension DocumentsCollectionViewCell: UITableViewDelegate, UITableViewDataSourc
         
         delegate?.downloadFile(with: url)
         
-//        FileDownloader.loadFileAsync(url: url) { (path, error) in
-//            print("PDF File downloaded to : \(path!)")
-//        }
         
     }
     
@@ -136,7 +133,7 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocume
         alert.addAction(UIAlertAction(title: "Download", style: .default, handler: { (_) in
             
             FileDownloader.loadFileAsync(url: url) { (path, error) in
-                print("PDF File downloaded to : \(path!)")
+                print("\(path!)")
             }
         }))
         
@@ -167,11 +164,20 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocume
         alert.addAction(UIAlertAction(title: "File upload", style: .default, handler: { (_) in
             
             //Create a picker specifying file type and mode
-            let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF),
+            
+            var documentPicker: UIDocumentPickerViewController!
+            if #available(iOS 14, *) {
+                // iOS 14 & later
+                let supportedTypes: [UTType] = [UTType.image, UTType.pdf, UTType.text, UTType.png, UTType.jpeg, UTType.svg, UTType.data, UTType.compositeContent, UTType.content]
+                documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes)
+                                                
+            } else {
+                documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF),
                                                                                 String(kUTTypePNG),
                                                                                 String(kUTTypeJPEG),
                                                                                 String(kUTTypePlainText),
                                                                                 String(kUTTypePlainText)], in: .import)
+            }
             documentPicker.delegate = self
             documentPicker.allowsMultipleSelection = false
             documentPicker.modalPresentationStyle = .formSheet

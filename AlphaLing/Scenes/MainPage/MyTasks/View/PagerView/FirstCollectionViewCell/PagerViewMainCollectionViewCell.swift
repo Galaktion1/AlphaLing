@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PagerViewMainCollectionViewCellDelegate {
+protocol PagerViewMainCollectionViewCellDelegate: AnyObject {
     func mustPresent(comments: [Comment])
     func askSomethingWithAlert(alertText: String,
                                alertMessage: String,
@@ -35,7 +35,7 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var fistCommentLabel: UILabel!
     @IBOutlet weak var seeMoreLabel: UILabel!
     
-    var delegate: PagerViewMainCollectionViewCellDelegate?
+    weak var delegate: PagerViewMainCollectionViewCellDelegate?
     var taskData: TaskData?
     
     let viewModel = MainViewViewModel()
@@ -61,11 +61,11 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     @IBAction func completeTaskButton(_ sender: UIButton) {
         guard let id = taskData?.id else { return }
         
-        self.delegate?.askSomethingWithAlert(alertText: "Task Accept", alertMessage: "Do you want to complete this task?", actionTitle: "complete") { _ in
+        self.delegate?.askSomethingWithAlert(alertText: "Task Accept", alertMessage: "Do you want to complete this task?", actionTitle: "complete") { [weak self] _ in
             
-            self.viewModel.acceptMyTask(id: id) { _ in
+            self?.viewModel.acceptMyTask(id: id) { _ in
                 print("Task Accepted succesfully")
-                self.delegate?.dismiss()
+                self?.delegate?.dismiss()
             }
         }
         
@@ -74,10 +74,10 @@ class PagerViewMainCollectionViewCell: UICollectionViewCell {
     @IBAction func cancelTaskButton(_ sender: UIButton) {
         guard let id = taskData?.id else { return }
         
-        self.delegate?.askSomethingWithAlert(alertText: "Task Rejection", alertMessage: "Do you want to cancel this task?", actionTitle: "Yes") { _ in
-            self.viewModel.cancelMyTask(id: id) {  _ in
+        self.delegate?.askSomethingWithAlert(alertText: "Task Rejection", alertMessage: "Do you want to cancel this task?", actionTitle: "Yes") { [weak self] _ in
+            self?.viewModel.cancelMyTask(id: id) {  _ in
                 print("Task rejected succesfully")
-                self.delegate?.dismiss()
+                self?.delegate?.dismiss()
             }
         }
     }

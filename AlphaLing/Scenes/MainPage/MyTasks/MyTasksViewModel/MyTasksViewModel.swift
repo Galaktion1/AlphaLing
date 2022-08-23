@@ -97,7 +97,6 @@ class MyTasksViewModel {
     func fetchMyTasksData(myTastView: UIView) {
         apiService.getMyTasksData(myTaskView: myTastView) { [weak self] (result) in
             switch result {
-                
             case .success(let listOf):
                 print("succesful retrived data")
                 guard let data = listOf.data else { return }

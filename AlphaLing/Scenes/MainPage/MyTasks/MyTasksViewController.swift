@@ -16,9 +16,8 @@ class MyTasksViewController: UIViewController {
     
     private var viewModel = MyTasksViewModel()
     
-    let cellSpacingHeight: CGFloat = 0
-    
     let refreshControl = UIRefreshControl()
+    let label = EmptyColllectionExtension.shared.centerLabel(text: "My tasks are empty 🌐")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +29,9 @@ class MyTasksViewController: UIViewController {
         
         tableView.register(MyTasksTableViewCell.nib(), forCellReuseIdentifier: MyTasksTableViewCell.identifier)
         
-        viewModel.reloadTableView = {
-            self.tableView.reloadData()
+        viewModel.reloadTableView = { [weak self] in
+            self?.tableView.reloadData()
+            self?.presentEmptyTasksNotifyLabel()
         }
         
         refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
@@ -39,25 +39,50 @@ class MyTasksViewController: UIViewController {
         tableView.addSubview(refreshControl) // not required when using UITableViewController
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkInternetConnection()
+    }
+    
+    
     @objc func refresh(_ sender: AnyObject) {
         loadMyTaskData()
-            
+        presentEmptyTasksNotifyLabel()
         refreshControl.endRefreshing()
-            
-        
+    }
+    
+    private func checkInternetConnection() {
+        if !Reachability.isConnectedToNetwork() {
+            self.showAlert(alertText: "Internet connection fault", alertMessage: "Internet Connection not Available", addActionTitle: "Ok")
+        }
     }
     
     func loadMyTaskData() {
         viewModel.fetchMyTasksData(myTastView: view)
     }
     
+    private func presentEmptyTasksNotifyLabel() {
+        if viewModel.numberOfRowsInSection() == 0 {
+            tableView.addSubview(label)
+            label.topAnchor.constraint(equalTo: tableView.topAnchor, constant: (tableView.frame.height / 2) - 20).isActive = true
+            label.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        } else {
+            label.removeFromSuperview()
+        }
+    }
     
 }
 
 extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
     
+    private struct TableViewConstants {
+        static let cellSpacingHeight: CGFloat = 0
+        static let heightForRowAt: CGFloat = 100.0
+        static let numberOfRowsInSection: Int = 1
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100.0
+        TableViewConstants.heightForRowAt
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,11 +90,11 @@ extension MyTasksViewController: UITableViewDelegate, UITableViewDataSource  {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        TableViewConstants.numberOfRowsInSection
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        cellSpacingHeight
+        TableViewConstants.cellSpacingHeight
     }
     
     // Make the background color show through

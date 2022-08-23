@@ -17,8 +17,12 @@ class FileUploadAPICall {
 
             var body = Data()
 
+            var filename = String()
+            
             let filePathKey = "file"
-            let filename = "\(arc4random())"
+            
+            filename = url.lastPathComponent.replacingOccurrences(of: " ", with: "-")
+         
             let fileData: Data = try! Data(contentsOf: url)
             let mimetype = "application/pdf"
             

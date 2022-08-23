@@ -29,7 +29,7 @@
                         <rect key="frame" x="25" y="22" width="180" height="97"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start: 05/06/2022 12:18 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvu-Qg-khH">
-                                <rect key="frame" x="0.0" y="0.0" width="180" height="18"/>
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="19.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19.5" id="cE8-FB-LuT"/>
                                 </constraints>
@@ -38,10 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End: 05/06/2022 12:18 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qs-ST-9oY">
-                                <rect key="frame" x="0.0" y="27" width="180" height="19.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="19.5" id="bjb-cg-ofC"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="28.5" width="180" height="41.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,7 +55,6 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" constant="180" id="5dk-VA-tlg"/>
-                            <constraint firstAttribute="height" constant="97" id="JpM-K3-bjd"/>
                         </constraints>
                     </stackView>
                 </subviews>

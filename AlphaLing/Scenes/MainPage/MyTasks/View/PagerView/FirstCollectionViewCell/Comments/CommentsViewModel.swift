@@ -27,7 +27,6 @@ class CommentsViewModel {
             "text" : "<p>\(text)</p>"
         ]
         
-        
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
         request.allHTTPHeaderFields = ["Authorization" : "Bearer \(UserDefaults.standard.value(forKey: "token") ?? "nil")"]
@@ -42,16 +41,12 @@ class CommentsViewModel {
                 return
             }
             
-            
             do{
                 let jsonDecoded = try JSONDecoder().decode(CommentAddResponse.self, from: data)
                 
                 if let comments = jsonDecoded.taskUser?.comments {
                     completionHandler(.success(comments))
                 }
-                
-             
-               
             }
             catch {
                 print(error)

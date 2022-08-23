@@ -102,7 +102,6 @@ class NewTaskPageVC: UIViewController {
         let alert = UIAlertController(title: "Important", message: "Do you really want to accept this task?", preferredStyle: UIAlertController.Style.alert)
         
         
-        
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             let apiCall = NewTaskAcceptAPICall()
             apiCall.getMyTasksData(acceptedID: self.data?.taskUsers?[0].id ?? -1, linkSnippet: "accept-task") { result in
@@ -161,7 +160,6 @@ class NewTaskPageVC: UIViewController {
             let apiCall = TaskCountOfferAPICall()
             apiCall.countOfferApiCall(id: self.data?.taskUsers?[0].id ?? -1, supplierOfferPriceData: Double(supplierOfferPrice) ?? 0.0, supplierOfferTravelPriceData: Double(supplierOfferTravelPrice) ?? 0.0) { result in
                 switch result {
-                    
                 case .success(let res):
                     print(res)
                     DispatchQueue.main.async {
@@ -170,7 +168,6 @@ class NewTaskPageVC: UIViewController {
                     
                 case .failure(let error):
                     print(error)
-                    
                 }
             }
         }
@@ -202,8 +199,6 @@ class NewTaskPageVC: UIViewController {
         
         configureCommentSection(firstCommentAuthor: data.taskUsers?[0].comments?.first?.userOutputName ?? "",
                                 firstComment: (data.taskUsers?[0].comments?.first?.text ?? "").removeHtmlTags())
-        
-
     }
     
     private func configureUIElements(name: String,

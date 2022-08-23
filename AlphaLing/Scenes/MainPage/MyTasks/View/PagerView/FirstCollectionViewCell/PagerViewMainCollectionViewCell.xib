@@ -300,7 +300,6 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="110" id="82x-vD-IAT"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" id="SC3-Bv-rSf"/>
                                         </constraints>
                                     </stackView>
