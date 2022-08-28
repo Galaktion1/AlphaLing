@@ -195,6 +195,8 @@ extension PagerViewViewController: DocumentsCollectionViewCellDelegate, UIDocume
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let documentURL = urls.first else { return }
         
+        documentURL.startAccessingSecurityScopedResource()
+        
         FileUploadAPICall.shared.uploadDocumentRequest(url: documentURL) { result in
             self.viewModel.switchResult(result: result, fileType: "Document", viewController: self, cell: self.documentsCell)
         }

@@ -10,7 +10,6 @@ import UIKit
 protocol ActivityCollectionViewCellDelegate: AnyObject {
     func mustPresentAlert(info: TimeTrackingModel, cell: UICollectionViewCell)
     func mustPresentNewScheduleAlert(cell: UICollectionViewCell)
-    
 }
 
 class ActivityCollectionViewCell: UICollectionViewCell {
@@ -27,17 +26,16 @@ class ActivityCollectionViewCell: UICollectionViewCell {
     }
    
     
-    
     var activityInfo = [TimeTrackingModel?] () {
         didSet {
             self.tableView?.reloadData()
         }
     }
     
+    
     @IBAction func plusButton(_ sender: UIButton) {
         delegate?.mustPresentNewScheduleAlert(cell: self)
     }
-    
     
     
     override func awakeFromNib() {
@@ -48,27 +46,14 @@ class ActivityCollectionViewCell: UICollectionViewCell {
         plusButtonBackgroundView.layer.cornerRadius = plusButtonBackgroundView.frame.width / 2
         
         tableView.register(ScheduleTableViewCell.nib(), forCellReuseIdentifier: ScheduleTableViewCell.identifier)
-        
     }
     
     func fetchTimeTrackingData() {
-        let apiService = TimeTrackingApiService()
-        
-        apiService.getTimeTrackingData { [weak self] (result) in
-            switch result {
-                
-            case .success(let listOf):
-                print("succesful retrived timetracking data")
-                self?.activityInfo = listOf
-         
-            case .failure(let error):
-                print("error processing json data \(error)")
-            }
+        TimeTrackingApiService.shared.fetchTimeTrackingData { [weak self] timeTrackingModels in
+            self?.activityInfo = timeTrackingModels
         }
-        
     }
     
-
 }
 
 extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
@@ -132,4 +117,5 @@ extension ActivityCollectionViewCell: UITableViewDelegate, UITableViewDataSource
         return cell
     }
 }
+
 

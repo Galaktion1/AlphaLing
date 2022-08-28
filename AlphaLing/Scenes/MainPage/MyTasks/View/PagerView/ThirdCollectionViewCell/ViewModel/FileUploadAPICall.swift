@@ -22,8 +22,12 @@ class FileUploadAPICall {
             let filePathKey = "file"
             
             filename = url.lastPathComponent.replacingOccurrences(of: " ", with: "-")
-         
-            let fileData: Data = try! Data(contentsOf: url)
+            var fileData = Data()
+            do {
+                fileData = try Data(contentsOf: url, options: .mappedIfSafe)
+            } catch {
+                print("error while uploading -> ", error)
+            }
             let mimetype = "application/pdf"
             
             let lineBreak = "\r\n"
@@ -34,6 +38,8 @@ class FileUploadAPICall {
             body.append(fileData)
             body.append(lineBreak)
             body.append("--\(boundary)--\(lineBreak)")
+            
+            url.stopAccessingSecurityScopedResource()
 
 
             guard let url = URL(string: "https://alphatest.webmitplan.de/api/assets/document-files/upload/task/\(UserDefaults.standard.value(forKey: "taskDataID") ?? "nil")") else { return }

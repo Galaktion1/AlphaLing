@@ -9,6 +9,8 @@ import Foundation
 
 class TimeTrackingApiService {
     
+    static var shared = TimeTrackingApiService()
+    
     private var dataTask: URLSessionDataTask?
     
     
@@ -67,6 +69,23 @@ class TimeTrackingApiService {
         }
         dataTask?.resume()
     }
+    
+    func fetchTimeTrackingData(completion: @escaping ([TimeTrackingModel?]) -> ()) {
+        let apiService = TimeTrackingApiService()
+        
+        apiService.getTimeTrackingData { result in
+            switch result {
+                
+            case .success(let listOf):
+                print("succesful retrived timetracking data")
+                completion(listOf)
+         
+            case .failure(let error):
+                print("error processing json data \(error)")
+            }
+        }
+    }
+
 }
 
 

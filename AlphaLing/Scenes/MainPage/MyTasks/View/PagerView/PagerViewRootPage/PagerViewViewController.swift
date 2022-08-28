@@ -13,7 +13,6 @@ class PagerViewViewController: UIViewController {
     @IBOutlet weak var activityButtonOutlet: UIButton!
     @IBOutlet weak var documentButtonOutlet: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var activeIndicatorView: UIView!
     
     let viewModel = MyTasksViewModel()
@@ -21,6 +20,7 @@ class PagerViewViewController: UIViewController {
     private let screenWidt = UIScreen.main.bounds.width
     
     var documentsCell: UICollectionViewCell!
+    var flowLayout = UICollectionViewFlowLayout()
     
     
     override func viewDidLoad() {
@@ -35,6 +35,10 @@ class PagerViewViewController: UIViewController {
         collectionView.register(UINib(nibName: "ActivityCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ActivityCollectionViewCell")
         
         collectionView.register(UINib(nibName: "DocumentsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "DocumentsCollectionViewCell")
+        collectionView.collectionViewLayout = flowLayout
+        
+        flowLayout.scrollDirection = .horizontal
+        
         
         confHorizontalStackView()
         confVerticalStackView()
@@ -43,6 +47,12 @@ class PagerViewViewController: UIViewController {
         
         textField.delegate = self
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        flowLayout.itemSize = CGSize(width: collectionView.frame.width, height: view.frame.height)
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -61,9 +71,6 @@ class PagerViewViewController: UIViewController {
         collectionView.isPagingEnabled = true
     }
     
-    
-    
-   
     
     @IBAction func mainButton(_ sender: UIButton) {
         viewModel.activeButton(button: mainButtonOutlet, button1: documentButtonOutlet, button2: activityButtonOutlet)
@@ -95,7 +102,6 @@ class PagerViewViewController: UIViewController {
         encoder.keyEncodingStrategy = .convertToSnakeCase
 
         let description = String(data: try! encoder.encode(data.descriptions), encoding: .utf8)!
-//        print(description)
         
         return description.removeHtmlTags()
     }
@@ -274,8 +280,6 @@ class PagerViewViewController: UIViewController {
     deinit {
         print("pagerView deinited")
     }
-    
-
 }
 
 extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -286,7 +290,7 @@ extension PagerViewViewController: UICollectionViewDelegate, UICollectionViewDat
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
         }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -336,8 +340,7 @@ extension PagerViewViewController: PagerViewMainCollectionViewCellDelegate {
         vc.reloadDataForMyTask()
 
         vc.comments = comments
-        
-
+    
         self.present(vc, animated: true, completion: nil)
     }
 }
@@ -364,11 +367,9 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         }
         
         
-        
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: UIAlertController.Style.alert)
         
         alertController.view.addSubview(EntireVerticalStackView)
-        
 
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
@@ -397,7 +398,6 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
     
     
     func mustPresentAlert(info: TimeTrackingModel, cell: UICollectionViewCell) {
@@ -452,12 +452,10 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
                             castedCell.fetchTimeTrackingData()
                         }
                     }
-                    
                     print("success while patch")
                 case .failure(_):
                     print("errror while patch")
                 }
-                
             }
             
         })
@@ -465,8 +463,6 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    
     
     
     func askSomethingWithAlert(alertText: String,
@@ -488,7 +484,6 @@ extension PagerViewViewController: ActivityCollectionViewCellDelegate {
             
         }
     }
-    
 }
 
 
