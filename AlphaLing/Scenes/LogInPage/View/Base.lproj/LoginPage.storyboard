@@ -33,7 +33,7 @@
                                                             <constraint firstAttribute="height" constant="49" id="zGh-6Y-lAQ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="person" catalog="system"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -48,7 +48,7 @@
                                                             <constraint firstAttribute="height" constant="49" id="FfU-j3-tL8"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="key" catalog="system"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -136,7 +136,7 @@
     </scenes>
     <designables>
         <designable name="Owt-LY-znM">
-            <size key="intrinsicContentSize" width="91" height="18.5"/>
+            <size key="intrinsicContentSize" width="91" height="17"/>
         </designable>
         <designable name="eaO-lr-5CF">
             <size key="intrinsicContentSize" width="99" height="18.5"/>
